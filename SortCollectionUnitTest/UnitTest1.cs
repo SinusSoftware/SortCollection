@@ -22,8 +22,10 @@ namespace SortCollectionUnitTest
                  6,
                  5
              };
+            //ints.Sort()
+            //ints.SortWithBubbleSort()
 
-            var merge = ints.SortWithMergeSort();
+            //var merge = ints.SortWithMergeSort();
 
             string test = "";
         }
