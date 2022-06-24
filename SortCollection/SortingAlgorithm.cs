@@ -7,6 +7,7 @@
     {
 
         #region BubbleSort
+
         /// <summary>
         /// Sorts the elements in a range of elements in <c>System.Collections.Generic.IEnumerable</c>
         /// using the specified comparer.
@@ -83,9 +84,8 @@
 
         #endregion
 
-        //**
-        //SelectionSort
-        //**
+        #region SelectionSort
+
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithSelectionSort<T>(this IEnumerable<T> source)
         {
@@ -138,9 +138,10 @@
             return list;
         }
 
-        //**
-        //InsertionSort
-        //**
+        #endregion
+
+        #region InsertionSort
+
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithInsertionSort<T>(this IEnumerable<T> source)
         {
@@ -191,9 +192,10 @@
             return list;
         }
 
-        //**
-        //HeapSort
-        //**
+        #endregion
+
+        #region HeapSort
+
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithHeapSort<T>(this IEnumerable<T> source)
         {
@@ -258,14 +260,176 @@
             }
         }
 
-        //**
-        //MergeSort
-        //**
+        #endregion
+
+       
+        #region MergeSort
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithMergeSort<T>(this IEnumerable<T> source)
+        {
+            return SortWithMergeSort(source, 0, source.Count(), Comparer<T>.Default);
+        }
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithMergeSort<T>(this IEnumerable<T> source, IComparer<T> comparer)
+        {
+            return SortWithMergeSort(source, 0, source.Count(), comparer);
+        }
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithMergeSort<T>(this IEnumerable<T> source, int index, int count, IComparer<T> comparer)
+        {
+            if (index < 0)
+            {
+                throw new ArgumentOutOfRangeException("");
+            }
+
+            if (count < 0)
+            {
+                throw new ArgumentOutOfRangeException("");
+            }
+
+            if (source.Count() - index < count) //achtung, ein weniger zählen!!!
+            {
+                throw new ArgumentException("");
+            }
+
+            comparer ??= Comparer<T>.Default;
+
+            var test = source.ToArray();
+
+            MergeSort(test, index, count - 1, comparer);
+
+            return test;
+        }
+
+        private static void Merge<T>(T[] input, int left, int middle, int right, IComparer<T> comparer)
+        {
+            T[] leftArray = new T[middle - left + 1];
+            T[] rightArray = new T[right - middle];
+
+            Array.Copy(input, left, leftArray, 0, middle - left + 1);
+            Array.Copy(input, middle + 1, rightArray, 0, right - middle);
+
+            int i = 0;
+            int j = 0;
+            for (int k = left; k < right + 1; k++)
+            {
+                if (i == leftArray.Length)
+                {
+                    input[k] = rightArray[j];
+                    j++;
+                }
+                else if (j == rightArray.Length)
+                {
+                    input[k] = leftArray[i];
+                    i++;
+                }
+                else if (comparer.Compare(leftArray[i], rightArray[j]) <= 0)
+                {
+                    input[k] = leftArray[i];
+                    i++;
+                }
+                else
+                {
+                    input[k] = rightArray[j];
+                    j++;
+                }
+            }
+        }
+
+        private static void MergeSort<T>(T[] input, int left, int right, IComparer<T> comparer)
+        {
+            if (left < right)
+            {
+                int middle = (left + right) / 2;
+
+                MergeSort(input, left, middle, comparer);
+                MergeSort(input, middle + 1, right, comparer);
+
+                Merge(input, left, middle, right, comparer);
+            }
+        }
 
 
-        //**
-        //CountingSort
-        //**
+        //public static void Mergesort(int[] a, int l, int r)
+        //{
+        //    int i, j, k, m;
+        //    if (r > l)
+        //    {
+        //        m = (r + 1) / 2;
+        //        Mergesort(a, l, m);
+        //        Mergesort(a, m+1, r);
+        //        for(i=m+1; i>l; i--)
+        //        {
+        //            b[i-1] =  
+        //        }
+        //    }
+        //}
+
+        //public static int[] SortArray(int[] array, int left, int right)
+        //{
+        //    if (left < right)
+        //    {
+        //        int middle = left + (right - left) / 2;
+
+        //        SortArray(array, left, middle);
+        //        SortArray(array, middle + 1, right);
+
+        //        MergeArray(array, left, middle, right);
+        //    }
+
+        //    return array;
+        //}
+
+
+        //public static void MergeArray(int[] array, int left, int middle, int right)
+        //{
+        //    var leftArrayLength = middle - left + 1;
+        //    var rightArrayLength = right - middle;
+        //    var leftTempArray = new int[leftArrayLength];
+        //    var rightTempArray = new int[rightArrayLength];
+        //    int i, j;
+
+        //    for (i = 0; i < leftArrayLength; ++i)
+        //        leftTempArray[i] = array[left + i];
+        //    for (j = 0; j < rightArrayLength; ++j)
+        //        rightTempArray[j] = array[middle + 1 + j];
+
+        //    i = 0;
+        //    j = 0;
+        //    int k = left;
+
+        //    while (i < leftArrayLength && j < rightArrayLength)
+        //    {
+        //        if (leftTempArray[i] <= rightTempArray[j])
+        //        {
+        //            array[k++] = leftTempArray[i++];
+        //        }
+        //        else
+        //        {
+        //            array[k++] = rightTempArray[j++];
+        //        }
+        //    }
+
+        //    while (i < leftArrayLength)
+        //    {
+        //        array[k++] = leftTempArray[i++];
+        //    }
+
+        //    while (j < rightArrayLength)
+        //    {
+        //        array[k++] = rightTempArray[j++];
+        //    }
+        //}
+
+
+
+        #endregion
+
+        #region CountingSort
+
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<int> SortWithCountingSort(this IEnumerable<int> source)
         {
@@ -305,7 +469,7 @@
             return result;
         }
 
-
+        #endregion
 
 
     }

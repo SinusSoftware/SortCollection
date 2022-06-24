@@ -6,6 +6,29 @@ namespace SortCollectionUnitTest
     public class UnitTest1
     {
 
+
+        [TestMethod]
+        public void Probieren()
+        {
+            List<int> ints = new()
+            {
+                 4,
+                 7,
+                 2,
+                 1,
+                 8,
+                 9,
+                 3,
+                 6,
+                 5
+             };
+
+            var merge = ints.SortWithMergeSort();
+
+            string test = "";
+        }
+
+
         public static int[] CreateRandomArray(int size, int lower, int upper)
         {
             var array = new int[size];
@@ -39,6 +62,8 @@ namespace SortCollectionUnitTest
             Assert.IsTrue(CheckIntegerList(insertion.ToList()));
             var heap = ints.SortWithHeapSort();
             Assert.IsTrue(CheckIntegerList(heap.ToList()));
+            var merge = ints.SortWithMergeSort();
+            Assert.IsTrue(CheckIntegerList(merge.ToList()));
             var counting = ints.SortWithCountingSort();
             Assert.IsTrue(CheckIntegerList(counting.ToList()));
         }
@@ -84,6 +109,8 @@ namespace SortCollectionUnitTest
             Assert.IsTrue(CheckAlphabet(insertion.ToList()));
             var heap = ints.SortWithHeapSort();
             Assert.IsTrue(CheckAlphabet(heap.ToList()));
+            var merge = ints.SortWithMergeSort();
+            Assert.IsTrue(CheckAlphabet(merge.ToList()));
         }
 
         private static bool CheckAlphabet(IList<string> values)
@@ -123,6 +150,8 @@ namespace SortCollectionUnitTest
             Assert.IsTrue(CheckRandomIntegerList(insertion.ToList()));
             var heap = rtnlist.SortWithHeapSort();
             Assert.IsTrue(CheckRandomIntegerList(heap.ToList()));
+            var merge = rtnlist.SortWithMergeSort();
+            Assert.IsTrue(CheckRandomIntegerList(merge.ToList()));
             var counting = rtnlist.SortWithCountingSort();
             Assert.IsTrue(CheckRandomIntegerList(counting.ToList()));
         }
