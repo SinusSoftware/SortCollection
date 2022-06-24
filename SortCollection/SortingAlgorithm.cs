@@ -2,6 +2,9 @@
 {
     using System.Diagnostics.CodeAnalysis;
 
+    /// <summary>
+    /// Wraps static sort apis into a uniform extension method api.
+    /// </summary>
     [ExcludeFromCodeCoverage]
     public static class SortingAlgorithm
     {
@@ -20,7 +23,7 @@
 
         /// <summary>
         /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// using the specified comparer.>
+        /// using the specified comparer.
         /// </summary>
         /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
         /// elements, or null to use the default comparer System.Collections.Generic.Comparer.Default.
@@ -84,18 +87,42 @@
 
         #region SelectionSort
 
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the default comparer.
+        /// </summary>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithSelectionSort<T>(this IEnumerable<T> source)
         {
             return SortWithSelectionSort(source, 0, source.Count(), Comparer<T>.Default);
         }
 
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the specified comparer.
+        /// </summary>
+        /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
+        /// elements, or null to use the default comparer System.Collections.Generic.Comparer.Default.
+        /// </param>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithSelectionSort<T>(this IEnumerable<T> source, IComparer<T> comparer)
         {
             return SortWithSelectionSort(source, 0, source.Count(), comparer);
         }
 
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the specified comparer.
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
+        /// elements or null to use the default comparer System.Collections.Generic.Comparer.Default.
+        /// </param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/>.
+        /// </exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithSelectionSort<T>(this IEnumerable<T> source, int index, int count, IComparer<T> comparer)
         {
@@ -140,18 +167,42 @@
 
         #region InsertionSort
 
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the default comparer.
+        /// </summary>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithInsertionSort<T>(this IEnumerable<T> source)
         {
             return SortWithInsertionSort(source, 0, source.Count(), Comparer<T>.Default);
         }
 
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the specified comparer.>
+        /// </summary>
+        /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
+        /// elements, or null to use the default comparer System.Collections.Generic.Comparer.Default.
+        /// </param>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithInsertionSort<T>(this IEnumerable<T> source, IComparer<T> comparer)
         {
             return SortWithInsertionSort(source, 0, source.Count(), comparer);
         }
 
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the specified comparer.
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
+        /// elements or null to use the default comparer System.Collections.Generic.Comparer.Default.
+        /// </param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/>.
+        /// </exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithInsertionSort<T>(this IEnumerable<T> source, int index, int count, IComparer<T> comparer)
         {
@@ -194,18 +245,42 @@
 
         #region HeapSort
 
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the default comparer.
+        /// </summary>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithHeapSort<T>(this IEnumerable<T> source)
         {
             return SortWithHeapSort(source, 0, source.Count(), Comparer<T>.Default);
         }
 
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the specified comparer.>
+        /// </summary>
+        /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
+        /// elements, or null to use the default comparer System.Collections.Generic.Comparer.Default.
+        /// </param>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithHeapSort<T>(this IEnumerable<T> source, IComparer<T> comparer)
         {
             return SortWithHeapSort(source, 0, source.Count(), comparer);
         }
 
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the specified comparer.
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
+        /// elements or null to use the default comparer System.Collections.Generic.Comparer.Default.
+        /// </param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/>.
+        /// </exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithHeapSort<T>(this IEnumerable<T> source, int index, int count, IComparer<T> comparer)
         {
@@ -262,21 +337,45 @@
 
         #endregion
 
-       
+
         #region MergeSort
 
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the default comparer.
+        /// </summary>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithMergeSort<T>(this IEnumerable<T> source)
         {
             return SortWithMergeSort(source, 0, source.Count(), Comparer<T>.Default);
         }
 
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the specified comparer.>
+        /// </summary>
+        /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
+        /// elements, or null to use the default comparer System.Collections.Generic.Comparer.Default.
+        /// </param>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithMergeSort<T>(this IEnumerable<T> source, IComparer<T> comparer)
         {
             return SortWithMergeSort(source, 0, source.Count(), comparer);
         }
 
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the specified comparer.
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
+        /// elements or null to use the default comparer System.Collections.Generic.Comparer.Default.
+        /// </param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/>.
+        /// </exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithMergeSort<T>(this IEnumerable<T> source, int index, int count, IComparer<T> comparer)
         {
@@ -355,21 +454,28 @@
 
         #region CountingSort
 
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// </summary>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<int> SortWithCountingSort(this IEnumerable<int> source)
         {
             return SortWithCountingSort(source, source => source);
         }
 
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// </summary>
+        /// <param name="sortProperty">The sorting property.</param>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static IEnumerable<T> SortWithCountingSort<T>(this IEnumerable<T> source, Func<T, int> sortProp)
+        public static IEnumerable<T> SortWithCountingSort<T>(this IEnumerable<T> source, Func<T, int> sortProperty)
         {
             List<int> buckets = new();
 
             T[] sortMe = source.ToArray();
             for (int i = 0; i < sortMe.Length; i++)
             {
-                int value = sortProp(sortMe[i]);
+                int value = sortProperty(sortMe[i]);
 
                 for (int j = buckets.Count; j <= value; j++)
                     buckets.Add(0);
@@ -386,7 +492,7 @@
             T[] result = new T[sortMe.Length];
             for (int i = 0; i < sortMe.Length; i++)
             {
-                int theVal = sortProp(sortMe[i]);
+                int theVal = sortProperty(sortMe[i]);
                 int destIndex = startIndex[theVal]++;
                 result[destIndex] = sortMe[i];
             }
