@@ -285,6 +285,186 @@ namespace SortCollectionUnitTest
 
         #region InsertionSort Tests
 
+        [TestMethod]
+        public void InsertionSortCarSortByYearAscendingTest()
+        {
+            var sortedList = cars.SortWithInsertionSort(new SortByYearAscending());
+            Assert.IsTrue(CheckCarsSortByYearAscending(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void InsertionSortCarSortByYearDescendingTest()
+        {
+            var sortedList = cars.SortWithInsertionSort(new SortByYearDescending());
+            Assert.IsTrue(CheckCarsSortByYearDescending(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void InsertionSortCarSortByDefaultTest()
+        {
+            var sortedList = cars.SortWithInsertionSort();
+            Assert.IsTrue(CheckCarsSortByMakeAscending(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void InsertionSortCarSortByMakeDescendingTest()
+        {
+            var sortedList = cars.SortWithInsertionSort(new SortByMakeDescending());
+            Assert.IsTrue(CheckCarsSortByMakeDescending(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void InsertionSortIntegerTest()
+        {
+            var sortedList = integers.SortWithInsertionSort();
+            Assert.IsTrue(CheckIntegerList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void InsertionSortStringTest()
+        {
+            var sortedList = greekAlphabet.SortWithInsertionSort();
+            Assert.IsTrue(CheckAlphabet(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void InsertionSortRandomIntegerTest()
+        {
+            var sortedList = randomIntegers.SortWithInsertionSort();
+            Assert.IsTrue(CheckRandomIntegerList(sortedList.ToList()));
+        }
+
+        #endregion
+
+        #region HeapSort Tests
+
+        [TestMethod]
+        public void HeapSortCarSortByYearAscendingTest()
+        {
+            var sortedList = cars.SortWithHeapSort(new SortByYearAscending());
+            Assert.IsTrue(CheckCarsSortByYearAscending(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void HeapSortCarSortByYearDescendingTest()
+        {
+            var sortedList = cars.SortWithHeapSort(new SortByYearDescending());
+            Assert.IsTrue(CheckCarsSortByYearDescending(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void HeapSortCarSortByDefaultTest()
+        {
+            var sortedList = cars.SortWithHeapSort();
+            Assert.IsTrue(CheckCarsSortByMakeAscending(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void HeapSortCarSortByMakeDescendingTest()
+        {
+            var sortedList = cars.SortWithHeapSort(new SortByMakeDescending());
+            Assert.IsTrue(CheckCarsSortByMakeDescending(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void HeapSortIntegerTest()
+        {
+            var sortedList = integers.SortWithHeapSort();
+            Assert.IsTrue(CheckIntegerList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void HeapSortStringTest()
+        {
+            var sortedList = greekAlphabet.SortWithHeapSort();
+            Assert.IsTrue(CheckAlphabet(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void HeapSortRandomIntegerTest()
+        {
+            var sortedList = randomIntegers.SortWithHeapSort();
+            Assert.IsTrue(CheckRandomIntegerList(sortedList.ToList()));
+        }
+
+        #endregion
+
+        #region MergeSort Tests
+
+        [TestMethod]
+        public void MergeSortCarSortByYearAscendingTest()
+        {
+            var sortedList = cars.SortWithMergeSort(new SortByYearAscending());
+            Assert.IsTrue(CheckCarsSortByYearAscending(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void MergeSortCarSortByYearDescendingTest()
+        {
+            var sortedList = cars.SortWithMergeSort(new SortByYearDescending());
+            Assert.IsTrue(CheckCarsSortByYearDescending(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void MergeSortCarSortByDefaultTest()
+        {
+            var sortedList = cars.SortWithMergeSort();
+            Assert.IsTrue(CheckCarsSortByMakeAscending(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void MergeSortCarSortByMakeDescendingTest()
+        {
+            var sortedList = cars.SortWithMergeSort(new SortByMakeDescending());
+            Assert.IsTrue(CheckCarsSortByMakeDescending(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void MergeSortIntegerTest()
+        {
+            var sortedList = integers.SortWithMergeSort();
+            Assert.IsTrue(CheckIntegerList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void MergeSortStringTest()
+        {
+            var sortedList = greekAlphabet.SortWithMergeSort();
+            Assert.IsTrue(CheckAlphabet(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void MergeSortRandomIntegerTest()
+        {
+            var sortedList = randomIntegers.SortWithMergeSort();
+            Assert.IsTrue(CheckRandomIntegerList(sortedList.ToList()));
+        }
+
+        #endregion
+
+        #region CountingSort Tests
+
+        [TestMethod]
+        public void CountingSortCarSortByYearAscendingTest()
+        {
+            var sortedList = cars.SortWithCountingSort(car => car.Year);
+            Assert.IsTrue(CheckCarsSortByYearAscending(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void CountingSortIntegerTest()
+        {
+            var sortedList = integers.SortWithCountingSort();
+            Assert.IsTrue(CheckIntegerList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void CountingSortRandomIntegerTest()
+        {
+            var sortedList = randomIntegers.SortWithCountingSort();
+            Assert.IsTrue(CheckRandomIntegerList(sortedList.ToList()));
+        }
+
         #endregion
 
         [TestMethod]
@@ -302,57 +482,15 @@ namespace SortCollectionUnitTest
                  6,
                  5
              };
+
+            //randomIntegers.Sort();
+            //Assert.IsTrue(CheckRandomIntegerList(randomIntegers.ToList()));
             //ints.Sort()
             //ints.SortWithBubbleSort()
 
             //var merge = ints.SortWithMergeSort();
 
-            string test = "";
-        }
-
-
-        [TestMethod]
-        public void IntegerSortTest()
-        {
-           
-            var insertion = integers.SortWithInsertionSort();
-            Assert.IsTrue(CheckIntegerList(insertion.ToList()));
-            var heap = integers.SortWithHeapSort();
-            Assert.IsTrue(CheckIntegerList(heap.ToList()));
-            var merge = integers.SortWithMergeSort();
-            Assert.IsTrue(CheckIntegerList(merge.ToList()));
-            var counting = integers.SortWithCountingSort();
-            Assert.IsTrue(CheckIntegerList(counting.ToList()));
-        }
-
-
-        [TestMethod]
-        public void StringSortTest()
-        {
-           
-           
-            var insertion = greekAlphabet.SortWithInsertionSort();
-            Assert.IsTrue(CheckAlphabet(insertion.ToList()));
-            var heap = greekAlphabet.SortWithHeapSort();
-            Assert.IsTrue(CheckAlphabet(heap.ToList()));
-            var merge = greekAlphabet.SortWithMergeSort();
-            Assert.IsTrue(CheckAlphabet(merge.ToList()));
-        }
-
-
-        [TestMethod]
-        public void RandomIntegerSortTest()
-        {
-
-          
-            var insertion = randomIntegers.SortWithInsertionSort();
-            Assert.IsTrue(CheckRandomIntegerList(insertion.ToList()));
-            var heap = randomIntegers.SortWithHeapSort();
-            Assert.IsTrue(CheckRandomIntegerList(heap.ToList()));
-            var merge = randomIntegers.SortWithMergeSort();
-            Assert.IsTrue(CheckRandomIntegerList(merge.ToList()));
-            var counting = randomIntegers.SortWithCountingSort();
-            Assert.IsTrue(CheckRandomIntegerList(counting.ToList()));
+            //string test = "";
         }
 
 
