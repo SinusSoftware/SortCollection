@@ -1,4 +1,4 @@
-namespace SortCollectionUnitTest
+﻿namespace SortCollectionUnitTest
 {
 
     [TestClass]
@@ -74,6 +74,23 @@ namespace SortCollectionUnitTest
               values[6] != 7 ||
               values[7] != 8 ||
               values[8] != 9)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private static bool CheckIntegerRangeList(IList<int> values)
+        {
+            if (values[0] != 4 ||
+             values[1] != 7 ||
+             values[2] != 1 ||
+             values[3] != 2 ||
+             values[4] != 3 ||
+             values[5] != 6 ||
+             values[6] != 8 ||
+             values[7] != 9 ||
+             values[8] != 5)
             {
                 return false;
             }
@@ -215,6 +232,13 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
+        public void BubbleSortIntegerRangeTest()
+        {
+            var sortedList = integers.SortWithBubbleSort(2, 6, Comparer<int>.Default);
+            Assert.IsTrue(CheckIntegerRangeList(sortedList.ToList()));
+        }
+
+        [TestMethod]
         public void BubbleSortStringTest()
         {
             var sortedList = greekAlphabet.SortWithBubbleSort();
@@ -265,6 +289,13 @@ namespace SortCollectionUnitTest
         {
             var sortedList = integers.SortWithSelectionSort();
             Assert.IsTrue(CheckIntegerList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void SelectionSortIntegerRangeTest()
+        {
+            var sortedList = integers.SortWithSelectionSort(2, 6, Comparer<int>.Default);
+            Assert.IsTrue(CheckIntegerRangeList(sortedList.ToList()));
         }
 
         [TestMethod]
@@ -321,6 +352,13 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
+        public void InsertionSortIntegerRangeTest()
+        {
+            var sortedList = integers.SortWithInsertionSort(2, 6, Comparer<int>.Default);
+            Assert.IsTrue(CheckIntegerRangeList(sortedList.ToList()));
+        }
+
+        [TestMethod]
         public void InsertionSortStringTest()
         {
             var sortedList = greekAlphabet.SortWithInsertionSort();
@@ -374,6 +412,13 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
+        public void HeapSortIntegerRangeTest()
+        {
+            var sortedList = integers.SortWithHeapSort(2, 6, Comparer<int>.Default);
+            Assert.IsTrue(CheckIntegerRangeList(sortedList.ToList()));
+        }
+
+        [TestMethod]
         public void HeapSortStringTest()
         {
             var sortedList = greekAlphabet.SortWithHeapSort();
@@ -424,6 +469,13 @@ namespace SortCollectionUnitTest
         {
             var sortedList = integers.SortWithMergeSort();
             Assert.IsTrue(CheckIntegerList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void MergeSortIntegerRangeTest()
+        {
+           var sortedList = integers.SortWithMergeSort(2, 6, Comparer<int>.Default);
+           Assert.IsTrue(CheckIntegerRangeList(sortedList.ToList()));
         }
 
         [TestMethod]
