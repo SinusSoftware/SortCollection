@@ -362,74 +362,39 @@
             comparer ??= Comparer<T>.Default;
 
             var sortMe = source.ToArray();
-            for (int i = count / 2 - 1; i >= index; i--) //TODO: Range prüfen
+            int rangeLength = count + index;
+            for (int i = count / 2; i >= 0; --i)
             {
-                Heapify(sortMe, count, i, comparer);
+                Heapify(sortMe, rangeLength, i, index, comparer);
             }
-            for (int i = count - 1; i >= index; i--)
+            for (int i = rangeLength - 1; i > index; --i)
             {
                 var swap = sortMe[index];
                 sortMe[index] = sortMe[i];
                 sortMe[i] = swap;
-                Heapify(sortMe, i, index, comparer);
+                Heapify(sortMe, i, 0, index, comparer);
             }
 
             return sortMe;
         }
 
-        private static void Heapify<T>(T[] list, int n, int i, IComparer<T> comparer)
+        private static void Heapify<T>(T[] list, int n, int i, int index, IComparer<T> comparer)
         {
             int largest = i;
             int left = 2 * i + 1;
             int right = 2 * i + 2;
-            if (left < n && comparer.Compare(list[left], list[largest]) == 1)
+            if (left + index < n && comparer.Compare(list[left + index], list[largest + index]) == 1)
                 largest = left;
-            if (right < n && comparer.Compare(list[right], list[largest]) == 1)
+            if (right + index < n && comparer.Compare(list[right + index], list[largest + index]) == 1)
                 largest = right;
             if (largest != i)
             {
-                var swap = list[i];
-                list[i] = list[largest];
-                list[largest] = swap;
-                Heapify(list, n, largest, comparer);
+                var swap = list[i + index];
+                list[i + index] = list[largest + index];
+                list[largest + index] = swap;
+                Heapify(list, n, largest, index, comparer);
             }
         }
-        /*
-        public static IEnumerable<T> SortWithHeapSort2<T>(this IEnumerable<T> source, int index, int count, IComparer<T> comparer)
-        {
-            if (index < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(index), index, "The index can't be less than 0.");
-            }
-
-            if (count < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(count), count, "The count can't be less than 0.");
-            }
-
-            if (source.Count() - index < count)
-            {
-                throw new ArgumentException("Count must be greater than number of elemets in source minus index");
-            }
-
-            comparer ??= Comparer<T>.Default;
-
-            var sortMe = source.ToArray();
-            for (int i = count / 2 - 1; i >= index; i--)
-            {
-                Heapify(sortMe, count, i, comparer);
-            }
-            for (int i = count - 1; i >= index; i--)
-            {
-                var temp = sortMe[0];
-                sortMe[0] = sortMe[i];
-                sortMe[i] = temp;
-                Heapify(sortMe, i, 0, comparer);
-            }
-
-            return sortMe;
-        }
-        */
 
         #endregion
 

@@ -474,8 +474,8 @@
         [TestMethod]
         public void MergeSortIntegerRangeTest()
         {
-           var sortedList = integers.SortWithMergeSort(2, 6, Comparer<int>.Default);
-           Assert.IsTrue(CheckIntegerRangeList(sortedList.ToList()));
+            var sortedList = integers.SortWithMergeSort(2, 6, Comparer<int>.Default);
+            Assert.IsTrue(CheckIntegerRangeList(sortedList.ToList()));
         }
 
         [TestMethod]
