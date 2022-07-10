@@ -1,10 +1,13 @@
-﻿namespace SortCollectionUnitTest
+﻿using System;
+using System.Collections.Generic;
+
+namespace SortCollectionUnitTest
 {
     public class SortByYearAscending : IComparer<Car>
     {
         public int Compare(Car? a, Car? b)
         {
-            if(a == null || b == null)
+            if (a == null || b == null)
             {
                 throw new InvalidCastException();
             }

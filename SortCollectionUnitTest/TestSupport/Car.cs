@@ -1,4 +1,6 @@
-﻿namespace SortCollectionUnitTest
+﻿using System;
+
+namespace SortCollectionUnitTest
 {
     public class Car : IComparable
     {
@@ -30,7 +32,7 @@
             {
                 throw new InvalidCastException(nameof(obj));
             }
-            return string.Compare(this.Make, car.Make);
+            return string.Compare(Make, car.Make);
         }
     }
 }

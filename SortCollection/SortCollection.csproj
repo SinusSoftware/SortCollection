@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <TargetFrameworks>net5.0;net6.0</TargetFrameworks>
+    <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
@@ -13,11 +13,9 @@
     <Authors>Dirk Tamke</Authors>
     <Company>Dirk Tamke</Company>
     <PackageTags>Sortcollection, Bubblesort, Selectionsort, Insertionsort, Heapsort, Mergesort, Countingsort</PackageTags>
-    <Description>This package contains the following sorting algorithms: Bubblesort, Selectionsort, Insertionsort, Heapsort, Mergesort and Countingsort. You can use it like standard sort. Example: List.Sort() => List.SortWithHeapSort()</Description>
+    <Description>This package contains the following sorting algorithms: Bubblesort, Selectionsort, Insertionsort, Heapsort, Mergesort and Countingsort. You can use it like standard sort. Example: List.Sort() =&gt; List.SortWithHeapSort()</Description>
   </PropertyGroup>
 
-
-  
   <ItemGroup>
     <None Include="..\README.md">
       <Pack>True</Pack>

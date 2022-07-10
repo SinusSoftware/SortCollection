@@ -1,7 +1,9 @@
-﻿namespace System
-{
-    using System.Diagnostics.CodeAnalysis;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
+namespace System
+{
     /// <summary>
     /// Wraps static sort apis into a uniform extension method api.
     /// </summary>
@@ -585,7 +587,6 @@
         }
 
         #endregion
-
 
     }
 }
