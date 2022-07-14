@@ -1,7 +1,7 @@
 ﻿=== SortCollection ===
 
 Author: Dirk Tamke
-GitHub URI:
+GitHub URI: https://github.com/SinusSoftware/SortCollection
 License: MIT
 License URI: https://choosealicense.com/licenses/mit/
 
