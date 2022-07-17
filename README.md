@@ -8,7 +8,7 @@ SortCollection is a dll with different sorting algorithms. Currently supported:
 * Countingsort
 
 ## Installation
-Use the package manager [Nuget](https://www.nuget.org/) to install SortCollection.
+Use the package manager [Nuget](https://www.nuget.org/packages/SinusSoftware.SortCollection) to install SortCollection.
 
 
 ## Usage
