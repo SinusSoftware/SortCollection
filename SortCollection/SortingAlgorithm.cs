@@ -290,6 +290,89 @@ namespace System
 
         #endregion
 
+        #region ShellSort
+
+        public enum GapSequences
+        {
+            Shell,
+            FrankLazarus,
+            Hibbard,
+            PapernovStasevich,
+            Pratt,
+            Knuth,
+            IncerpiSedgewick,
+            Sedgewick1982,
+            Sedgewick1986,
+            GonnetBaeza_Yates,
+            Tokuda,
+            Ciura
+        }
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithShellSort<T>(this IEnumerable<T> source, GapSequences gapSequence = GapSequences.Shell)
+        {
+            return SortWithShellSort(source, 0, source.Count(), Comparer<T>.Default, gapSequence);
+        }
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithShellSort<T>(this IEnumerable<T> source, IComparer<T> comparer, GapSequences gapSequence = GapSequences.Shell)
+        {
+            return SortWithShellSort(source, 0, source.Count(), comparer, gapSequence);
+        }
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithShellSort<T>(this IEnumerable<T> source, int index, int count, IComparer<T> comparer, GapSequences gapSequence = GapSequences.Shell)
+        {
+            if (index < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index), index, "The index can't be less than 0.");
+            }
+
+            if (count < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(count), count, "The count can't be less than 0.");
+            }
+
+            if (source.Count() - index < count)
+            {
+                throw new ArgumentException("Count must be greater than number of elemets in source minus index");
+            }
+
+            comparer ??= Comparer<T>.Default;
+
+            var sortMe = source.ToArray();
+
+            int n = sortMe.Length;
+
+            int i, j, k, h;
+            T t;
+            //gapSequence
+            int[] gaps = {2147483647, 1131376761, 410151271, 157840433,
+                             58548857, 21521774, 8810089, 3501671, 1355339, 543749, 213331,
+                             84801, 27901, 11969, 4711, 1968, 815, 271, 111, 41, 13, 4, 1};
+
+            for (k = 0; k < gaps.Length; k++)
+            {
+                h = gaps[k];
+                for (i = h; i < n; i++)
+                {
+                    t = sortMe[i];
+                    j = i;
+                    while (j >= h && comparer.Compare(sortMe[j - h], t) == 1)
+                    {
+                        sortMe[j] = sortMe[j - h];
+                        j = j - h;
+                    }
+                    sortMe[j] = t;
+                }
+            }
+
+
+            return sortMe;
+        }
+
+        #endregion
+
         #region HeapSort
 
         /// <summary>
