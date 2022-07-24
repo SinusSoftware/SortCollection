@@ -551,8 +551,18 @@ namespace System
 
         /// <summary>
         /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// This algorithm is for positiv integers only
+        /// Time complexity: O(N+K)
+        /// Worst case: when data is skewed and range is large
+        /// Best Case: When all elements are same
+        /// Average Case: O(N+K) (N & K equally dominant)
+        /// Space Complexity: O(K)
+        /// where:
+        /// N is the number of elements
+        /// K is the range of elements(K = largest element - smallest element)
+        /// Stable: Yes
         /// </summary>
-        /// <param name="sortProperty">The sorting property.</param>
+        /// <param name="sortProperty">The sorting property</param>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithCountingSort<T>(this IEnumerable<T> source, Func<T, int> sortProperty)
         {
