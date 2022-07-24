@@ -35,6 +35,19 @@ namespace SortCollectionUnitTest
             //var merge = ints.SortWithMergeSort();
         }
 
+        [TestMethod]
+        public void ShellSortTest2()
+        {
+            //var sortedList2 = greekAlphabet.SortWithShellSort(SortingAlgorithm.GapSequences.Pratt);
+            //var sortedList = integers.SortWithShellSort();
+        }
+
+        [TestMethod]
+        public void ShellSortIntegerRangeTest2()
+        {
+            //var sortedList = integers.SortWithShellSort(2, 4, Comparer<int>.Default);
+            //Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
+        }
 
     }
 }

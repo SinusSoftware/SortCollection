@@ -320,6 +320,10 @@ namespace System
             return SortWithShellSort(source, 0, source.Count(), comparer, gapSequence);
         }
 
+        private static readonly int[] testGaps = {2147483647, 1131376761, 410151271, 157840433,
+                                     58548857, 21521774, 8810089, 3501671, 1355339, 543749, 213331,
+                                     84801, 27901, 11969, 4711, 1968, 815, 271, 111, 41, 13, 4, 1};
+
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithShellSort<T>(this IEnumerable<T> source, int index, int count, IComparer<T> comparer, GapSequences gapSequence = GapSequences.Shell)
         {
@@ -342,15 +346,27 @@ namespace System
 
             var sortMe = source.ToArray();
 
-            int n = sortMe.Length;
+            int[] gaps = gapSequence switch
+            {
+                GapSequences.Shell => testGaps,
+                GapSequences.FrankLazarus => testGaps,
+                GapSequences.Hibbard => testGaps,
+                GapSequences.PapernovStasevich => testGaps,
+                GapSequences.Pratt => testGaps,
+                GapSequences.Knuth => testGaps,
+                GapSequences.IncerpiSedgewick => testGaps,
+                GapSequences.Sedgewick1982 => testGaps,
+                GapSequences.Sedgewick1986 => testGaps,
+                GapSequences.GonnetBaeza_Yates => testGaps,
+                GapSequences.Tokuda => testGaps,
+                GapSequences.Ciura => testGaps,
+                _ => testGaps,
+            };
 
             int i, j, k, h;
             T t;
-            //gapSequence
-            int[] gaps = {2147483647, 1131376761, 410151271, 157840433,
-                             58548857, 21521774, 8810089, 3501671, 1355339, 543749, 213331,
-                             84801, 27901, 11969, 4711, 1968, 815, 271, 111, 41, 13, 4, 1};
 
+            int n = count + index;
             for (k = 0; k < gaps.Length; k++)
             {
                 h = gaps[k];
@@ -358,15 +374,14 @@ namespace System
                 {
                     t = sortMe[i];
                     j = i;
-                    while (j >= h && comparer.Compare(sortMe[j - h], t) == 1)
+                    while (j >= h + index && comparer.Compare(sortMe[j - h], t) == 1)
                     {
                         sortMe[j] = sortMe[j - h];
-                        j = j - h;
+                        j -= h;
                     }
                     sortMe[j] = t;
                 }
             }
-
 
             return sortMe;
         }
