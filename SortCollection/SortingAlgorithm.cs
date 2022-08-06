@@ -295,7 +295,7 @@ namespace System
         public enum GapSequences
         {
             Shell,
-            FrankLazarus,
+            //FrankLazarus,
             Hibbard,
             PapernovStasevich,
             Pratt,
@@ -303,7 +303,7 @@ namespace System
             IncerpiSedgewick,
             Sedgewick1982,
             Sedgewick1986,
-            GonnetBaeza_Yates,
+            //GonnetBaeza_Yates,
             Tokuda,
             Ciura
         }
@@ -342,10 +342,8 @@ namespace System
 
         private static readonly int[] tokuda = { 1147718700, 510097200, 226709866, 100759940, 44782196, 19903198, 8845866, 3931496, 1747331, 776591, 345152, 153401, 68178, 30301, 13467, 5985, 2660, 1182, 525, 233, 103, 46, 20, 9, 4, 1 };
 
-        private static readonly int[] ciura = { 1750, 701, 301, 132, 57, 23, 10, 4, 1 };
-
-
-
+        private static readonly int[] ciura = { 1698453753, 754868335, 335497038, 149109795, 66271020, 29453787, 13090572, 5818032, 2585792, 1149241, 510774, 227011, 100894, 44842, 19930, 8858, 3937, 1750, 701, 301, 132, 57, 23, 10, 4, 1 };
+ 
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithShellSort<T>(this IEnumerable<T> source, int index, int count, IComparer<T> comparer, GapSequences gapSequence = GapSequences.Shell)
         {
@@ -371,7 +369,7 @@ namespace System
             int[] gaps = gapSequence switch
             {
                 GapSequences.Shell => shell,
-                GapSequences.FrankLazarus => testGaps,
+                //GapSequences.FrankLazarus => testGaps,
                 GapSequences.Hibbard => hibbard,
                 GapSequences.PapernovStasevich => papernovStasevich,
                 GapSequences.Pratt => pratt,
@@ -379,7 +377,7 @@ namespace System
                 GapSequences.IncerpiSedgewick => incerpiSedgewick,
                 GapSequences.Sedgewick1982 => sedgewick1982,
                 GapSequences.Sedgewick1986 => sedgewick1986,
-                GapSequences.GonnetBaeza_Yates => testGaps,
+                //GapSequences.GonnetBaeza_Yates => testGaps,
                 GapSequences.Tokuda => tokuda,
                 GapSequences.Ciura => ciura,
                 _ => testGaps,
