@@ -6,6 +6,7 @@ SortCollection is a dll with different sorting algorithms. Currently supported:
 * Heapsort 
 * Mergesort
 * Countingsort
+* Shellsort with different gap sequences
 
 ## Installation
 Use the package manager [Nuget](https://www.nuget.org/packages/SinusSoftware.SortCollection) to install SortCollection.
