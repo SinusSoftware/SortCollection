@@ -27,6 +27,24 @@ namespace SortCollectionUnitTest
         [TestMethod]
         public void Test()
         {
+
+
+            // number of bits our group will be long 
+            int r = 4; // try to set this also to 2, 8 or 16 to see if it is quicker or not 
+
+            // number of bits of a C# int 
+            int b = 32;
+
+            // counting and prefix arrays
+            // (note dimensions 2^r which is the number of all possible values of a r-bit number) 
+           
+            // number of groups 
+            int groups = (int)Math.Ceiling(b / (double)r);
+
+
+            string test = "";
+
+
             //int c[] = {510774, 227011, 100894, 44842, 19930, 8858, 3937, 1750, 701, 301, 132, 57, 23, 10, 4, 1
             //randomIntegers.Sort();
             //Assert.IsTrue(CheckRandomIntegerList(randomIntegers.ToList()));

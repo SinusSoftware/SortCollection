@@ -17,6 +17,7 @@ SortCollection is a dll with different sorting algorithms. Currently supported:
 * Mergesort
 * Countingsort
 * Shellsort with different gap sequences
+* Radixsort
 
 Example:
 var heapSortedList = list.SortWithHeapSort();
@@ -25,7 +26,7 @@ var heapSortedList = list.SortWithHeapSort();
 
 = 1.1 =
 * Add Shellsort with following gap sequences:
-	  Shell
+      Shell
       Hibbard
       Papernov and Stasevich
       Pratt
@@ -35,6 +36,7 @@ var heapSortedList = list.SortWithHeapSort();
       Sedgewick from year 1986
       Tokuda
       Ciura
+* Add Radixsort
 
 = 1.0 =
 * First version
