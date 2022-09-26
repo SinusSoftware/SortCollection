@@ -25,7 +25,7 @@ var heapSortedList = list.SortWithHeapSort();
 
 = 1.1 =
 * Add Shellsort with following gap sequences:
-	  Shell
+      Shell
       Hibbard
       Papernov and Stasevich
       Pratt
