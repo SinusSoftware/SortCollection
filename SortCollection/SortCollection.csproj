@@ -18,6 +18,7 @@
     <Description>This package contains the following sorting algorithms: Bubblesort, Selectionsort, Insertionsort, Heapsort, Mergesort, Countingsort, Shellsort and Radixsort. You can use it like standard sort. Example: List.Sort() =&gt; List.SortWithHeapSort()</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/SinusSoftware/SortCollection</RepositoryUrl>
+    <Title>SortCollection from SinusSoftware</Title>
   </PropertyGroup>
 
   <ItemGroup>
