@@ -37,6 +37,7 @@ var heapSortedList = list.SortWithHeapSort();
       Tokuda
       Ciura
 * Add Radixsort
+* Add Tragetframework .Net7.0
 
 = 1.0 =
 * First version
