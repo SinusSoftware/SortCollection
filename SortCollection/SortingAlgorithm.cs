@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
+using System.Reflection;
 
 namespace System
 {
@@ -794,7 +795,7 @@ namespace System
                     uint value = sortProperty(sortMe[i]);
                     count[(value >> shift) & mask]++;
                 }
-                    
+
                 // calculating prefixes 
                 prefix[0] = 0;
                 for (int i = 1; i < count.Length; i++)
@@ -806,7 +807,7 @@ namespace System
                     uint value = sortProperty(sortMe[i]);
                     helper[prefix[(value >> shift) & mask]++] = sortMe[i];
                 }
-      
+
                 // a[]=t[] and start again until the last group 
                 helper.CopyTo(sortMe, 0);
             }
@@ -814,6 +815,108 @@ namespace System
         }
 
         #endregion
+
+        #region Introsort 
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<int> IntroSort(this IEnumerable<int> source)
+        {
+            return IntroSort(source, 0, source.Count(), source => source);
+        }
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> IntroSort<T>(this IEnumerable<T> source, int index, int count, Func<T, int> sortProperty)
+        {
+            T[] sortMe = source.ToArray();
+
+            //int partitionSize = Partition(ref sortMe, index, count - 1);
+            int partitionSize = 0;
+            if (partitionSize < 16)
+            {
+                sortMe = SortWithInsertionSort(sortMe.ToList(), index, count, Comparer<T>.Default).ToArray();
+            }
+            else if (partitionSize > (2 * Math.Log(sortMe.Length)))
+            {
+                sortMe = SortWithHeapSort(sortMe.ToList(), index, count, Comparer<T>.Default).ToArray();
+            }
+            else
+            {
+               // QuickSort(ref sortMe, index, count - 1);
+            }
+
+            return sortMe;
+        }
+
+
+
+        /*
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<int> IntroSort2(this IEnumerable<int> source)
+        {
+            return IntroSort(source, 0, source.Count());
+        }
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<int> IntroSort2(this IEnumerable<int> source, int index, int count)
+        {
+            int[] sortMe = source.ToArray();
+
+            int partitionSize = Partition(ref sortMe, index, count - 1);
+
+            if (partitionSize < 16)
+            {
+                sortMe = SortWithInsertionSort(sortMe.ToList(), index, count, Comparer<int>.Default).ToArray();
+            }
+            else if (partitionSize > (2 * Math.Log(sortMe.Length)))
+            {
+                sortMe = SortWithHeapSort(sortMe.ToList(), index, count, Comparer<int>.Default).ToArray();
+            }
+            else
+            {
+                QuickSort(ref sortMe, index, count - 1);
+            }
+
+            return sortMe;
+        }
+
+        */
+
+        private static void QuickSort(ref int[] input, int left, int right)
+        {
+            if (left < right)
+            {
+                int q = Partition(ref input, left, right);
+                QuickSort(ref input, left, q - 1);
+                QuickSort(ref input, q + 1, right);
+            }
+        }
+
+        private static int Partition(ref int[] input, int left, int right)
+        {
+            int pivot = input[right];
+            int temp;
+            int i = left;
+
+            for (int j = left; j < right; ++j)
+            {
+                if (input[j] <= pivot)
+                {
+                    temp = input[j];
+                    input[j] = input[i];
+                    input[i] = temp;
+                    i++;
+                }
+            }
+
+            input[right] = input[i];
+            input[i] = pivot;
+
+            return i;
+        }
+
+
+        #endregion
+
 
     }
 }
