@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
@@ -287,6 +288,97 @@ namespace System
             }
 
             return sortMe;
+        }
+
+        #endregion
+
+        #region SlowSort
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the default comparer.
+        /// SlowSort is very, very slow. It is more a gag algorithmn. Don't use it!
+        /// Stable: No
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithSlowSort<T>(this IEnumerable<T> source)
+        {
+            return SortWithSlowSort(source, 0, source.Count(), Comparer<T>.Default);
+        }
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the default comparer.
+        /// SlowSort is very, very slow. It is more a gag algorithmn. Don't use it!
+        /// Stable: No
+        /// </summary>
+        /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
+        /// elements, or null to use the default comparer System.Collections.Generic.Comparer.Default.
+        /// </param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithSlowSort<T>(this IEnumerable<T> source, IComparer<T> comparer)
+        {
+            return SortWithSlowSort(source, 0, source.Count(), comparer);
+        }
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the default comparer.
+        /// SlowSort is very, very slow. It is more a gag algorithmn. Don't use it!
+        /// Stable: No
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
+        /// elements or null to use the default comparer System.Collections.Generic.Comparer.Default.
+        /// </param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/>.
+        /// </exception>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithSlowSort<T>(this IEnumerable<T> source, int index, int count, IComparer<T> comparer)
+        {
+            if (index < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index), index, "The index can't be less than 0.");
+            }
+
+            if (count < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(count), count, "The count can't be less than 0.");
+            }
+
+            if (source.Count() - index < count)
+            {
+                throw new ArgumentException("Count must be greater than number of elemets in source minus index");
+            }
+
+            comparer ??= Comparer<T>.Default;
+
+            var sortMe = source.ToArray();
+
+            Slowsort(sortMe, index, count + index -1, comparer);
+
+            return sortMe;
+        }
+
+        private static void Slowsort<T>(T[] source, int i, int j, IComparer<T> comparer)
+        {
+            if (i >= j)
+            {
+                return;
+            }
+            int m = (i + j) / 2;
+            Slowsort(source, i, m, comparer);
+            Slowsort(source, m + 1, j, comparer);
+            if(comparer.Compare(source[j], source[m]) < 0)
+            {
+                T hilfs = source[j];
+                source[j] = source[m];
+                source[m] = hilfs;
+            }
+            Slowsort(source, i, j - 1, comparer);
         }
 
         #endregion
@@ -740,7 +832,7 @@ namespace System
 
         #endregion
 
-        #region Radixsort     
+        #region RadixSort     
 
         /// <summary>
         /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
