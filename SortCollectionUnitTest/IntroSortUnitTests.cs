@@ -10,7 +10,6 @@ namespace SortCollectionUnitTest
     {
         private List<int> integers = new();
         private List<int> randomIntegers = new();
-        private List<string> greekAlphabet = new();
         private List<Car> cars = new();
 
         [TestInitialize]
@@ -18,71 +17,51 @@ namespace SortCollectionUnitTest
         {
             integers = SupportSortingTest.GenerateSmallIntegers();
             randomIntegers = SupportSortingTest.CreateRandomArray(3000, 1, 2).ToList();
-            greekAlphabet = SupportSortingTest.GenerateGreekAlphabet();
             cars = SupportSortingTest.GenerateCars();
         }
 
         [TestMethod]
-        public void IntroSortTest()
+        public void IntroSortCarSortByYearAscendingTest()
         {
-            var eigene = new List<int>(); 
-            for (int i = 6000; i > 0; i--)
-            {
-                eigene.Add(i);
-            }
-            eigene.Add(17);
-
-
-                var great2 = 2 * Math.Log(3000);
-            int[] data = new int[] { -1, 25, -58964, 8547, -119, 0, 78596, -1, 25, -58964, 8547, -119, 0, 78596, -1, 25, -58964, 8547, -119, 0, 78596, -1, 25, -58964, 8547, -119, 0, 78596 };
-            int[] data2 = randomIntegers.ToArray();
-            //var test = eigene.IntroSort();
-            //var test = eigene.IntroSort(0, eigene.Count);
-           // var test = eigene.IntroSort(0, 20);
-
-            var sortedList = cars.IntroSort(0, cars.Count, car => car.Year);
-
-
-            for ( int i = 0; i < 10000; i++ )
-            {
-                var great = 2 * Math.Log(i);
-                if(great > 16)
-                {
-                    string ende = "";
-                }
-            }
-           
-
-
-
-            //var sortedList = cars.SortWithBubbleSort(new SortByYearAscending());
-            //Assert.IsTrue(SupportSortingTest.CheckCarsSortByYearAscending(sortedList.ToList()));
-
-            string test2 = "";
+            var sortedList = cars.SortWithIntroSort(0, cars.Count, car => car.Year);
+            Assert.IsTrue(SupportSortingTest.CheckCarsSortByYearAscending(sortedList.ToList()));
+        }
+        
+        [TestMethod]
+        public void IntroSortSortIntegerTest()
+        {
+            var sortedList = integers.SortWithIntroSort();
+            Assert.IsTrue(SupportSortingTest.CheckIntegerList(sortedList.ToList()));
         }
 
-
-        private static int Partition(ref int[] data, int left, int right)
+        [TestMethod]
+        public void IntroSortTestRandomIntegerTest()
         {
-            int pivot = data[right];
-            int temp;
-            int i = left;
+            var sortedList = randomIntegers.SortWithIntroSort();
+            Assert.IsTrue(SupportSortingTest.CheckRandomIntegerList(sortedList.ToList()));
+        }
 
-            for (int j = left; j < right; ++j)
+        [TestMethod]
+        public void IntroSortQuickSortPathTest()
+        {
+            var quickSortPath = new List<int>();
+            for (int i = 6000; i > 0; i--)
             {
-                if (data[j] <= pivot)
-                {
-                    temp = data[j];
-                    data[j] = data[i];
-                    data[i] = temp;
-                    i++;
-                }
+                quickSortPath.Add(i);
             }
+            quickSortPath.Add(17);
 
-            data[right] = data[i];
-            data[i] = pivot;
+            var sortedList = quickSortPath.SortWithIntroSort();
+            Assert.IsTrue(SupportSortingTest.CheckRandomIntegerList(sortedList.ToList()));
+        }
 
-            return i;
+        [TestMethod]
+        public void IntroSortTestMinusAndPlusIntegerTest()
+        {
+            int[] values = new int[] { -1, 17, -7852, 6843, -534, 0, 42683, -1, 18, -6528, 346778, -3254, 345, 9732 };
+
+            var sortedList = values.SortWithIntroSort();
+            Assert.IsTrue(SupportSortingTest.CheckRandomIntegerList(sortedList.ToList()));
         }
     }
 }
