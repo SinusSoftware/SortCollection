@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Numerics;
 
 namespace System
 {
@@ -692,17 +691,17 @@ namespace System
         {
             if (index < 0)
             {
-                throw new ArgumentOutOfRangeException("");
+                throw new ArgumentOutOfRangeException(nameof(index), index, "The index can't be less than 0.");
             }
 
             if (count < 0)
             {
-                throw new ArgumentOutOfRangeException("");
+                throw new ArgumentOutOfRangeException(nameof(count), count, "The count can't be less than 0.");
             }
 
-            if (source.Count() - index < count - 1)
+            if (source.Count() - index < count)
             {
-                throw new ArgumentException("");
+                throw new ArgumentException("Count must be greater than number of elemets in source minus index");
             }
 
             comparer ??= Comparer<T>.Default;
@@ -886,7 +885,7 @@ namespace System
                     uint value = sortProperty(sortMe[i]);
                     count[(value >> shift) & mask]++;
                 }
-                    
+
                 // calculating prefixes 
                 prefix[0] = 0;
                 for (int i = 1; i < count.Length; i++)
@@ -898,7 +897,7 @@ namespace System
                     uint value = sortProperty(sortMe[i]);
                     helper[prefix[(value >> shift) & mask]++] = sortMe[i];
                 }
-      
+
                 // a[]=t[] and start again until the last group 
                 helper.CopyTo(sortMe, 0);
             }
@@ -906,6 +905,177 @@ namespace System
         }
 
         #endregion
+
+        #region Introsort 
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// This algorithm use insertionsort, heapsort and quicksort
+        /// Stable: No
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<int> SortWithIntroSort(this IEnumerable<int> source)
+        {
+            return SortWithIntroSort(source, 0, source.Count(), source => source);
+        }
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// This algorithm use insertionsort, heapsort and quicksort
+        /// Stable: No
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<int> SortWithIntroSort(this IEnumerable<int> source, int index, int count)
+        {
+            return SortWithIntroSort(source, index, count, source => source);
+        }
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// This algorithm use insertionsort, heapsort and quicksort
+        /// Stable: No
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <param name="sortProperty">The sorting property</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/>.
+        /// </exception>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithIntroSort<T>(this IEnumerable<T> source, int index, int count, Func<T, int> sortProperty)
+        {
+            if (index < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index), index, "The index can't be less than 0.");
+            }
+
+            if (count < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(count), count, "The count can't be less than 0.");
+            }
+
+            if (source.Count() - index < count)
+            {
+                throw new ArgumentException("Count must be greater than number of elemets in source minus index");
+            }
+
+            T[] sortMe = source.ToArray();
+
+            int partitionSize = Partition(ref sortMe, index, count - 1, sortProperty);
+
+            if (partitionSize < 16)
+            {
+                sortMe = InsertionSortByIntroSort(sortMe.ToList(), index, count, sortProperty).ToArray();
+            }
+            else if (partitionSize > (2 * Math.Log(sortMe.Length)))
+            {
+                sortMe = HeapSortByIntroSort(sortMe.ToList(), index, count, sortProperty).ToArray();
+            }
+            else
+            {
+                QuickSort(ref sortMe, index, count - 1, sortProperty);
+            }
+
+            return sortMe;
+        }
+
+        //TODO: Use for this both function the public sorting algorithm
+        private static IEnumerable<T> InsertionSortByIntroSort<T>(this IEnumerable<T> source, int index, int count, Func<T, int> sortProperty)
+        {
+            var sortMe = source.ToArray();
+
+            for (int i = index; i < count + index - 1; i++)
+            {
+                for (int j = i + 1; j > index; j--)
+                {
+                    if (sortProperty(sortMe[j - 1]) > sortProperty(sortMe[j]))
+                    {
+                        var temp = sortMe[j - 1];
+                        sortMe[j - 1] = sortMe[j];
+                        sortMe[j] = temp;
+                    }
+                }
+            }
+
+            return sortMe;
+        }
+
+        private static IEnumerable<T> HeapSortByIntroSort<T>(this IEnumerable<T> source, int index, int count, Func<T, int> sortProperty)
+        {
+
+            var sortMe = source.ToArray();
+            int rangeLength = count + index;
+            for (int i = count / 2; i >= 0; --i)
+            {
+                HeapifyByIntroSort(sortMe, rangeLength, i, index, sortProperty);
+            }
+            for (int i = rangeLength - 1; i > index; --i)
+            {
+                var swap = sortMe[index];
+                sortMe[index] = sortMe[i];
+                sortMe[i] = swap;
+                HeapifyByIntroSort(sortMe, i, 0, index, sortProperty);
+            }
+
+            return sortMe;
+        }
+
+        private static void HeapifyByIntroSort<T>(T[] list, int n, int i, int index, Func<T, int> sortProperty)
+        {
+            int largest = i;
+            int left = 2 * i + 1;
+            int right = 2 * i + 2;
+            if (left + index < n && sortProperty(list[left + index]) > sortProperty(list[largest + index]))
+                largest = left;
+            if (right + index < n && sortProperty(list[right + index]) > sortProperty(list[largest + index]))
+                largest = right;
+            if (largest != i)
+            {
+                var swap = list[i + index];
+                list[i + index] = list[largest + index];
+                list[largest + index] = swap;
+                HeapifyByIntroSort(list, n, largest, index, sortProperty);
+            }
+        }
+
+        private static void QuickSort<T>(ref T[] input, int left, int right, Func<T, int> sortProperty)
+        {
+            if (left < right)
+            {
+                int q = Partition(ref input, left, right, sortProperty);
+                QuickSort(ref input, left, q - 1, sortProperty);
+                QuickSort(ref input, q + 1, right, sortProperty);
+            }
+        }
+
+        private static int Partition<T>(ref T[] input, int left, int right, Func<T, int> sortProperty)
+        {
+            T pivot = input[right];
+            T temp;
+            int i = left;
+
+            for (int j = left; j < right; ++j)
+            {
+                if (sortProperty(input[j]) <= sortProperty(pivot))
+                {
+                    temp = input[j];
+                    input[j] = input[i];
+                    input[i] = temp;
+                    i++;
+                }
+            }
+
+            input[right] = input[i];
+            input[i] = pivot;
+
+            return i;
+        }
+
+        #endregion
+
 
     }
 }
