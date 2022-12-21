@@ -9,13 +9,13 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Product>Dirk Tamke's SortCollection</Product>
     <PackageId>SinusSoftware.SortCollection</PackageId>
-    <Version>1.1.0</Version>
-    <PackageReleaseNotes>This is release 1.1</PackageReleaseNotes>
+    <Version>1.2.0</Version>
+    <PackageReleaseNotes>This is release 1.2 with 11 different sorting algorithmn</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/SinusSoftware/SortCollection</PackageProjectUrl>
     <Authors>Dirk Tamke</Authors>
     <Company>Dirk Tamke</Company>
-    <PackageTags>Sortcollection, Bubblesort, Selectionsort, Insertionsort, Heapsort, Mergesort, Countingsort, Shellsort, Radixsort</PackageTags>
-    <Description>This package contains the following sorting algorithms: Bubblesort, Selectionsort, Insertionsort, Heapsort, Mergesort, Countingsort, Shellsort and Radixsort. You can use it like standard sort. Example: List.Sort() =&gt; List.SortWithHeapSort()</Description>
+    <PackageTags>Sortcollection, Bubblesort, Selectionsort, Insertionsort, Heapsort, Mergesort, Countingsort, Shellsort, Radixsort, SlowSort, IntroSort</PackageTags>
+    <Description>This package contains the following sorting algorithms: Bubblesort, Selectionsort, Insertionsort, Heapsort, Mergesort, Countingsort, Shellsort, Radixsort, SlowSort and IntroSort. You can use it like standard sort. Example: List.Sort() =&gt; List.SortWithHeapSort()</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/SinusSoftware/SortCollection</RepositoryUrl>
     <Title>SortCollection from SinusSoftware</Title>

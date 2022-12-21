@@ -8,6 +8,8 @@ SortCollection is a dll with different sorting algorithms. Currently supported:
 * Countingsort
 * Shellsort with different gap sequences
 * Radixsort
+* Slowsort
+* Introsort
 
 ## Installation
 Use the package manager [Nuget](https://www.nuget.org/packages/SinusSoftware.SortCollection) to install SortCollection.
@@ -32,6 +34,30 @@ public class SortDescending : IComparer<int>
     }
 }
 
+public class Car
+{
+    private int year;
+    private string make;
+
+    public Car(string make, int year)
+    {
+        this.make = make;
+        this.year = year;
+    }
+
+    public int Year
+    {
+        get { return year; }
+        set { year = value; }
+    }
+
+    public string Make
+    {
+        get { return make; }
+        set { make = value; }
+    }
+}
+
 List<int> integers = new()
             {
                  4,
@@ -46,6 +72,18 @@ List<int> integers = new()
              };
 
 
+List<Car>() cars = new()
+            {
+                new Car("Ford",1992),
+                new Car("Fiat",1988),
+                new Car("Buick",1932),
+                new Car("VW", 2020),
+                new Car("Renault",2015),
+                new Car("Toyota",2006),
+                new Car("Nissan",2018),
+                new Car("Dodge",1999),
+                new Car("Honda",1977)
+            };
 
 # Example Bubblesort
 var bubbleSortedList = integers.SortWithBubbleSort();
@@ -55,6 +93,10 @@ var heapSortedList = integers.SortWithHeapSort(2, 6, Comparer<int>.Default);
 
 # Example Selectionsort with customcompare
 var selectionSortedList = integers.SortWithSelectionSort(new SortDescending());
+
+# Example Contingsort with Object "Car"
+var sortedList = cars.SortWithCountingSort(car => car.Year);
+
 ```
 
 ## Contributing

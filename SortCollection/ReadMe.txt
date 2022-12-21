@@ -18,11 +18,17 @@ SortCollection is a dll with different sorting algorithms. Currently supported:
 * Countingsort
 * Shellsort with different gap sequences
 * Radixsort
+* Slowsort
+* Introsort
 
 Example:
 var heapSortedList = list.SortWithHeapSort();
 
 == Changelog ==
+
+= 1.2 =
+* Add Slowsort
+* Add Introsort
 
 = 1.1 =
 * Add Shellsort with following gap sequences:
