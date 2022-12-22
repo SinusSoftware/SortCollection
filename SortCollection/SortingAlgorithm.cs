@@ -822,9 +822,9 @@ namespace System
         /// Stable: No
         /// </summary>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static IEnumerable<int> SortWithIntroSort(this IEnumerable<int> source)
+        public static IEnumerable<T> SortWithIntroSort<T>(this IEnumerable<T> source)
         {
-            return SortWithIntroSort(source, 0, source.Count(), source => source);
+            return SortWithIntroSort(source, 0, source.Count(), Comparer<T>.Default);
         }
 
         /// <summary>
@@ -835,9 +835,9 @@ namespace System
         /// <param name="index">The zero-based starting index of the range to sort.</param>
         /// <param name="count">The length of the range to sort.</param>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static IEnumerable<int> SortWithIntroSort(this IEnumerable<int> source, int index, int count)
+        public static IEnumerable<T> SortWithIntroSort<T>(this IEnumerable<T> source, IComparer<T> comparer)
         {
-            return SortWithIntroSort(source, index, count, source => source);
+            return SortWithIntroSort(source, 0, source.Count(), comparer);
         }
 
         /// <summary>
@@ -853,7 +853,7 @@ namespace System
         /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/>.
         /// </exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static IEnumerable<T> SortWithIntroSort<T>(this IEnumerable<T> source, int index, int count, Func<T, int> sortProperty)
+        public static IEnumerable<T> SortWithIntroSort<T>(this IEnumerable<T> source, int index, int count, IComparer<T> comparer)
         {
             if (index < 0)
             {
@@ -872,94 +872,35 @@ namespace System
 
             T[] sortMe = source.ToArray();
 
-            int partitionSize = Partition(ref sortMe, index, count - 1, sortProperty);
+            int partitionSize = Partition(ref sortMe, index, count - 1, comparer);
 
             if (partitionSize < 16)
             {
-                sortMe = InsertionSortByIntroSort(sortMe.ToList(), index, count, sortProperty).ToArray();
+                sortMe = SortWithInsertionSort(sortMe.ToList(), index, count, comparer).ToArray();
             }
             else if (partitionSize > (2 * Math.Log(sortMe.Length)))
             {
-                sortMe = HeapSortByIntroSort(sortMe.ToList(), index, count, sortProperty).ToArray();
+                sortMe = SortWithHeapSort(sortMe.ToList(), index, count, comparer).ToArray();
             }
             else
             {
-                QuickSort(ref sortMe, index, count - 1, sortProperty);
+                QuickSort(ref sortMe, index, count - 1, comparer);
             }
 
             return sortMe;
         }
 
-        //TODO: Use for this both function the public sorting algorithm
-        private static IEnumerable<T> InsertionSortByIntroSort<T>(this IEnumerable<T> source, int index, int count, Func<T, int> sortProperty)
-        {
-            var sortMe = source.ToArray();
-
-            for (int i = index; i < count + index - 1; i++)
-            {
-                for (int j = i + 1; j > index; j--)
-                {
-                    if (sortProperty(sortMe[j - 1]) > sortProperty(sortMe[j]))
-                    {
-                        var temp = sortMe[j - 1];
-                        sortMe[j - 1] = sortMe[j];
-                        sortMe[j] = temp;
-                    }
-                }
-            }
-
-            return sortMe;
-        }
-
-        private static IEnumerable<T> HeapSortByIntroSort<T>(this IEnumerable<T> source, int index, int count, Func<T, int> sortProperty)
-        {
-
-            var sortMe = source.ToArray();
-            int rangeLength = count + index;
-            for (int i = count / 2; i >= 0; --i)
-            {
-                HeapifyByIntroSort(sortMe, rangeLength, i, index, sortProperty);
-            }
-            for (int i = rangeLength - 1; i > index; --i)
-            {
-                var swap = sortMe[index];
-                sortMe[index] = sortMe[i];
-                sortMe[i] = swap;
-                HeapifyByIntroSort(sortMe, i, 0, index, sortProperty);
-            }
-
-            return sortMe;
-        }
-
-        private static void HeapifyByIntroSort<T>(T[] list, int n, int i, int index, Func<T, int> sortProperty)
-        {
-            int largest = i;
-            int left = 2 * i + 1;
-            int right = 2 * i + 2;
-            if (left + index < n && sortProperty(list[left + index]) > sortProperty(list[largest + index]))
-                largest = left;
-            if (right + index < n && sortProperty(list[right + index]) > sortProperty(list[largest + index]))
-                largest = right;
-            if (largest != i)
-            {
-                var swap = list[i + index];
-                list[i + index] = list[largest + index];
-                list[largest + index] = swap;
-                HeapifyByIntroSort(list, n, largest, index, sortProperty);
-            }
-        }
-
-        private static void QuickSort<T>(ref T[] input, int left, int right, Func<T, int> sortProperty)
+        private static void QuickSort<T>(ref T[] input, int left, int right, IComparer<T> comparer)
         {
             if (left < right)
             {
-                int q = Partition(ref input, left, right, sortProperty);
-                QuickSort(ref input, left, q - 1, sortProperty);
-                QuickSort(ref input, q + 1, right, sortProperty);
+                int q = Partition(ref input, left, right, comparer);
+                QuickSort(ref input, left, q - 1, comparer);
+                QuickSort(ref input, q + 1, right, comparer);
             }
         }
 
-        private static int Partition<T>(ref T[] input, int left, int right, Func<T, int> sortProperty)
+        private static int Partition<T>(ref T[] input, int left, int right, IComparer<T> comparer)
         {
             T pivot = input[right];
             T temp;
@@ -967,7 +908,8 @@ namespace System
 
             for (int j = left; j < right; ++j)
             {
-                if (sortProperty(input[j]) <= sortProperty(pivot))
+                //if (sortProperty(input[j]) <= sortProperty(pivot))
+                if (comparer.Compare(input[j], pivot) <= 0)
                 {
                     temp = input[j];
                     input[j] = input[i];
@@ -975,6 +917,7 @@ namespace System
                     i++;
                 }
             }
+            //comparer.Compare(sortMe[j], sortMe[j + 1]) == 1 //-1 und 0
 
             input[right] = input[i];
             input[i] = pivot;

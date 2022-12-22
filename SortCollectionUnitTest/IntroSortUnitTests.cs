@@ -10,28 +10,65 @@ namespace SortCollectionUnitTest
     {
         private List<int> integers = new();
         private List<int> randomIntegers = new();
+        private List<string> greekAlphabet = new();
         private List<Car> cars = new();
 
         [TestInitialize]
         public void TestInitialize()
         {
             integers = SupportSortingTest.GenerateSmallIntegers();
-            randomIntegers = SupportSortingTest.CreateRandomArray(3000, 1, 2).ToList();
+            randomIntegers = SupportSortingTest.CreateRandomArray(10000, 1, 10000).ToList();
+            greekAlphabet = SupportSortingTest.GenerateGreekAlphabet();
             cars = SupportSortingTest.GenerateCars();
         }
 
         [TestMethod]
         public void IntroSortCarSortByYearAscendingTest()
         {
-            var sortedList = cars.SortWithIntroSort(0, cars.Count, car => car.Year);
+            var sortedList = cars.SortWithIntroSort(0, cars.Count, new SortByYearAscending());
             Assert.IsTrue(SupportSortingTest.CheckCarsSortByYearAscending(sortedList.ToList()));
         }
-        
+
+        [TestMethod]
+        public void IntroSortCarSortByYearDescendingTest()
+        {
+            var sortedList = cars.SortWithIntroSort(new SortByYearDescending());
+            Assert.IsTrue(SupportSortingTest.CheckCarsSortByYearDescending(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void IntroSortCarSortByDefaultTest()
+        {
+            var sortedList = cars.SortWithIntroSort();
+            Assert.IsTrue(SupportSortingTest.CheckCarsSortByMakeAscending(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void IntroSortCarSortByMakeDescendingTest()
+        {
+            var sortedList = cars.SortWithIntroSort(new SortByMakeDescending());
+            Assert.IsTrue(SupportSortingTest.CheckCarsSortByMakeDescending(sortedList.ToList()));
+        }
+
         [TestMethod]
         public void IntroSortSortIntegerTest()
         {
             var sortedList = integers.SortWithIntroSort();
             Assert.IsTrue(SupportSortingTest.CheckIntegerList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void IntroSortIntegerRangeTest()
+        {
+            var sortedList = integers.SortWithIntroSort(2, 6, Comparer<int>.Default);
+            Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void IntroSortStringTest()
+        {
+            var sortedList = greekAlphabet.SortWithIntroSort();
+            Assert.IsTrue(SupportSortingTest.CheckAlphabet(sortedList.ToList()));
         }
 
         [TestMethod]
