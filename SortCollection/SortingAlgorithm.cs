@@ -906,7 +906,7 @@ namespace System
 
         #endregion
 
-        #region Introsort 
+        #region IntroSort 
 
         /// <summary>
         /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
@@ -1018,6 +1018,48 @@ namespace System
             input[i] = pivot;
 
             return i;
+        }
+
+        #endregion
+
+        #region TimSort
+
+        public const int RUN = 32;
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<int> SortWithTimSort(this IEnumerable<int> source)
+        {
+            IEnumerable<int> arr = source.ToArray();
+            //int[] arr23 = arr.ToArray();
+            //int[] arr = source.ToArray();
+            int n = source.Count();
+            //IEnumerable<int> test = new List<int>();
+
+            for (int i = 0; i < n; i += RUN)
+            {
+                arr = SortWithInsertionSort(arr, i, Math.Min(n - i, RUN), Comparer<int>.Default);
+            }
+
+            int[] arr2 = arr.ToArray();
+            for (int size = RUN; size < n; size = 2 * size)
+            {
+                for (int left = 0; left < n; left += 2 * size)
+                {
+
+                    int mid = left + size - 1;
+                    int right = Math.Min((left + 2 * size - 1), (n - 1));
+
+                    if (mid < right)
+                    {
+                        Merge(arr2, left, mid, right, Comparer<int>.Default);
+                    }
+                }
+            }
+
+
+            return arr2;
+
+
         }
 
         #endregion
