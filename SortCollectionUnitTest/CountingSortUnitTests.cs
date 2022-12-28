@@ -9,6 +9,7 @@ namespace SortCollectionUnitTest
     public class CountingSortUnitTests
     {
         private List<int> integers = new();
+        private List<uint> uintegers = new();
         private List<int> randomIntegers = new();
         private List<Car> cars = new();
 
@@ -16,9 +17,19 @@ namespace SortCollectionUnitTest
         public void TestInitialize()
         {
             integers = SupportSortingTest.GenerateSmallIntegers();
+            uintegers = SupportSortingTest.GenerateSmallUInt();
             randomIntegers = SupportSortingTest.CreateRandomArray(10000, 1, 10000).ToList();
             cars = SupportSortingTest.GenerateCars();
         }
+
+
+        [TestMethod]
+        public void CountingSortUIntegerTest()
+        {
+            var sortedList = uintegers.SortWithCountingSort();
+            Assert.IsTrue(SupportSortingTest.CheckIntegerListUInt(sortedList.ToList()));
+        }
+
 
         [TestMethod]
         public void CountingSortCarSortByYearAscendingTest()

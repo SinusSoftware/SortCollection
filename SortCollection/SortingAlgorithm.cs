@@ -776,6 +776,7 @@ namespace System
         /// K is the range of elements(K = largest element - smallest element)
         /// Stable: Yes
         /// </summary>
+        [Obsolete("Method1 is deprecated, please use Method2 instead.")]
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<int> SortWithCountingSort(this IEnumerable<int> source)
         {
@@ -796,6 +797,7 @@ namespace System
         /// Stable: Yes
         /// </summary>
         /// <param name="sortProperty">The sorting property</param>
+        [Obsolete("Method1 is deprecated, please use Method2 instead.")]
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithCountingSort<T>(this IEnumerable<T> source, Func<T, int> sortProperty)
         {
@@ -828,6 +830,49 @@ namespace System
 
             return result;
         }
+
+        //mit uint
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<uint> SortWithCountingSort(this IEnumerable<uint> source)
+        {
+            return SortWithCountingSort(source, source => source);
+        }
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithCountingSort<T>(this IEnumerable<T> source, Func<T, uint> sortProperty)
+        {
+            List<uint> buckets = new();
+           
+            T[] sortMe = source.ToArray();
+            for (int i = 0; i < sortMe.Length; i++)
+            {
+                uint value = sortProperty(sortMe[i]);
+
+
+
+                for (int j = buckets.Count; j <= value; j++)
+                    buckets.Add(0);
+
+                buckets[value]++;
+            }
+
+            uint[] startIndex = new uint[buckets.Count];
+            for (int j = 1; j < startIndex.Length; j++)
+            {
+                startIndex[j] = buckets[j - 1] + startIndex[j - 1];
+            }
+
+            T[] result = new T[sortMe.Length];
+            for (int i = 0; i < sortMe.Length; i++)
+            {
+                uint theVal = sortProperty(sortMe[i]);
+                uint destIndex = startIndex[theVal]++;
+                result[destIndex] = sortMe[i];
+            }
+
+            return result;
+        }
+
 
         #endregion
 
@@ -906,7 +951,7 @@ namespace System
 
         #endregion
 
-        #region Introsort 
+        #region IntroSort 
 
         /// <summary>
         /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
