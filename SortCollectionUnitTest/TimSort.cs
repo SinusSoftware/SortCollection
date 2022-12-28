@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -30,7 +31,8 @@ namespace SortCollectionUnitTest
             int[] arr = { -2, 7, 15, -14, 0, 15, 0, 7, -7, -4, -13, 5, 8, -14, 12 };
           
 
-            var testTim = randomIntegers.SortWithTimSort();
+            var sortedList = randomIntegers.SortWithTimSort();
+            Assert.IsTrue(SupportSortingTest.CheckRandomIntegerList(sortedList.ToList()));
             //var testTim = arr.SortWithTimSort();
 
             string test = "";
