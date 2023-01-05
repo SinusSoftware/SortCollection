@@ -357,7 +357,7 @@ namespace System
 
             var sortMe = source.ToArray();
 
-            Slowsort(sortMe, index, count + index -1, comparer);
+            Slowsort(sortMe, index, count + index - 1, comparer);
 
             return sortMe;
         }
@@ -371,7 +371,7 @@ namespace System
             int m = (i + j) / 2;
             Slowsort(source, i, m, comparer);
             Slowsort(source, m + 1, j, comparer);
-            if(comparer.Compare(source[j], source[m]) < 0)
+            if (comparer.Compare(source[j], source[m]) < 0)
             {
                 T hilfs = source[j];
                 source[j] = source[m];
@@ -1027,15 +1027,14 @@ namespace System
         public const int RUN = 32;
 
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static IEnumerable<int> SortWithTimSort(this IEnumerable<int> source)
+        public static IEnumerable<int> SortWithTimSort(this IEnumerable<int> source, int index, int count)
         {
             IEnumerable<int> arr = source.ToArray();
-            //int[] arr23 = arr.ToArray();
-            //int[] arr = source.ToArray();
-            int n = source.Count();
-            //IEnumerable<int> test = new List<int>();
 
-            for (int i = 0; i < n; i += RUN)
+            //int n = source.Count();
+
+            int n = count;
+            for (int i = 0 + index; i < n; i += RUN)
             {
                 arr = SortWithInsertionSort(arr, i, Math.Min(n - i, RUN), Comparer<int>.Default);
             }
@@ -1043,7 +1042,7 @@ namespace System
             int[] arr2 = arr.ToArray();
             for (int size = RUN; size < n; size = 2 * size)
             {
-                for (int left = 0; left < n; left += 2 * size)
+                for (int left = 0 + index; left < n; left += 2 * size)
                 {
 
                     int mid = left + size - 1;

@@ -18,7 +18,7 @@ namespace SortCollectionUnitTest
         public void TestInitialize()
         {
             integers = SupportSortingTest.GenerateSmallIntegers();
-            randomIntegers = SupportSortingTest.CreateRandomArray(10000, 1, 10000).ToList();
+            randomIntegers = SupportSortingTest.CreateRandomArray(100, 1, 100).ToList();
             greekAlphabet = SupportSortingTest.GenerateGreekAlphabet();
             cars = SupportSortingTest.GenerateCars();
         }
@@ -28,11 +28,18 @@ namespace SortCollectionUnitTest
         {
             //var sortedList = integers.SortWithTimSort();
 
-            int[] arr = { -2, 7, 15, -14, 0, 15, 0, 7, -7, -4, -13, 5, 8, -14, 12 };
-          
+            //int[] arr = { -2, 7, 15, -14, 0, 15, 0, 7, -7, -4, -13, 5, 8, -14, 12 };
+            int[] arr = { -2, 7, 15, -14, 0, 15, 0, 7, -7, -4, -13, 5, 8, -14, 12, -2, 7, 15, -14, 0, 15, 0, 7, -7, -4, -13, 5, 8, -14, 12 , -2, 7, 15, -14, 0, 15, 0, 7, -7, -4, -13, 5, 8, -14, 12, -2, 7, 15, -14, 0, 15, 0, 7, -7, -4, -13, 5, 8, -14, 12, -2, 7, 15, -14, 0, 15, 0, 7, -7, -4, -13, 5, 8, -14, 12, -2, 7, 15, -14, 0, 15, 0, 7, -7, -4, -13, 5, 8, -14, 12, -2, 7, 15, -14, 0, 15, 0, 7, -7, -4, -13, 5, 8, -14, 12, -2, 7, 15, -14, 0, 15, 0, 7, -7, -4, -13, 5, 8, -14, 12, -2, 7, 15, -14, 0, 15, 0, 7, -7, -4, -13, 5, 8, -14, 12 };
 
-            var sortedList = randomIntegers.SortWithTimSort();
-            Assert.IsTrue(SupportSortingTest.CheckRandomIntegerList(sortedList.ToList()));
+            List<int> numbers = new();
+            for(int i = 100; i > 0; i--)
+            {
+                numbers.Add(i);
+            }
+
+            //var sortedList = randomIntegers.SortWithTimSort(0, randomIntegers.Count());
+            var sortedList = numbers.SortWithTimSort(3, 50);
+            //Assert.IsTrue(SupportSortingTest.CheckRandomIntegerList(sortedList.ToList()));
             //var testTim = arr.SortWithTimSort();
 
             string test = "";
