@@ -1026,6 +1026,11 @@ namespace System
         /// <summary>
         /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
         /// using the default comparer.
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)
+        /// Best Case Time Complexity[Big - omega]: O(n)
+        /// Average Time Complexity[Big - theta]: O(n* log n)
+        /// Space Complexity: O(n)
+        /// Stable: Yes
         /// </summary>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithTimSort<T>(this IEnumerable<T> source)
@@ -1035,7 +1040,12 @@ namespace System
 
         /// <summary>
         /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// using the specified comparer.
+        /// using the default comparer.
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)
+        /// Best Case Time Complexity[Big - omega]: O(n)
+        /// Average Time Complexity[Big - theta]: O(n* log n)
+        /// Space Complexity: O(n)
+        /// Stable: Yes
         /// </summary>
         /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
         /// elements, or null to use the default comparer System.Collections.Generic.Comparer.Default.
@@ -1047,7 +1057,12 @@ namespace System
 
         /// <summary>
         /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// using the specified comparer.
+        /// using the default comparer.
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)
+        /// Best Case Time Complexity[Big - omega]: O(n)
+        /// Average Time Complexity[Big - theta]: O(n* log n)
+        /// Space Complexity: O(n)
+        /// Stable: Yes
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
         /// <param name="count">The length of the range to sort.</param>
