@@ -27,6 +27,13 @@ namespace SortCollectionUnitTest
         [TestMethod]
         public void Test()
         {
+            //greekAlphabet.so
+            //IsNullOrEmpty
+            //greekAlphabet.OrderBy();
+            
+            var test1 = greekAlphabet.IsNullOrEmpty();
+            var test2 = greekAlphabet.Where(w => w.IsNullOrEmpty()).FirstOrDefault();
+            var test3 = greekAlphabet.Where(w => w.IsNullOrEmpty());
         }
 
     }
