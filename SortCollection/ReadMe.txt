@@ -20,6 +20,7 @@ SortCollection is a dll with different sorting algorithms. Currently supported:
 * Radixsort
 * Slowsort
 * Introsort
+* Timsort
 
 Example:
 var heapSortedList = list.SortWithHeapSort();
@@ -29,6 +30,7 @@ var heapSortedList = list.SortWithHeapSort();
 = 1.2 =
 * Add Slowsort
 * Add Introsort
+* Add Timsort
 
 = 1.1 =
 * Add Shellsort with following gap sequences:
@@ -43,7 +45,7 @@ var heapSortedList = list.SortWithHeapSort();
       Tokuda
       Ciura
 * Add Radixsort
-* Add Tragetframework .Net7.0
+* Add Targetframework .Net7.0
 
 = 1.0 =
 * First version
