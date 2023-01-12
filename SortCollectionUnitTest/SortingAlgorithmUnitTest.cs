@@ -21,7 +21,7 @@ namespace SortCollectionUnitTest
             randomIntegers = SupportSortingTest.CreateRandomArray(10000, 1, 10000).ToList();
             greekAlphabet = SupportSortingTest.GenerateGreekAlphabet();
             cars = SupportSortingTest.GenerateCars();
-          
+
         }
 
         [TestMethod]
@@ -30,10 +30,34 @@ namespace SortCollectionUnitTest
             //greekAlphabet.so
             //IsNullOrEmpty
             //greekAlphabet.OrderBy();
-            
+
             var test1 = greekAlphabet.IsNullOrEmpty();
             var test2 = greekAlphabet.Where(w => w.IsNullOrEmpty()).FirstOrDefault();
             var test3 = greekAlphabet.Where(w => w.IsNullOrEmpty());
+
+            var test4 = integers.Where(w => w > 5).SortWithBubbleSortByDescending();
+            var test5 = integers.Where(w => w > 5).OrderBy(o => o);
+
+
+            List<uint> uIntegers = new()
+            {
+                 4,
+                 7,
+                 2,
+                 1,
+                 8,
+                 9,
+                 3,
+                 6,
+                 5
+             };
+
+            var test6 = uIntegers.Where(w => w > 5).SortWithRadixSort();
+            var test7 = cars.Where(w => w.Year > 2000).SortWithCountingSort(c => c.Year);
+            var test8 = cars.Where(w => w.Year > 2000).SortWithBubbleSort(c => c.Make);
+            var test9 = cars.Where(w => w.Year > 2000).OrderBy(c => c.Make);
+
+            string test = "";
         }
 
         [TestMethod]
