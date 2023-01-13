@@ -1,14 +1,16 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace SortCollectionUnitTest
 {
     [TestClass]
-    public class SlowSortUnitTests
+    public class TimSortUnitTests
     {
         private List<int> integers = new();
+        private List<int> randomIntegers = new();
         private List<string> greekAlphabet = new();
         private List<Car> cars = new();
 
@@ -16,59 +18,65 @@ namespace SortCollectionUnitTest
         public void TestInitialize()
         {
             integers = SupportSortingTest.GenerateSmallIntegers();
+            randomIntegers = SupportSortingTest.CreateRandomArray(10000, 1, 10000).ToList();
             greekAlphabet = SupportSortingTest.GenerateGreekAlphabet();
             cars = SupportSortingTest.GenerateCars();
         }
 
         [TestMethod]
-        public void SlowSortCarSortByYearAscendingTest()
+        public void TimSortCarSortByYearAscendingTest()
         {
-            var sortedList = cars.SortWithSlowSort(new SortByYearAscending());
+            var sortedList = cars.SortWithTimSort(new SortByYearAscending());
             Assert.IsTrue(SupportSortingTest.CheckCarsSortByYearAscending(sortedList.ToList()));
         }
 
         [TestMethod]
-        public void SlowSortCarSortByYearDescendingTest()
+        public void TimSortCarSortByYearDescendingTest()
         {
-            var sortedList = cars.SortWithSlowSort(new SortByYearDescending());
+            var sortedList = cars.SortWithTimSort(new SortByYearDescending());
             Assert.IsTrue(SupportSortingTest.CheckCarsSortByYearDescending(sortedList.ToList()));
         }
 
         [TestMethod]
-        public void SlowSortCarSortByDefaultTest()
+        public void TimSortCarSortByDefaultTest()
         {
-            var sortedList = cars.SortWithSlowSort();
+            var sortedList = cars.SortWithTimSort();
             Assert.IsTrue(SupportSortingTest.CheckCarsSortByMakeAscending(sortedList.ToList()));
         }
 
         [TestMethod]
-        public void SlowSortCarSortByMakeDescendingTest()
+        public void TimSortCarSortByMakeDescendingTest()
         {
-            var sortedList = cars.SortWithSlowSort(new SortByMakeDescending());
+            var sortedList = cars.SortWithTimSort(new SortByMakeDescending());
             Assert.IsTrue(SupportSortingTest.CheckCarsSortByMakeDescending(sortedList.ToList()));
         }
 
         [TestMethod]
-        public void SlowSortIntegerTest()
+        public void TimSortIntegerTest()
         {
-            var sortedList = integers.SortWithSlowSort();
+            var sortedList = integers.SortWithTimSort();
             Assert.IsTrue(SupportSortingTest.CheckIntegerList(sortedList.ToList()));
         }
 
         [TestMethod]
-        public void SlowSortIntegerRangeTest()
+        public void TimSortIntegerRangeTest()
         {
-            var sortedList = integers.SortWithSlowSort(2, 6, Comparer<int>.Default);
+            var sortedList = integers.SortWithTimSort(2, 6, Comparer<int>.Default);
             Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
         }
 
         [TestMethod]
-        public void SlowSortStringTest()
+        public void TimSortStringTest()
         {
-            var sortedList = greekAlphabet.SortWithSlowSort();
+            var sortedList = greekAlphabet.SortWithTimSort();
             Assert.IsTrue(SupportSortingTest.CheckAlphabet(sortedList.ToList()));
         }
 
-
+        [TestMethod]
+        public void TimSortRandomIntegerTest()
+        {
+            var sortedList = randomIntegers.SortWithTimSort();
+            Assert.IsTrue(SupportSortingTest.CheckRandomIntegerList(sortedList.ToList()));
+        }
     }
 }
