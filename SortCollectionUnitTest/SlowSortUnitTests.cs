@@ -56,9 +56,16 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
-        public void SlowSortIntegerRangeTest()
+        public void SlowSortIntegerRangeDefaultComparerTest()
         {
             var sortedList = integers.SortWithSlowSort(2, 6, Comparer<int>.Default);
+            Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void SlowSortIntegerRangeTest()
+        {
+            var sortedList = integers.SortWithSlowSort(2, 6);
             Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
         }
 

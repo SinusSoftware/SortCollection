@@ -58,9 +58,16 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
-        public void BubbleSortIntegerRangeTest()
+        public void BubbleSortIntegerRangeDefaultComparerTest()
         {
             var sortedList = integers.SortWithBubbleSort(2, 6, Comparer<int>.Default);
+            Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void BubbleSortIntegerRangeTest()
+        {
+            var sortedList = integers.SortWithBubbleSort(2, 6);
             Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
         }
 

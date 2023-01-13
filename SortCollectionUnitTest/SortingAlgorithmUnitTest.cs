@@ -25,8 +25,16 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
-        public void Test()
+        public void TestNewSignatur()
         {
+            var sortedList1 = integers.SortWithBubbleSort();
+            var sortedList2 = integers.SortWithBubbleSort(Comparer<int>.Default);
+            var sortedList3 = integers.SortWithBubbleSort(2, 4);
+            var sortedList4 = integers.SortWithBubbleSort(2, 4, Comparer<int>.Default);
+
+            var sortedList5 = cars.SortWithBubbleSort();
+            cars.Sort();
+            string test = "";
         }
 
         [TestMethod]

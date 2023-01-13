@@ -59,9 +59,16 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
-        public void TimSortIntegerRangeTest()
+        public void TimSortIntegerRangeDefaultComparerTest()
         {
             var sortedList = integers.SortWithTimSort(2, 6, Comparer<int>.Default);
+            Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void TimSortIntegerRangeTest()
+        {
+            var sortedList = integers.SortWithTimSort(2, 6);
             Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
         }
 

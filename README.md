@@ -89,11 +89,15 @@ List<Car>() cars = new()
 # Example Bubblesort
 var bubbleSortedList = integers.SortWithBubbleSort();
 
-# Example Heapsort with range and default comparer
-var heapSortedList = integers.SortWithHeapSort(2, 6, Comparer<int>.Default);
-
 # Example Selectionsort with customcompare
 var selectionSortedList = integers.SortWithSelectionSort(new SortDescending());
+
+# Example Insertionsort with range
+var insertionSortedList = integers.SortWithInsertionSort(2, 6);
+
+# Example Heapsort with range and customcompare
+var heapSortedList = integers.SortWithHeapSort(2, 6, new SortDescending());
+
 
 # Example Contingsort with Object "Car"
 var sortedList = cars.SortWithCountingSort(car => car.Year);

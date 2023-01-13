@@ -58,9 +58,16 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
-        public void HeapSortIntegerRangeTest()
+        public void HeapSortIntegerRangeDefaultComparerTest()
         {
             var sortedList = integers.SortWithHeapSort(2, 6, Comparer<int>.Default);
+            Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void HeapSortIntegerRangeTest()
+        {
+            var sortedList = integers.SortWithHeapSort(2, 6);
             Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
         }
 

@@ -58,9 +58,16 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
-        public void MergeSortIntegerRangeTest()
+        public void MergeSortIntegerRangeDefaultComparerTest()
         {
             var sortedList = integers.SortWithMergeSort(2, 6, Comparer<int>.Default);
+            Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void MergeSortIntegerRangeTest()
+        {
+            var sortedList = integers.SortWithMergeSort(2, 6);
             Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
         }
 

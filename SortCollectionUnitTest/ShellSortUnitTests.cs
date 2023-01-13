@@ -60,9 +60,16 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
-        public void ShellSortIntegerRange_Shell_Test()
+        public void ShellSortIntegerRangeDefaultComparer_Shell_Test()
         {
             var sortedList = integers.SortWithShellSort(2, 6, Comparer<int>.Default, SortingAlgorithm.GapSequences.Shell);
+            Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void ShellSortIntegerRange_Shell_Test()
+        {
+            var sortedList = integers.SortWithShellSort(2, 6, SortingAlgorithm.GapSequences.Shell);
             Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
         }
 
@@ -120,9 +127,15 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
-        public void ShellSortIntegerRange_Hibbard_Test()
+        public void ShellSortIntegerRangeDefaultComparer_Hibbard_Test()
         {
             var sortedList = integers.SortWithShellSort(2, 6, Comparer<int>.Default, SortingAlgorithm.GapSequences.Hibbard);
+            Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
+        }
+
+        public void ShellSortIntegerRange_Hibbard_Test()
+        {
+            var sortedList = integers.SortWithShellSort(2, 6, SortingAlgorithm.GapSequences.Hibbard);
             Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
         }
 
@@ -180,9 +193,16 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
-        public void ShellSortIntegerRange_PapernovStasevich_Test()
+        public void ShellSortIntegerRangeDefaultComparer_PapernovStasevich_Test()
         {
             var sortedList = integers.SortWithShellSort(2, 6, Comparer<int>.Default, SortingAlgorithm.GapSequences.PapernovStasevich);
+            Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void ShellSortIntegerRange_PapernovStasevich_Test()
+        {
+            var sortedList = integers.SortWithShellSort(2, 6, SortingAlgorithm.GapSequences.PapernovStasevich);
             Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
         }
 
@@ -240,9 +260,16 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
-        public void ShellSortIntegerRange_Pratt_Test()
+        public void ShellSortIntegerRangeDefaultComparer_Pratt_Test()
         {
             var sortedList = integers.SortWithShellSort(2, 6, Comparer<int>.Default, SortingAlgorithm.GapSequences.Pratt);
+            Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void ShellSortIntegerRange_Pratt_Test()
+        {
+            var sortedList = integers.SortWithShellSort(2, 6, SortingAlgorithm.GapSequences.Pratt);
             Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
         }
 
@@ -300,9 +327,16 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
-        public void ShellSortIntegerRange_Knuth_Test()
+        public void ShellSortIntegerRangeDefaultComparer_Knuth_Test()
         {
             var sortedList = integers.SortWithShellSort(2, 6, Comparer<int>.Default, SortingAlgorithm.GapSequences.Knuth);
+            Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void ShellSortIntegerRange_Knuth_Test()
+        {
+            var sortedList = integers.SortWithShellSort(2, 6, SortingAlgorithm.GapSequences.Knuth);
             Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
         }
 
@@ -360,9 +394,16 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
-        public void ShellSortIntegerRange_IncerpiSedgewick_Test()
+        public void ShellSortIntegerRangeDefaultComparer_IncerpiSedgewick_Test()
         {
             var sortedList = integers.SortWithShellSort(2, 6, Comparer<int>.Default, SortingAlgorithm.GapSequences.IncerpiSedgewick);
+            Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void ShellSortIntegerRange_IncerpiSedgewick_Test()
+        {
+            var sortedList = integers.SortWithShellSort(2, 6, SortingAlgorithm.GapSequences.IncerpiSedgewick);
             Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
         }
 
@@ -420,9 +461,16 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
-        public void ShellSortIntegerRange_Sedgewick1982_Test()
+        public void ShellSortIntegerRangeDefaultComparer_Sedgewick1982_Test()
         {
             var sortedList = integers.SortWithShellSort(2, 6, Comparer<int>.Default, SortingAlgorithm.GapSequences.Sedgewick1982);
+            Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void ShellSortIntegerRange_Sedgewick1982_Test()
+        {
+            var sortedList = integers.SortWithShellSort(2, 6, SortingAlgorithm.GapSequences.Sedgewick1982);
             Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
         }
 
@@ -480,9 +528,16 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
-        public void ShellSortIntegerRange_Sedgewick1986_Test()
+        public void ShellSortIntegerRangeDefaultComparer_Sedgewick1986_Test()
         {
             var sortedList = integers.SortWithShellSort(2, 6, Comparer<int>.Default, SortingAlgorithm.GapSequences.Sedgewick1986);
+            Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void ShellSortIntegerRange_Sedgewick1986_Test()
+        {
+            var sortedList = integers.SortWithShellSort(2, 6, SortingAlgorithm.GapSequences.Sedgewick1986);
             Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
         }
 
@@ -540,9 +595,16 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
-        public void ShellSortIntegerRange_Tokuda_Test()
+        public void ShellSortIntegerRangeDefaultComparer_Tokuda_Test()
         {
             var sortedList = integers.SortWithShellSort(2, 6, Comparer<int>.Default, SortingAlgorithm.GapSequences.Tokuda);
+            Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void ShellSortIntegerRange_Tokuda_Test()
+        {
+            var sortedList = integers.SortWithShellSort(2, 6, SortingAlgorithm.GapSequences.Tokuda);
             Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
         }
 
@@ -600,9 +662,16 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
-        public void ShellSortIntegerRange_Ciura_Test()
+        public void ShellSortIntegerRangeDefaultComparer_Ciura_Test()
         {
             var sortedList = integers.SortWithShellSort(2, 6, Comparer<int>.Default, SortingAlgorithm.GapSequences.Ciura);
+            Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void ShellSortIntegerRange_Ciura_Test()
+        {
+            var sortedList = integers.SortWithShellSort(2, 6, SortingAlgorithm.GapSequences.Ciura);
             Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
         }
 

@@ -58,9 +58,16 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
-        public void InsertionSortIntegerRangeTest()
+        public void InsertionSortIntegerRangeDefaultComparerTest()
         {
             var sortedList = integers.SortWithInsertionSort(2, 6, Comparer<int>.Default);
+            Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void InsertionSortIntegerRangeTest()
+        {
+            var sortedList = integers.SortWithInsertionSort(2, 6);
             Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
         }
 

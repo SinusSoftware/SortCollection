@@ -31,6 +31,7 @@ var heapSortedList = list.SortWithHeapSort();
 * Add Slowsort
 * Add Introsort
 * Add Timsort
+* Add function '...Sort(index, count)' for some sorting algorithms.
 
 = 1.1 =
 * Add Shellsort with following gap sequences:

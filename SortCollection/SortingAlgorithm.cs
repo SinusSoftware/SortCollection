@@ -48,6 +48,23 @@ namespace System
 
         /// <summary>
         /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the default comparer.
+        /// Worst Case Time Complexity[Big - O]: O(n^2)
+        /// Best Case Time Complexity[Big - omega]: O(n)
+        /// Average Time Complexity[Big - theta]: O(n^2)
+        /// Space Complexity: O(1)
+        /// Stable: Yes
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithBubbleSort<T>(this IEnumerable<T> source, int index, int count)
+        {
+            return SortWithBubbleSort(source, index, count, Comparer<T>.Default);
+        }
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
         /// using the specified comparer.
         /// Worst Case Time Complexity[Big - O]: O(n^2)
         /// Best Case Time Complexity[Big - omega]: O(n)
@@ -135,6 +152,23 @@ namespace System
         public static IEnumerable<T> SortWithSelectionSort<T>(this IEnumerable<T> source, IComparer<T> comparer)
         {
             return SortWithSelectionSort(source, 0, source.Count(), comparer);
+        }
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the default comparer.
+        /// Worst Case Time Complexity[Big - O]: O(n^2)
+        /// Best Case Time Complexity[Big - omega]: O(n^2)
+        /// Average Time Complexity[Big - theta]: O(n^2)
+        /// Space Complexity: O(1)
+        /// Stable: No
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithSelectionSort<T>(this IEnumerable<T> source, int index, int count)
+        {
+            return SortWithSelectionSort(source, index, count, Comparer<T>.Default);
         }
 
         /// <summary>
@@ -243,6 +277,23 @@ namespace System
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
         /// <param name="count">The length of the range to sort.</param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithInsertionSort<T>(this IEnumerable<T> source, int index, int count)
+        {
+            return SortWithInsertionSort(source, index, count, Comparer<T>.Default);
+        }
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the default comparer.
+        /// Worst Case Time Complexity[Big - O]: O(n^2)
+        /// Best Case Time Complexity[Big - omega]: O(n)
+        /// Average Time Complexity[Big - theta]: O(n^2)
+        /// Space Complexity: O(1)
+        /// Stable: Yes
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
         /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
         /// elements or null to use the default comparer System.Collections.Generic.Comparer.Default.
         /// </param>
@@ -317,6 +368,20 @@ namespace System
         public static IEnumerable<T> SortWithSlowSort<T>(this IEnumerable<T> source, IComparer<T> comparer)
         {
             return SortWithSlowSort(source, 0, source.Count(), comparer);
+        }
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the default comparer.
+        /// SlowSort is very, very slow. It is more a gag algorithmn. Don't use it!
+        /// Stable: No
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithSlowSort<T>(this IEnumerable<T> source, int index, int count)
+        {
+            return SortWithSlowSort(source, index, count, Comparer<T>.Default);
         }
 
         /// <summary>
@@ -408,6 +473,20 @@ namespace System
         public static IEnumerable<T> SortWithShellSort<T>(this IEnumerable<T> source, IComparer<T> comparer, GapSequences gapSequence = GapSequences.Sedgewick1986)
         {
             return SortWithShellSort(source, 0, source.Count(), comparer, gapSequence);
+        }
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the default comparer.
+        /// Complexity: Dependent on GapSeqeuenz (Default: Sedgewick Year 1986)
+        /// Stable: No
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithShellSort<T>(this IEnumerable<T> source, int index, int count, GapSequences gapSequence = GapSequences.Sedgewick1986)
+        {
+            return SortWithShellSort(source, index, count, Comparer<T>.Default, gapSequence);
         }
 
         /// <summary>
@@ -568,6 +647,23 @@ namespace System
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
         /// <param name="count">The length of the range to sort.</param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithHeapSort<T>(this IEnumerable<T> source, int index, int count)
+        {
+            return SortWithHeapSort(source, index, count, Comparer<T>.Default);
+        }
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the default comparer.
+        /// Worst case time O(nlg⁡n)O
+        /// Best case time O(n)
+        /// Average case time O(nlg⁡n)
+        /// Space O(1)
+        /// Stable: No
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
         /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
         /// elements or null to use the default comparer System.Collections.Generic.Comparer.Default.
         /// </param>
@@ -665,6 +761,23 @@ namespace System
         public static IEnumerable<T> SortWithMergeSort<T>(this IEnumerable<T> source, IComparer<T> comparer)
         {
             return SortWithMergeSort(source, 0, source.Count(), comparer);
+        }
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the default comparer.
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)
+        /// Average Time Complexity[Big - theta]: O(n* log n)
+        /// Space Complexity: O(n)
+        /// Stable: Yes
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithMergeSort<T>(this IEnumerable<T> source, int index, int count)
+        {
+            return SortWithMergeSort(source, index, count, Comparer<T>.Default);
         }
 
         /// <summary>
@@ -940,6 +1053,19 @@ namespace System
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
         /// <param name="count">The length of the range to sort.</param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithIntroSort<T>(this IEnumerable<T> source, int index, int count)
+        {
+            return SortWithIntroSort(source, index, count, Comparer<T>.Default);
+        }
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// This algorithm use insertionsort, heapsort and quicksort
+        /// Stable: No
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
         /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
         /// elements, or null to use the default comparer System.Collections.Generic.Comparer.Default.
         /// </param>
@@ -1053,6 +1179,23 @@ namespace System
         public static IEnumerable<T> SortWithTimSort<T>(this IEnumerable<T> source, IComparer<T> comparer)
         {
             return SortWithTimSort(source, 0, source.Count(), comparer);
+        }
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the default comparer.
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)
+        /// Best Case Time Complexity[Big - omega]: O(n)
+        /// Average Time Complexity[Big - theta]: O(n* log n)
+        /// Space Complexity: O(n)
+        /// Stable: Yes
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithTimSort<T>(this IEnumerable<T> source, int index, int count)
+        {
+            return SortWithTimSort(source, index, count, Comparer<T>.Default);
         }
 
         /// <summary>
