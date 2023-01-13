@@ -878,14 +878,14 @@ namespace System
         /// <summary>
         /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
         /// This algorithm is for positiv integers only
-        /// Time complexity: O(N+K)
+        /// Time complexity: O(n+k)
         /// Worst case: when data is skewed and range is large
         /// Best Case: When all elements are same
-        /// Average Case: O(N+K) (N & K equally dominant)
-        /// Space Complexity: O(K)
+        /// Average Case: O(n+k) (n & k equally dominant)
+        /// Space Complexity: O(k)
         /// where:
-        /// N is the number of elements
-        /// K is the range of elements(K = largest element - smallest element)
+        /// n is the number of elements
+        /// k is the range of elements(k = largest element - smallest element)
         /// Stable: Yes
         /// </summary>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
@@ -897,14 +897,14 @@ namespace System
         /// <summary>
         /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
         /// This algorithm is for positiv integers only
-        /// Time complexity: O(N+K)
+        /// Time complexity: O(n+k)
         /// Worst case: when data is skewed and range is large
         /// Best Case: When all elements are same
-        /// Average Case: O(N+K) (N & K equally dominant)
-        /// Space Complexity: O(K)
+        /// Average Case: O(n+k) (n & k equally dominant)
+        /// Space Complexity: O(k)
         /// where:
-        /// N is the number of elements
-        /// K is the range of elements(K = largest element - smallest element)
+        /// n is the number of elements
+        /// k is the range of elements(k = largest element - smallest element)
         /// Stable: Yes
         /// </summary>
         /// <param name="sortProperty">The sorting property</param>
@@ -948,6 +948,14 @@ namespace System
         /// <summary>
         /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
         /// This algorithm is for positiv integers only
+        /// Worst case: O(n2)
+        /// Best Case: O(A(n+b)) If b equals O(n), the time complexity is O(a*n)
+        /// Average Case: O(p*(n+d))
+        /// Space Complexity: O(n+k)
+        /// where:
+        /// n is the number of elements
+        /// k is the range of elements(k = largest element - smallest element)
+        /// There are 'p' passes, and each digit can have up to 'd' different values
         /// Stable: Yes
         /// </summary>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
@@ -959,6 +967,14 @@ namespace System
         /// <summary>
         /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
         /// This algorithm is for positiv integers only
+        /// Worst case: O(n2)
+        /// Best Case: O(A(n+b)) If b equals O(n), the time complexity is O(a*n)
+        /// Average Case: O(p*(n+d))
+        /// Space Complexity: O(n+k)
+        /// where:
+        /// n is the number of elements
+        /// k is the range of elements(k = largest element - smallest element)
+        /// There are 'p' passes, and each digit can have up to 'd' different values
         /// Stable: Yes
         /// </summary>
         /// <param name="sortProperty">The sorting property</param>
