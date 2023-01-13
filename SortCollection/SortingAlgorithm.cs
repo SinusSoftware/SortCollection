@@ -1022,6 +1022,7 @@ namespace System
 
         /// <summary>
         /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the default comparer.
         /// This algorithm use insertionsort, heapsort and quicksort
         /// Stable: No
         /// </summary>
@@ -1048,6 +1049,7 @@ namespace System
 
         /// <summary>
         /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the default comparer.
         /// This algorithm use insertionsort, heapsort and quicksort
         /// Stable: No
         /// </summary>
