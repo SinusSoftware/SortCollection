@@ -34,7 +34,7 @@ namespace SortCollectionUnitTest
 
 
 
-            //var sortedList3 = uintegers.SortWithRadixSortTest(2, 4, i => i);
+            var sortedList3 = uintegers.SortWithRadixSort(2, 4, i => i, SortingAlgorithm.GroupBitLength.SixteenBits);
             //var sortedList6 = integers.SortWithRadixSortTest(2, 4);
 
 
