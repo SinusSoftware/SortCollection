@@ -8,14 +8,14 @@ namespace SortCollectionUnitTest
     [TestClass]
     public class RadixSortUnitTests
     {
-        private List<uint> integers = new();
+        private List<uint> uintegers = new();
         private List<uint> randomIntegers = new();
         private List<CarUInt> cars = new();
 
         [TestInitialize]
         public void TestInitialize()
         {
-            integers = SupportSortingTest.GenerateSmallUInt();
+            uintegers = SupportSortingTest.GenerateSmallUInt();
             randomIntegers = SupportSortingTest.CreateRandomArrayUInt(10000, 1, 10000).ToList();
             cars = SupportSortingTest.GenerateCarsUInt();
         }
@@ -30,7 +30,7 @@ namespace SortCollectionUnitTest
         [TestMethod]
         public void RadixSortIntegerTest()
         {
-            var sortedList = integers.SortWithRadixSort();
+            var sortedList = uintegers.SortWithRadixSort();
             Assert.IsTrue(SupportSortingTest.CheckIntegerListUInt(sortedList.ToList()));
         }
 

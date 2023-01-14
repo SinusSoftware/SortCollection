@@ -10,6 +10,7 @@ namespace SortCollectionUnitTest
     public class SortingAlgorithmUnitTest
     {
         private List<int> integers = new();
+        private List<uint> uintegers = new();
         private List<int> randomIntegers = new();
         private List<string> greekAlphabet = new();
         private List<Car> cars = new();
@@ -18,6 +19,7 @@ namespace SortCollectionUnitTest
         public void TestInitialize()
         {
             integers = SupportSortingTest.GenerateSmallIntegers();
+            uintegers = SupportSortingTest.GenerateSmallUInt();
             randomIntegers = SupportSortingTest.CreateRandomArray(10000, 1, 10000).ToList();
             greekAlphabet = SupportSortingTest.GenerateGreekAlphabet();
             cars = SupportSortingTest.GenerateCars();
@@ -25,15 +27,15 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
-        public void TestCountingSort()
+        public void TestRadixSort()
         {
-            //var sortedList1 = integers.SortWithCountingSort();
-            //var sortedList5 = cars.SortWithCountingSort(cars => cars.Year);
+            //var sortedList1 = integers.SortWithRadixSortTest();
+            //var sortedList5 = cars.SortWithRadixSortTest(cars => cars.Year);
 
 
 
-            var sortedList3 = integers.SortWithCountingSort(2, 4, i => i);
-            var sortedList6 = integers.SortWithCountingSort(2, 4);
+            //var sortedList3 = uintegers.SortWithRadixSortTest(2, 4, i => i);
+            //var sortedList6 = integers.SortWithRadixSortTest(2, 4);
 
 
 
