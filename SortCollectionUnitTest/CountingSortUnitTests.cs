@@ -35,6 +35,20 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
+        public void CountingSortIntegerRangeDefaultComparerTest()
+        {
+            var sortedList = integers.SortWithCountingSort(2, 6, i => i);
+            Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void CountingSortIntegerRangeTest()
+        {
+            var sortedList = integers.SortWithCountingSort(2, 6);
+            Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
+        }
+
+        [TestMethod]
         public void CountingSortRandomIntegerTest()
         {
             var sortedList = randomIntegers.SortWithCountingSort();
