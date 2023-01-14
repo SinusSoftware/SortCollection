@@ -98,7 +98,6 @@ var insertionSortedList = integers.SortWithInsertionSort(2, 6);
 # Example Heapsort with range and customcompare
 var heapSortedList = integers.SortWithHeapSort(2, 6, new SortDescending());
 
-
 # Example Contingsort with Object "Car"
 var sortedList = cars.SortWithCountingSort(car => car.Year);
 

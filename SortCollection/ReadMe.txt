@@ -31,8 +31,8 @@ var heapSortedList = list.SortWithHeapSort();
 * Add Slowsort
 * Add Introsort
 * Add Timsort
-* Add Function '...Sort(index, count)' for all sorting algorithms.
-* Add Enum 'GroupBitLength' for Radixsort.
+* Add Function '...Sort(index, count)' for all sorting algorithms
+* Add Enum 'GroupBitLength' for Radixsort
 
 = 1.1 =
 * Add Shellsort with following gap sequences:

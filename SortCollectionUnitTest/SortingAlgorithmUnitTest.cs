@@ -14,16 +14,17 @@ namespace SortCollectionUnitTest
         private List<int> randomIntegers = new();
         private List<string> greekAlphabet = new();
         private List<Car> cars = new();
+        private List<CarUInt> carsUInt = new();
 
         [TestInitialize]
         public void TestInitialize()
         {
             integers = SupportSortingTest.GenerateSmallIntegers();
-            uintegers = SupportSortingTest.GenerateSmallUInt();
+            uintegers = SupportSortingTest.GenerateSmallUIntegers();
             randomIntegers = SupportSortingTest.CreateRandomArray(10000, 1, 10000).ToList();
             greekAlphabet = SupportSortingTest.GenerateGreekAlphabet();
             cars = SupportSortingTest.GenerateCars();
-
+            carsUInt = SupportSortingTest.GenerateCarsUIntegers();
         }
 
         [TestMethod]
@@ -34,11 +35,13 @@ namespace SortCollectionUnitTest
 
 
 
-            var sortedList3 = uintegers.SortWithRadixSort(2, 4, i => i, SortingAlgorithm.GroupBitLength.SixteenBits);
+            //var sortedList3 = uintegers.SortWithRadixSort(2, 4, i => i, SortingAlgorithm.GroupBitLength.SixteenBits);
             //var sortedList6 = integers.SortWithRadixSortTest(2, 4);
 
-
-
+            var sortedList = carsUInt.SortWithRadixSort(2, 6, car => car.Year, SortingAlgorithm.GroupBitLength.TwoBits);
+            var sortedList2 = carsUInt.SortWithRadixSort(2, 6, car => car.Year, SortingAlgorithm.GroupBitLength.FourBits);
+            var sortedList3 = carsUInt.SortWithRadixSort(2, 6, car => car.Year, SortingAlgorithm.GroupBitLength.EightBits);
+            var sortedList4 = carsUInt.SortWithRadixSort(2, 6, car => car.Year, SortingAlgorithm.GroupBitLength.SixteenBits);
             string test = "";
         }
 

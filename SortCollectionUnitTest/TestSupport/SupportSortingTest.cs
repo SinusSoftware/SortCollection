@@ -133,7 +133,7 @@ namespace SortCollectionUnitTest
 
         #region unsigend integer
 
-        public static List<uint> GenerateSmallUInt()
+        public static List<uint> GenerateSmallUIntegers()
         {
             return new()
             {
@@ -149,7 +149,7 @@ namespace SortCollectionUnitTest
              };
         }
 
-        public static List<CarUInt> GenerateCarsUInt()
+        public static List<CarUInt> GenerateCarsUIntegers()
         {
             return new List<CarUInt>()
             {
@@ -165,7 +165,7 @@ namespace SortCollectionUnitTest
              };
         }
 
-        public static uint[] CreateRandomArrayUInt(int size, int lower, int upper)
+        public static uint[] CreateRandomArrayUIntegers(int size, int lower, int upper)
         {
             var array = new uint[size];
             var rand = new Random();
@@ -174,7 +174,7 @@ namespace SortCollectionUnitTest
             return array;
         }
 
-        public static bool CheckIntegerListUInt(IList<uint> values)
+        public static bool CheckIntegerListUIntegers(IList<uint> values)
         {
             if (values[0] != 1 ||
               values[1] != 2 ||
@@ -191,7 +191,24 @@ namespace SortCollectionUnitTest
             return true;
         }
 
-        public static bool CheckRandomIntegerListUInt(IList<uint> values)
+        public static bool CheckUIntegerRangeList(IList<uint> values)
+        {
+            if (values[0] != 4 ||
+             values[1] != 7 ||
+             values[2] != 1 ||
+             values[3] != 2 ||
+             values[4] != 3 ||
+             values[5] != 6 ||
+             values[6] != 8 ||
+             values[7] != 9 ||
+             values[8] != 5)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public static bool CheckRandomUIntegerList(IList<uint> values)
         {
             for (int i = 0; i < values.Count - 1; i++)
             {
