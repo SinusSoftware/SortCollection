@@ -21,8 +21,26 @@ namespace SortCollectionUnitTest
             randomIntegers = SupportSortingTest.CreateRandomArray(10000, 1, 10000).ToList();
             greekAlphabet = SupportSortingTest.GenerateGreekAlphabet();
             cars = SupportSortingTest.GenerateCars();
-          
+
         }
+
+        [TestMethod]
+        public void TestCountingSort()
+        {
+            //var sortedList1 = integers.SortWithCountingSort();
+            //var sortedList5 = cars.SortWithCountingSort(cars => cars.Year);
+
+
+
+            var sortedList3 = integers.SortWithCountingSort(2, 4, i => i);
+            var sortedList6 = integers.SortWithCountingSort(2, 4);
+
+
+
+            string test = "";
+        }
+
+
 
         [TestMethod]
         public void TestNewSignatur()

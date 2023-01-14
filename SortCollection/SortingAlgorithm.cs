@@ -891,30 +891,28 @@ namespace System
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<int> SortWithCountingSort(this IEnumerable<int> source)
         {
-            return SortWithCountingSort(source, source => source);
+            return SortWithCountingSort(source, 0, source.Count(), source => source);
         }
 
-        /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// This algorithm is for positiv integers only
-        /// Time complexity: O(N+K)
-        /// Worst case: when data is skewed and range is large
-        /// Best Case: When all elements are same
-        /// Average Case: O(N+K) (N & K equally dominant)
-        /// Space Complexity: O(K)
-        /// where:
-        /// N is the number of elements
-        /// K is the range of elements(K = largest element - smallest element)
-        /// Stable: Yes
-        /// </summary>
-        /// <param name="sortProperty">The sorting property</param>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithCountingSort<T>(this IEnumerable<T> source, Func<T, int> sortProperty)
+        {
+            return SortWithCountingSort(source, 0, source.Count(), sortProperty);
+        }
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<int> SortWithCountingSort(this IEnumerable<int> source, int index, int count)
+        {
+            return SortWithCountingSort(source, index, count, source => source);
+        }
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithCountingSort<T>(this IEnumerable<T> source, int index, int count, Func<T, int> sortProperty)
         {
             List<int> buckets = new();
 
             T[] sortMe = source.ToArray();
-            for (int i = 0; i < sortMe.Length; i++)
+            for (int i = 0 + index; i < count + index; i++)
             {
                 int value = sortProperty(sortMe[i]);
 
@@ -930,12 +928,12 @@ namespace System
                 startIndex[j] = buckets[j - 1] + startIndex[j - 1];
             }
 
-            T[] result = new T[sortMe.Length];
-            for (int i = 0; i < sortMe.Length; i++)
+            T[] result = source.ToArray();
+            for (int i = 0 + index; i < count + index; i++)
             {
-                int theVal = sortProperty(sortMe[i]);
-                int destIndex = startIndex[theVal]++;
-                result[destIndex] = sortMe[i];
+                int sortValue = sortProperty(sortMe[i]);
+                int destinationIndex = startIndex[sortValue]++;
+                result[destinationIndex + index] = sortMe[i];
             }
 
             return result;
