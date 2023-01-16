@@ -1,7 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Reflection;
 
 namespace SortCollectionUnitTest
 {
@@ -12,6 +14,8 @@ namespace SortCollectionUnitTest
         private List<int> randomIntegers = new();
         private List<string> greekAlphabet = new();
         private List<Car> cars = new();
+        private int index = default;
+        private int count = default;
 
         [TestInitialize]
         public void TestInitialize()
@@ -20,6 +24,10 @@ namespace SortCollectionUnitTest
             randomIntegers = SupportSortingTest.CreateRandomArray(10000, 1, 10000).ToList();
             greekAlphabet = SupportSortingTest.GenerateGreekAlphabet();
             cars = SupportSortingTest.GenerateCars();
+
+            Random random = new();
+            index = random.Next(1000, 4000);
+            count = random.Next(1000, 5000);
         }
 
         #region GapSequences.Shell
@@ -87,6 +95,15 @@ namespace SortCollectionUnitTest
             Assert.IsTrue(SupportSortingTest.CheckRandomIntegerList(sortedList.ToList()));
         }
 
+        [TestMethod]
+        public void ShellSortIntegerRandomRange_Shell_Test()
+        {
+            var sortedList = randomIntegers.SortWithShellSort(index, count, SortingAlgorithm.GapSequences.Shell);
+            var standardSort = randomIntegers.ToList();
+            standardSort.Sort(index, count, Comparer<int>.Default);
+            Assert.IsTrue(standardSort.SequenceEqual(sortedList));
+        }
+
         #endregion
 
         #region GapSequences.Hibbard
@@ -151,6 +168,15 @@ namespace SortCollectionUnitTest
         {
             var sortedList = randomIntegers.SortWithShellSort(SortingAlgorithm.GapSequences.Hibbard);
             Assert.IsTrue(SupportSortingTest.CheckRandomIntegerList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void ShellSortIntegerRandomRange_Hibbard_Test()
+        {
+            var sortedList = randomIntegers.SortWithShellSort(index, count, SortingAlgorithm.GapSequences.Hibbard);
+            var standardSort = randomIntegers.ToList();
+            standardSort.Sort(index, count, Comparer<int>.Default);
+            Assert.IsTrue(standardSort.SequenceEqual(sortedList));
         }
 
         #endregion
@@ -220,6 +246,15 @@ namespace SortCollectionUnitTest
             Assert.IsTrue(SupportSortingTest.CheckRandomIntegerList(sortedList.ToList()));
         }
 
+        [TestMethod]
+        public void ShellSortIntegerRandomRange_PapernovStasevich_Test()
+        {
+            var sortedList = randomIntegers.SortWithShellSort(index, count, SortingAlgorithm.GapSequences.PapernovStasevich);
+            var standardSort = randomIntegers.ToList();
+            standardSort.Sort(index, count, Comparer<int>.Default);
+            Assert.IsTrue(standardSort.SequenceEqual(sortedList));
+        }
+
         #endregion
 
         #region GapSequences.Pratt
@@ -285,6 +320,15 @@ namespace SortCollectionUnitTest
         {
             var sortedList = randomIntegers.SortWithShellSort(SortingAlgorithm.GapSequences.Pratt);
             Assert.IsTrue(SupportSortingTest.CheckRandomIntegerList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void ShellSortIntegerRandomRange_Pratt_Test()
+        {
+            var sortedList = randomIntegers.SortWithShellSort(index, count, SortingAlgorithm.GapSequences.Pratt);
+            var standardSort = randomIntegers.ToList();
+            standardSort.Sort(index, count, Comparer<int>.Default);
+            Assert.IsTrue(standardSort.SequenceEqual(sortedList));
         }
 
         #endregion
@@ -354,6 +398,15 @@ namespace SortCollectionUnitTest
             Assert.IsTrue(SupportSortingTest.CheckRandomIntegerList(sortedList.ToList()));
         }
 
+        [TestMethod]
+        public void ShellSortIntegerRandomRange_Knuth_Test()
+        {
+            var sortedList = randomIntegers.SortWithShellSort(index, count, SortingAlgorithm.GapSequences.Knuth);
+            var standardSort = randomIntegers.ToList();
+            standardSort.Sort(index, count, Comparer<int>.Default);
+            Assert.IsTrue(standardSort.SequenceEqual(sortedList));
+        }
+
         #endregion
 
         #region GapSequences.IncerpiSedgewick
@@ -419,6 +472,15 @@ namespace SortCollectionUnitTest
         {
             var sortedList = randomIntegers.SortWithShellSort(SortingAlgorithm.GapSequences.IncerpiSedgewick);
             Assert.IsTrue(SupportSortingTest.CheckRandomIntegerList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void ShellSortIntegerRandomRange_IncerpiSedgewick_Test()
+        {
+            var sortedList = randomIntegers.SortWithShellSort(index, count, SortingAlgorithm.GapSequences.IncerpiSedgewick);
+            var standardSort = randomIntegers.ToList();
+            standardSort.Sort(index, count, Comparer<int>.Default);
+            Assert.IsTrue(standardSort.SequenceEqual(sortedList));
         }
 
         #endregion
@@ -488,6 +550,15 @@ namespace SortCollectionUnitTest
             Assert.IsTrue(SupportSortingTest.CheckRandomIntegerList(sortedList.ToList()));
         }
 
+        [TestMethod]
+        public void ShellSortIntegerRandomRange_Sedgewick1982_Test()
+        {
+            var sortedList = randomIntegers.SortWithShellSort(index, count, SortingAlgorithm.GapSequences.Sedgewick1982);
+            var standardSort = randomIntegers.ToList();
+            standardSort.Sort(index, count, Comparer<int>.Default);
+            Assert.IsTrue(standardSort.SequenceEqual(sortedList));
+        }
+
         #endregion
 
         #region GapSequences.Sedgewick1986
@@ -553,6 +624,15 @@ namespace SortCollectionUnitTest
         {
             var sortedList = randomIntegers.SortWithShellSort(SortingAlgorithm.GapSequences.Sedgewick1986);
             Assert.IsTrue(SupportSortingTest.CheckRandomIntegerList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void ShellSortIntegerRandomRange_Sedgewick1986_Test()
+        {
+            var sortedList = randomIntegers.SortWithShellSort(index, count, SortingAlgorithm.GapSequences.Sedgewick1986);
+            var standardSort = randomIntegers.ToList();
+            standardSort.Sort(index, count, Comparer<int>.Default);
+            Assert.IsTrue(standardSort.SequenceEqual(sortedList));
         }
 
         #endregion
@@ -622,6 +702,15 @@ namespace SortCollectionUnitTest
             Assert.IsTrue(SupportSortingTest.CheckRandomIntegerList(sortedList.ToList()));
         }
 
+        [TestMethod]
+        public void ShellSortIntegerRandomRange_Tokuda_Test()
+        {
+            var sortedList = randomIntegers.SortWithShellSort(index, count, SortingAlgorithm.GapSequences.Tokuda);
+            var standardSort = randomIntegers.ToList();
+            standardSort.Sort(index, count, Comparer<int>.Default);
+            Assert.IsTrue(standardSort.SequenceEqual(sortedList));
+        }
+
         #endregion
 
         #region GapSequences.Ciura
@@ -687,6 +776,15 @@ namespace SortCollectionUnitTest
         {
             var sortedList = randomIntegers.SortWithShellSort(SortingAlgorithm.GapSequences.Ciura);
             Assert.IsTrue(SupportSortingTest.CheckRandomIntegerList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void ShellSortIntegerRandomRange_Ciura_Test()
+        {
+            var sortedList = randomIntegers.SortWithShellSort(index, count, SortingAlgorithm.GapSequences.Ciura);
+            var standardSort = randomIntegers.ToList();
+            standardSort.Sort(index, count, Comparer<int>.Default);
+            Assert.IsTrue(standardSort.SequenceEqual(sortedList));
         }
 
         #endregion

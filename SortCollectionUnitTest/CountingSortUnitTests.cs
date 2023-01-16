@@ -1,7 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Reflection;
 
 namespace SortCollectionUnitTest
 {
@@ -11,6 +13,8 @@ namespace SortCollectionUnitTest
         private List<int> integers = new();
         private List<int> randomIntegers = new();
         private List<Car> cars = new();
+        private int index = default;
+        private int count = default;
 
         [TestInitialize]
         public void TestInitialize()
@@ -18,6 +22,10 @@ namespace SortCollectionUnitTest
             integers = SupportSortingTest.GenerateSmallIntegers();
             randomIntegers = SupportSortingTest.CreateRandomArray(10000, 1, 10000).ToList();
             cars = SupportSortingTest.GenerateCars();
+
+            Random random = new();
+            index = random.Next(1000, 4000);
+            count = random.Next(1000, 5000);
         }
 
         [TestMethod]
@@ -53,6 +61,15 @@ namespace SortCollectionUnitTest
         {
             var sortedList = randomIntegers.SortWithCountingSort();
             Assert.IsTrue(SupportSortingTest.CheckRandomIntegerList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void CountingSortIntegerRandomRangeTest()
+        {
+            var sortedList = randomIntegers.SortWithCountingSort(index, count);
+            var standardSort = randomIntegers.ToList();
+            standardSort.Sort(index, count, Comparer<int>.Default);
+            Assert.IsTrue(standardSort.SequenceEqual(sortedList));
         }
     }
 }

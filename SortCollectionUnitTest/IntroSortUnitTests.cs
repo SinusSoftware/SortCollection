@@ -12,6 +12,8 @@ namespace SortCollectionUnitTest
         private List<int> randomIntegers = new();
         private List<string> greekAlphabet = new();
         private List<Car> cars = new();
+        private int index = default;
+        private int count = default;
 
         [TestInitialize]
         public void TestInitialize()
@@ -20,6 +22,10 @@ namespace SortCollectionUnitTest
             randomIntegers = SupportSortingTest.CreateRandomArray(10000, 1, 10000).ToList();
             greekAlphabet = SupportSortingTest.GenerateGreekAlphabet();
             cars = SupportSortingTest.GenerateCars();
+
+            Random random = new();
+            index = random.Next(1000, 4000);
+            count = random.Next(1000, 5000);
         }
 
         [TestMethod]
@@ -106,6 +112,15 @@ namespace SortCollectionUnitTest
 
             var sortedList = values.SortWithIntroSort();
             Assert.IsTrue(SupportSortingTest.CheckRandomIntegerList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void IntroSortIntegerRandomRangeTest()
+        {
+            var sortedList = randomIntegers.SortWithIntroSort(index, count);
+            var standardSort = randomIntegers.ToList();
+            standardSort.Sort(index, count, Comparer<int>.Default);
+            Assert.IsTrue(standardSort.SequenceEqual(sortedList));
         }
     }
 }

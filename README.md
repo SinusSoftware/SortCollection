@@ -99,7 +99,11 @@ var insertionSortedList = integers.SortWithInsertionSort(2, 6);
 var heapSortedList = integers.SortWithHeapSort(2, 6, new SortDescending());
 
 # Example Contingsort with Object "Car"
-var sortedList = cars.SortWithCountingSort(car => car.Year);
+var countingSortedList = cars.SortWithCountingSort(car => car.Year);
+
+# Example Contingsort with Object "Car"
+var radixSortedList = cars.SortWithRadixSort(2, 6, car => car.Year);
+
 
 ```
 

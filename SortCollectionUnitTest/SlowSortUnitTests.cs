@@ -1,7 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Reflection;
 
 namespace SortCollectionUnitTest
 {
@@ -11,6 +13,8 @@ namespace SortCollectionUnitTest
         private List<int> integers = new();
         private List<string> greekAlphabet = new();
         private List<Car> cars = new();
+        private int index = default;
+        private int count = default;
 
         [TestInitialize]
         public void TestInitialize()
@@ -18,6 +22,10 @@ namespace SortCollectionUnitTest
             integers = SupportSortingTest.GenerateSmallIntegers();
             greekAlphabet = SupportSortingTest.GenerateGreekAlphabet();
             cars = SupportSortingTest.GenerateCars();
+
+            Random random = new();
+            index = random.Next(1, 4);
+            count = random.Next(2, 5);
         }
 
         [TestMethod]
@@ -74,6 +82,15 @@ namespace SortCollectionUnitTest
         {
             var sortedList = greekAlphabet.SortWithSlowSort();
             Assert.IsTrue(SupportSortingTest.CheckAlphabet(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void SlowSortIntegerRandomRange_Shell_Test()
+        {
+            var sortedList = integers.SortWithSlowSort(index, count);
+            var standardSort = integers.ToList();
+            standardSort.Sort(index, count, Comparer<int>.Default);
+            Assert.IsTrue(standardSort.SequenceEqual(sortedList));
         }
 
 

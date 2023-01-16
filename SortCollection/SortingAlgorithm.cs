@@ -12,7 +12,6 @@ namespace System
     [ExcludeFromCodeCoverage]
     public static class SortingAlgorithm
     {
-
         #region BubbleSort
 
         /// <summary>
@@ -1233,22 +1232,18 @@ namespace System
 
             T[] sortMe = source.ToArray();
 
-
             int partitionSize = Partition(ref sortMe, index, count - 1, comparer);
 
             if (partitionSize < 16)
             {
-                sortMe = SortWithInsertionSort(sortMe.ToList(), index, count, comparer).ToArray();
+                return SortWithInsertionSort(source, index, count, comparer);
             }
             else if (partitionSize > (2 * Math.Log(sortMe.Length)))
             {
-                sortMe = SortWithHeapSort(sortMe.ToList(), index, count, comparer).ToArray();
+                return SortWithHeapSort(source, index, count, comparer);
             }
-            else
-            {
-                QuickSort(ref sortMe, index, count - 1, comparer);
-            }
-
+           
+            QuickSort(ref sortMe, index, count - 1, comparer);
             return sortMe;
         }
 
