@@ -7,7 +7,7 @@ SortCollection is a dll with different sorting algorithms. Currently supported:
 * Mergesort
 * Countingsort
 * Shellsort with different gap sequences
-* Radixsort with different numbers (2, 4, 8, 16) of bits for group
+* Radixsort with different bit numbers (2, 4, 8, 16) for group
 * Slowsort
 * Introsort
 * Timsort
@@ -101,7 +101,7 @@ var heapSortedList = integers.SortWithHeapSort(2, 6, new SortDescending());
 # Example Contingsort with Object "Car"
 var countingSortedList = cars.SortWithCountingSort(car => car.Year);
 
-# Example Contingsort with Object "Car"
+# Example Contingsort with rang and Object "Car"
 var radixSortedList = cars.SortWithRadixSort(2, 6, car => car.Year);
 
 

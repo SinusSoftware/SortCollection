@@ -1230,21 +1230,22 @@ namespace System
                 throw new ArgumentException("Count must be greater than number of elemets in source minus index");
             }
 
-            T[] sortMe = source.ToArray();
+            T[] partitionSort = source.ToArray();
 
-            int partitionSize = Partition(ref sortMe, index, count - 1, comparer);
+            int partitionSize = Partition(ref partitionSort, index, count - 1, comparer);
 
             if (partitionSize < 16)
             {
                 return SortWithInsertionSort(source, index, count, comparer);
             }
-            else if (partitionSize > (2 * Math.Log(sortMe.Length)))
+            else if (partitionSize > (2 * Math.Log(partitionSort.Length)))
             {
                 return SortWithHeapSort(source, index, count, comparer);
             }
-           
-            QuickSort(ref sortMe, index, count - 1, comparer);
-            return sortMe;
+
+            T[] sortMeQuickSort = source.ToArray();
+            QuickSort(ref sortMeQuickSort, index, count + index - 1, comparer);
+            return sortMeQuickSort;
         }
 
         private static void QuickSort<T>(ref T[] input, int left, int right, IComparer<T> comparer)

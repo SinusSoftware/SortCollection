@@ -106,6 +106,21 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
+        public void IntroSortQuickSortPathRangeTest()
+        {
+            var quickSortPath = new List<int>();
+            for (int i = 6000; i > 0; i--)
+            {
+                quickSortPath.Add(i);
+            }
+            quickSortPath.Add(17);
+
+            var sortedList = quickSortPath.SortWithIntroSort(1200, 567);
+            quickSortPath.Sort(1200, 567, Comparer<int>.Default);
+            Assert.IsTrue(quickSortPath.SequenceEqual(sortedList));
+        }
+
+        [TestMethod]
         public void IntroSortTestMinusAndPlusIntegerTest()
         {
             int[] values = new int[] { -1, 17, -7852, 6843, -534, 0, 42683, -1, 18, -6528, 346778, -3254, 345, 9732 };
