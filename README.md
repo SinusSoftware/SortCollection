@@ -101,7 +101,7 @@ var heapSortedList = integers.SortWithHeapSort(2, 6, new SortDescending());
 # Example Contingsort with Object "Car"
 var countingSortedList = cars.SortWithCountingSort(car => car.Year);
 
-# Example Contingsort with rang and Object "Car"
+# Example Contingsort with range and Object "Car"
 var radixSortedList = cars.SortWithRadixSort(2, 6, car => car.Year);
 
 
