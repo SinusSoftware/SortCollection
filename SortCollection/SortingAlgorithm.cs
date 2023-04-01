@@ -10,7 +10,7 @@ namespace System
     [ExcludeFromCodeCoverage]
     public static class SortingAlgorithm
     {
-
+        /*
         #region BubbleSort
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace System
         }
 
         #endregion
-
+        */
         #region SelectionSort
 
         /// <summary>

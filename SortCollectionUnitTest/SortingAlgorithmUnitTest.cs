@@ -24,6 +24,20 @@ namespace SortCollectionUnitTest
 
         }
 
+
+        [TestMethod]
+        public void Test2()
+        {
+
+            var test4 = integers.SortWithBubbleSortDescending();
+            var sortedList = integers.SortWithBubbleSortDescending(Comparer<int>.Default);
+            var test7 = cars.SortWithBubbleSortByDescending(c => c.Year);
+
+            
+            string test = "";
+            
+        }
+
         [TestMethod]
         public void Test()
         {
@@ -31,6 +45,7 @@ namespace SortCollectionUnitTest
             //IsNullOrEmpty
             //greekAlphabet.OrderBy();
 
+            /*
             var test1 = greekAlphabet.IsNullOrEmpty();
             var test2 = greekAlphabet.Where(w => w.IsNullOrEmpty()).FirstOrDefault();
             var test3 = greekAlphabet.Where(w => w.IsNullOrEmpty());
@@ -58,6 +73,7 @@ namespace SortCollectionUnitTest
             var test9 = cars.Where(w => w.Year > 2000).OrderBy(c => c.Make);
 
             string test = "";
+            */
         }
 
         [TestMethod]
