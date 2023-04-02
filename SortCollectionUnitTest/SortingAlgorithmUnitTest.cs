@@ -29,11 +29,15 @@ namespace SortCollectionUnitTest
         public void Test2()
         {
 
-            var test4 = integers.SortWithBubbleSortDescending();
-            var sortedList = integers.SortWithBubbleSortDescending(Comparer<int>.Default);
-            var test7 = cars.SortWithBubbleSortByDescending(c => c.Year);
+            var test1 = integers.SortWithBubbleSortDescending();
+            var sortedList1 = integers.SortWithBubbleSortDescending(Comparer<int>.Default);
+            var testBy1 = cars.SortWithBubbleSortByDescending(c => c.Year);
 
-            
+            var test2 = integers.SortWithSelectionSortDescending();
+            var sortedList2 = integers.SortWithSelectionSortDescending(Comparer<int>.Default);
+            var testBy2 = cars.SortWithSelectionSortByDescending(c => c.Year);
+
+
             string test = "";
             
         }
@@ -41,6 +45,13 @@ namespace SortCollectionUnitTest
         [TestMethod]
         public void Test()
         {
+           // var test1 = integers.SortWithQuickSort();
+
+            var sortedList = integers.SortWithQuickSort(2, 6, Comparer<int>.Default);
+            
+            Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
+
+            string test = "";
             //greekAlphabet.so
             //IsNullOrEmpty
             //greekAlphabet.OrderBy();
