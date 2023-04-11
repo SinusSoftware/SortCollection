@@ -89,7 +89,6 @@
 
         #endregion
 
-
         #region Descending
 
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]

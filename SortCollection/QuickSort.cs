@@ -67,7 +67,8 @@
             int order = descending ? 1 : -1;
             TSource[] sortMe = source.ToArray();
 
-
+            //QuickSortTest(ref sortMe, index, count - 1, comparer);
+            
             int startIndex = index;
             int endIndex = index + count - 1;
 
@@ -96,6 +97,7 @@
                     stack[++top] = endIndex;
                 }
             }
+            
             return sortMe;
         }
 
@@ -124,5 +126,40 @@
             a = b;
             b = temp;
         }
+
+        /*
+        private static void QuickSortTest<TSource, TKey>(ref TSource[] input, int left, int right, IComparer<TKey> comparer)
+        {
+            if (left < right)
+            {
+                int q = Partition(ref input, left, right, comparer);
+                QuickSortTest(ref input, left, q - 1, comparer);
+                QuickSortTest(ref input, q + 1, right, comparer);
+            }
+        }
+
+        private static int Partition<TSource, TKey>(ref TSource[] input, int left, int right, IComparer<TKey> comparer)
+        {
+            TSource pivot = input[right];
+            TSource temp;
+            int i = left;
+
+            for (int j = left; j < right; ++j)
+            {
+                if (comparer.Compare(input[j], pivot) <= 0)
+                {
+                    temp = input[j];
+                    input[j] = input[i];
+                    input[i] = temp;
+                    i++;
+                }
+            }
+
+            input[right] = input[i];
+            input[i] = pivot;
+
+            return i;
+        }
+        */
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace SortCollectionUnitTest
@@ -11,6 +12,7 @@ namespace SortCollectionUnitTest
     {
         private List<int> integers = new();
         private List<int> randomIntegers = new();
+        private List<uint> randomUIntegers = new();
         private List<string> greekAlphabet = new();
         private List<Car> cars = new();
 
@@ -18,7 +20,8 @@ namespace SortCollectionUnitTest
         public void TestInitialize()
         {
             integers = SupportSortingTest.GenerateSmallIntegers();
-            randomIntegers = SupportSortingTest.CreateRandomArray(10000, 1, 10000).ToList();
+            randomIntegers = SupportSortingTest.CreateRandomArray(1000000, 1, 1000000).ToList();
+            randomUIntegers = SupportSortingTest.CreateRandomArrayUInt(1000000, 1, 1000000).ToList();
             greekAlphabet = SupportSortingTest.GenerateGreekAlphabet();
             cars = SupportSortingTest.GenerateCars();
 
@@ -29,20 +32,41 @@ namespace SortCollectionUnitTest
         public void Test2()
         {
 
-            var test1 = integers.SortWithBubbleSortDescending();
-            var sortedList1 = integers.SortWithBubbleSortDescending(Comparer<int>.Default);
-            var testBy1 = cars.SortWithBubbleSortByDescending(c => c.Year);
+            //var test1 = integers.SortWithBubbleSortDescending();
+            //var sortedList1 = integers.SortWithBubbleSortDescending(Comparer<int>.Default);
+            //var testBy1 = cars.SortWithBubbleSortByDescending(c => c.Year);
 
-            var test2 = integers.SortWithSelectionSortDescending();
-            var sortedList2 = integers.SortWithSelectionSortDescending(Comparer<int>.Default);
-            var testBy2 = cars.SortWithSelectionSortByDescending(c => c.Year);
+            //var test2 = integers.SortWithSelectionSortDescending();
+            //var sortedList2 = integers.SortWithSelectionSortDescending(Comparer<int>.Default);
+            //var testBy2 = cars.SortWithSelectionSortByDescending(c => c.Year);
+
+            //var test3 = integers.SortWithInsertionSortDescending();
+            //var sortedList3 = integers.SortWithInsertionSortDescending(Comparer<int>.Default);
+            //var testBy3 = cars.SortWithInsertionSortByDescending(c => c.Year);
 
 
             string test = "";
-            
+
+
         }
 
         [TestMethod]
+        public void RunTime_Test()
+        {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+            var test = randomUIntegers.SortWithQuickSort();
+            stopWatch.Stop();
+            TimeSpan ts = stopWatch.Elapsed;
+            stopWatch.Restart();
+            // randomIntegers.Sort();
+            var test2 = randomUIntegers.SortWithRadixSort();
+            stopWatch.Stop();
+            TimeSpan ts2 = stopWatch.Elapsed;
+            string end = "";
+        }
+
+            [TestMethod]
         public void Test()
         {
            // var test1 = integers.SortWithQuickSort();

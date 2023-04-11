@@ -197,6 +197,7 @@ namespace System
 
         #endregion
         */
+        /*
         #region InsertionSort
 
         /// <summary>
@@ -289,13 +290,13 @@ namespace System
         }
 
         #endregion
-
+        */
         #region SlowSort
 
         /// <summary>
         /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
         /// using the default comparer.
-        /// SlowSort is very, very slow. It is more a gag algorithmn. Don't use it!
+        /// SlowSort is very, very slow. It's more a gag algorithmn. Don't use it!
         /// Stable: No
         /// </summary>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
@@ -972,7 +973,7 @@ namespace System
 
             if (partitionSize < 16)
             {
-                sortMe = SortWithInsertionSort(sortMe.ToList(), index, count, comparer).ToArray();
+                sortMe = InsertionSort.SortWithInsertionSort(sortMe.ToList(), index, count, comparer).ToArray();
             }
             else if (partitionSize > (2 * Math.Log(sortMe.Length)))
             {
@@ -1098,7 +1099,7 @@ namespace System
             int n = count + index;
             for (int i = 0 + index; i < n; i += RUN)
             {
-                arr = SortWithInsertionSort(arr, i, Math.Min(n - i, RUN), comparer);
+                arr = InsertionSort.SortWithInsertionSort(arr, i, Math.Min(n - i, RUN), comparer);
             }
 
             T[] arr2 = arr.ToArray();
