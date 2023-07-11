@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
@@ -525,7 +526,6 @@ namespace System
 
         #endregion
         */
-
         #region HeapSort
 
         /// <summary>
@@ -559,6 +559,23 @@ namespace System
         public static IEnumerable<T> SortWithHeapSort<T>(this IEnumerable<T> source, IComparer<T> comparer)
         {
             return SortWithHeapSort(source, 0, source.Count(), comparer);
+        }
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the default comparer.
+        /// Worst case time O(nlg⁡n)O
+        /// Best case time O(n)
+        /// Average case time O(nlg⁡n)
+        /// Space O(1)
+        /// Stable: No
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithHeapSort<T>(this IEnumerable<T> source, int index, int count)
+        {
+            return SortWithHeapSort(source, index, count, Comparer<T>.Default);
         }
 
         /// <summary>
@@ -682,6 +699,23 @@ namespace System
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
         /// <param name="count">The length of the range to sort.</param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithMergeSort<T>(this IEnumerable<T> source, int index, int count)
+        {
+            return SortWithMergeSort(source, index, count, Comparer<T>.Default);
+        }
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the default comparer.
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)
+        /// Average Time Complexity[Big - theta]: O(n* log n)
+        /// Space Complexity: O(n)
+        /// Stable: Yes
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
         /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
         /// elements or null to use the default comparer System.Collections.Generic.Comparer.Default.
         /// </param>
@@ -769,43 +803,103 @@ namespace System
         /// <summary>
         /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
         /// This algorithm is for positiv integers only
-        /// Time complexity: O(N+K)
+        /// Time complexity: O(n+k)
         /// Worst case: when data is skewed and range is large
         /// Best Case: When all elements are same
-        /// Average Case: O(N+K) (N & K equally dominant)
-        /// Space Complexity: O(K)
+        /// Average Case: O(n+k) (n & k equally dominant)
+        /// Space Complexity: O(k)
         /// where:
-        /// N is the number of elements
-        /// K is the range of elements(K = largest element - smallest element)
+        /// n is the number of elements
+        /// k is the range of elements(k = largest element - smallest element)
         /// Stable: Yes
         /// </summary>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<int> SortWithCountingSort(this IEnumerable<int> source)
         {
-            return SortWithCountingSort(source, source => source);
+            return SortWithCountingSort(source, 0, source.Count(), source => source);
         }
 
         /// <summary>
         /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
         /// This algorithm is for positiv integers only
-        /// Time complexity: O(N+K)
+        /// Time complexity: O(n+k)
         /// Worst case: when data is skewed and range is large
         /// Best Case: When all elements are same
-        /// Average Case: O(N+K) (N & K equally dominant)
-        /// Space Complexity: O(K)
+        /// Average Case: O(n+k) (n & k equally dominant)
+        /// Space Complexity: O(k)
         /// where:
-        /// N is the number of elements
-        /// K is the range of elements(K = largest element - smallest element)
+        /// n is the number of elements
+        /// k is the range of elements(k = largest element - smallest element)
         /// Stable: Yes
         /// </summary>
-        /// <param name="sortProperty">The sorting property</param>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithCountingSort<T>(this IEnumerable<T> source, Func<T, int> sortProperty)
         {
+            return SortWithCountingSort(source, 0, source.Count(), sortProperty);
+        }
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// This algorithm is for positiv integers only
+        /// Time complexity: O(n+k)
+        /// Worst case: when data is skewed and range is large
+        /// Best Case: When all elements are same
+        /// Average Case: O(n+k) (n & k equally dominant)
+        /// Space Complexity: O(k)
+        /// where:
+        /// n is the number of elements
+        /// k is the range of elements(k = largest element - smallest element)
+        /// Stable: Yes
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<int> SortWithCountingSort(this IEnumerable<int> source, int index, int count)
+        {
+            return SortWithCountingSort(source, index, count, source => source);
+        }
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// This algorithm is for positiv integers only
+        /// Time complexity: O(n+k)
+        /// Worst case: when data is skewed and range is large
+        /// Best Case: When all elements are same
+        /// Average Case: O(n+k) (n & k equally dominant)
+        /// Space Complexity: O(k)
+        /// where:
+        /// n is the number of elements
+        /// k is the range of elements(k = largest element - smallest element)
+        /// Stable: Yes
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/>
+        /// </exception>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithCountingSort<T>(this IEnumerable<T> source, int index, int count, Func<T, int> sortProperty)
+        {
+            if (index < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index), index, "The index can't be less than 0.");
+            }
+
+            if (count < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(count), count, "The count can't be less than 0.");
+            }
+
+            if (source.Count() - index < count)
+            {
+                throw new ArgumentException("Count must be greater than number of elemets in source minus index");
+            }
+
             List<int> buckets = new();
 
             T[] sortMe = source.ToArray();
-            for (int i = 0; i < sortMe.Length; i++)
+            for (int i = 0 + index; i < count + index; i++)
             {
                 int value = sortProperty(sortMe[i]);
 
@@ -821,12 +915,12 @@ namespace System
                 startIndex[j] = buckets[j - 1] + startIndex[j - 1];
             }
 
-            T[] result = new T[sortMe.Length];
-            for (int i = 0; i < sortMe.Length; i++)
+            T[] result = source.ToArray();
+            for (int i = 0 + index; i < count + index; i++)
             {
-                int theVal = sortProperty(sortMe[i]);
-                int destIndex = startIndex[theVal]++;
-                result[destIndex] = sortMe[i];
+                int sortValue = sortProperty(sortMe[i]);
+                int destinationIndex = startIndex[sortValue]++;
+                result[destinationIndex + index] = sortMe[i];
             }
 
             return result;
@@ -839,72 +933,148 @@ namespace System
         /// <summary>
         /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
         /// This algorithm is for positiv integers only
+        /// Worst case: O(n2)
+        /// Best Case: O(A(n+b)) If b equals O(n), the time complexity is O(a*n)
+        /// Average Case: O(p*(n+d))
+        /// Space Complexity: O(n+k)
+        /// where:
+        /// n is the number of elements
+        /// k is the range of elements(k = largest element - smallest element)
+        /// There are 'p' passes, and each digit can have up to 'd' different values
         /// Stable: Yes
         /// </summary>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static IEnumerable<uint> SortWithRadixSort(this IEnumerable<uint> source)
+        public static IEnumerable<uint> SortWithRadixSort(this IEnumerable<uint> source, GroupBitLength groupLength = GroupBitLength.FourBits)
         {
-            return SortWithRadixSort(source, source => source);
+            return SortWithRadixSort(source, 0, source.Count(), source => source, groupLength);
         }
 
         /// <summary>
         /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
         /// This algorithm is for positiv integers only
+        /// Worst case: O(n2)
+        /// Best Case: O(A(n+b)) If b equals O(n), the time complexity is O(a*n)
+        /// Average Case: O(p*(n+d))
+        /// Space Complexity: O(n+k)
+        /// where:
+        /// n is the number of elements
+        /// k is the range of elements(k = largest element - smallest element)
+        /// There are 'p' passes, and each digit can have up to 'd' different values
+        /// Stable: Yes
+        /// </summary>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithRadixSort<T>(this IEnumerable<T> source, Func<T, uint> sortProperty, GroupBitLength groupLength = GroupBitLength.FourBits)
+        {
+            return SortWithRadixSort(source, 0, source.Count(), sortProperty, groupLength);
+        }
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// This algorithm is for positiv integers only
+        /// Worst case: O(n2)
+        /// Best Case: O(A(n+b)) If b equals O(n), the time complexity is O(a*n)
+        /// Average Case: O(p*(n+d))
+        /// Space Complexity: O(n+k)
+        /// where:
+        /// n is the number of elements
+        /// k is the range of elements(k = largest element - smallest element)
+        /// There are 'p' passes, and each digit can have up to 'd' different values
+        /// Stable: Yes
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<uint> SortWithRadixSort(this IEnumerable<uint> source, int index, int count, GroupBitLength groupLength = GroupBitLength.FourBits)
+        {
+            return SortWithRadixSort(source, index, count, source => source, groupLength);
+        }
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// This algorithm is for positiv integers only
+        /// Worst case: O(n2)
+        /// Best Case: O(A(n+b)) If b equals O(n), the time complexity is O(a*n)
+        /// Average Case: O(p*(n+d))
+        /// Space Complexity: O(n+k)
+        /// where:
+        /// n is the number of elements
+        /// k is the range of elements(k = largest element - smallest element)
+        /// There are 'p' passes, and each digit can have up to 'd' different values
         /// Stable: Yes
         /// </summary>
         /// <param name="sortProperty">The sorting property</param>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/>
+        /// </exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static IEnumerable<T> SortWithRadixSort<T>(this IEnumerable<T> source, Func<T, uint> sortProperty)
+        public static IEnumerable<T> SortWithRadixSort<T>(this IEnumerable<T> source, int index, int count, Func<T, uint> sortProperty, GroupBitLength groupLength = GroupBitLength.FourBits)
         {
-            T[] sortMe = source.ToArray();
-
-            T[] helper = new T[sortMe.Length];
-
-            // number of bits our group will be long 
-            int r = 4; // try to set this also to 2, 8 or 16 to see if it is quicker or not 
-
-            // number of bits of a C# int 
-            int b = 32;
-
-            int[] count = new int[1 << r];
-            int[] prefix = new int[1 << r];
-
-            // number of groups
-            int groups = (int)Math.Ceiling(b / (double)r);
-
-            // the mask to identify groups 
-            int mask = (1 << r) - 1;
-
-            // the algorithm: 
-            for (int c = 0, shift = 0; c < groups; c++, shift += r)
+            if (index < 0)
             {
-                // reset count array 
-                for (int j = 0; j < count.Length; j++)
-                    count[j] = 0;
+                throw new ArgumentOutOfRangeException(nameof(index), index, "The index can't be less than 0.");
+            }
 
-                // counting elements of the c-th group 
-                for (int i = 0; i < sortMe.Length; i++)
+            if (count < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(count), count, "The count can't be less than 0.");
+            }
+
+            if (source.Count() - index < count)
+            {
+                throw new ArgumentException("Count must be greater than number of elemets in source minus index");
+            }
+
+            T[] sortMe = source.ToArray();
+            T[] helper = source.ToArray();
+
+            int groupLengthInBit = (int)groupLength;
+            int numberOfIntegerBits = 32;
+
+            int[] countBitWise = new int[1 << groupLengthInBit];
+            int[] prefix = new int[1 << groupLengthInBit];
+
+            int groupsNumber = (int)Math.Ceiling(numberOfIntegerBits / (double)groupLengthInBit);
+            int mask = (1 << groupLengthInBit) - 1;
+
+            for (int c = 0, shift = 0; c < groupsNumber; c++, shift += groupLengthInBit)
+            {
+                for (int j = 0; j < countBitWise.Length; j++)
+                    countBitWise[j] = 0;
+
+                for (int i = 0 + index; i < count + index; i++)
                 {
                     uint value = sortProperty(sortMe[i]);
-                    count[(value >> shift) & mask]++;
+                    countBitWise[(value >> shift) & mask]++;
                 }
 
-                // calculating prefixes 
                 prefix[0] = 0;
-                for (int i = 1; i < count.Length; i++)
-                    prefix[i] = prefix[i - 1] + count[i - 1];
+                for (int i = 1; i < countBitWise.Length; i++)
+                    prefix[i] = prefix[i - 1] + countBitWise[i - 1];
 
-                // from a[] to t[] elements ordered by c-th group 
-                for (int i = 0; i < sortMe.Length; i++)
+                for (int i = index; i < count + index; i++)
                 {
                     uint value = sortProperty(sortMe[i]);
-                    helper[prefix[(value >> shift) & mask]++] = sortMe[i];
+                    helper[prefix[(value >> shift) & mask]++ + index] = sortMe[i];
                 }
 
-                // a[]=t[] and start again until the last group 
                 helper.CopyTo(sortMe, 0);
             }
             return sortMe;
+        }
+
+        public enum GroupBitLength
+        {
+            [Description("Group will be 2 Bits long")]
+            TwoBits = 2,
+            [Description("Group will be 4 Bits long")]
+            FourBits = 4,
+            [Description("Group will be 8 Bits long")]
+            EightBits = 8,
+            [Description("Group will be 16 Bits long")]
+            SixteenBits = 16
         }
 
         #endregion
@@ -913,6 +1083,7 @@ namespace System
 
         /// <summary>
         /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the default comparer.
         /// This algorithm use insertionsort, heapsort and quicksort
         /// Stable: No
         /// </summary>
@@ -935,6 +1106,20 @@ namespace System
         public static IEnumerable<T> SortWithIntroSort<T>(this IEnumerable<T> source, IComparer<T> comparer)
         {
             return SortWithIntroSort(source, 0, source.Count(), comparer);
+        }
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the default comparer.
+        /// This algorithm use insertionsort, heapsort and quicksort
+        /// Stable: No
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithIntroSort<T>(this IEnumerable<T> source, int index, int count)
+        {
+            return SortWithIntroSort(source, index, count, Comparer<T>.Default);
         }
 
         /// <summary>
@@ -969,25 +1154,22 @@ namespace System
                 throw new ArgumentException("Count must be greater than number of elemets in source minus index");
             }
 
-            T[] sortMe = source.ToArray();
+            T[] partitionSort = source.ToArray();
 
-
-            int partitionSize = Partition(ref sortMe, index, count - 1, comparer);
+            int partitionSize = Partition(ref partitionSort, index, count - 1, comparer);
 
             if (partitionSize < 16)
             {
-                sortMe = InsertionSort.SortWithInsertionSort(sortMe.ToList(), index, count, comparer).ToArray();
+                return InsertionSort.SortWithInsertionSort(source, index, count, comparer);
             }
-            else if (partitionSize > (2 * Math.Log(sortMe.Length)))
+            else if (partitionSize > (2 * Math.Log(partitionSort.Length)))
             {
-                sortMe = SortWithHeapSort(sortMe.ToList(), index, count, comparer).ToArray();
-            }
-            else
-            {
-                QuickSort(ref sortMe, index, count - 1, comparer);
+                return SortWithHeapSort(source, index, count, comparer);
             }
 
-            return sortMe;
+            T[] sortMeQuickSort = source.ToArray();
+            QuickSort(ref sortMeQuickSort, index, count + index - 1, comparer);
+            return sortMeQuickSort;
         }
 
         private static void QuickSort<T>(ref T[] input, int left, int right, IComparer<T> comparer)
@@ -1057,6 +1239,23 @@ namespace System
         public static IEnumerable<T> SortWithTimSort<T>(this IEnumerable<T> source, IComparer<T> comparer)
         {
             return SortWithTimSort(source, 0, source.Count(), comparer);
+        }
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
+        /// using the default comparer.
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)
+        /// Best Case Time Complexity[Big - omega]: O(n)
+        /// Average Time Complexity[Big - theta]: O(n* log n)
+        /// Space Complexity: O(n)
+        /// Stable: Yes
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithTimSort<T>(this IEnumerable<T> source, int index, int count)
+        {
+            return SortWithTimSort(source, index, count, Comparer<T>.Default);
         }
 
         /// <summary>

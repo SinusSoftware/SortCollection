@@ -1,4 +1,4 @@
-﻿=== SortCollection ===
+﻿﻿=== SortCollection ===
 
 Author: Dirk Tamke
 eMail: SinusSoftware@gmx.net
@@ -17,7 +17,7 @@ SortCollection is a dll with different sorting algorithms. Currently supported:
 * Mergesort
 * Countingsort
 * Shellsort with different gap sequences
-* Radixsort
+* Radixsort with different bit numbers (2, 4, 8, 16) for group
 * Slowsort
 * Introsort
 * Timsort
@@ -31,6 +31,8 @@ var heapSortedList = list.SortWithHeapSort();
 * Add Slowsort
 * Add Introsort
 * Add Timsort
+* Add Function '...Sort(index, count)' for all sorting algorithms
+* Add Enum 'GroupBitLength' for Radixsort
 
 = 1.1 =
 * Add Shellsort with following gap sequences:
