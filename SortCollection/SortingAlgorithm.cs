@@ -291,6 +291,7 @@ namespace System
 
         #endregion
         */
+        /*
         #region SlowSort
 
         /// <summary>
@@ -381,7 +382,8 @@ namespace System
         }
 
         #endregion
-
+        */
+        /*
         #region ShellSort
 
         /// <summary>
@@ -522,6 +524,7 @@ namespace System
 
 
         #endregion
+        */
 
         #region HeapSort
 

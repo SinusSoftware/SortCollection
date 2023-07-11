@@ -2,8 +2,13 @@
 {
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
 
+    /// <summary>
+    /// Wraps static sort apis into a uniform extension method api.
+    /// </summary>
+    [ExcludeFromCodeCoverage]
     public static partial class InsertionSort
     {
         #region Ascending
@@ -124,8 +129,6 @@
 
         #endregion
 
-
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         private static IEnumerable<TSource> SortWithInsertionSort<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, bool descending)
         {
             if (index < 0)
