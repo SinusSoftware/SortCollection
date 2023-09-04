@@ -526,6 +526,7 @@ namespace System
 
         #endregion
         */
+        /*
         #region HeapSort
 
         /// <summary>
@@ -652,6 +653,7 @@ namespace System
         }
 
         #endregion
+        */
 
         #region MergeSort
 
@@ -1164,7 +1166,7 @@ namespace System
             }
             else if (partitionSize > (2 * Math.Log(partitionSort.Length)))
             {
-                return SortWithHeapSort(source, index, count, comparer);
+                return HeapSort.SortWithHeapSort(source, index, count, comparer);
             }
 
             T[] sortMeQuickSort = source.ToArray();
