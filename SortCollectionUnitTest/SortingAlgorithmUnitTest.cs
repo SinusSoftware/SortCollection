@@ -143,16 +143,8 @@ namespace SortCollectionUnitTest
         [TestMethod]
         public void MergeSortCarSortByDefaultTest()
         {
-            //var sortedList2 = SortCollection.MergeSort.SortWithMergeSort(cars);
-
-            //var sortedList = cars.SortWithMergeSort();
-            //Assert.IsTrue(SupportSortingTest.CheckCarsSortByMakeAscending(sortedList.ToList()));
-
-            //var sortedList2 = cars.SortWithMergeSortDescending();
-
-            var sortedList = integers.SortWithMergeSort();
-
-            var sortedList2 = integers.SortWithMergeSortDescending();
+          
+            var sortedList = integers.SortWithCountingSort();
 
             var test = "";
         }

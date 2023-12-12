@@ -802,7 +802,7 @@ namespace System
        // #endregion
 
         
-
+        /*
         #region CountingSort
 
         /// <summary>
@@ -932,6 +932,8 @@ namespace System
         }
 
         #endregion
+        */
+
 
         #region RadixSort     
 
