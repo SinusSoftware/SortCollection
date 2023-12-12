@@ -654,7 +654,6 @@ namespace System
 
         #endregion
         */
-        
         /*
         #region MergeSort
 
@@ -763,8 +762,8 @@ namespace System
                 Merge(input, left, middle, right, comparer);
             }
         }
-        
         */
+        
         private static void Merge<T>(T[] input, int left, int middle, int right, IComparer<T> comparer)
         {
             T[] leftArray = new T[middle - left + 1];
@@ -800,7 +799,7 @@ namespace System
             }
         }
 
-        //#endregion
+       // #endregion
 
         
 

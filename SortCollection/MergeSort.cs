@@ -1,4 +1,5 @@
 ﻿namespace System
+//  namespace SortCollection
 {
     using System;
     using System.Collections.Generic;
@@ -202,7 +203,7 @@
                     input[k] = leftArray[i];
                     i++;
                 }
-                if (comparer.Compare(sortProperty(leftArray[i]), sortProperty(rightArray[j])) <= order)
+                else if (comparer.Compare(sortProperty(leftArray[i]), sortProperty(rightArray[j])) == order || comparer.Compare(sortProperty(leftArray[i]), sortProperty(rightArray[j])) == 0)
                 {
                     input[k] = leftArray[i];
                     i++;
