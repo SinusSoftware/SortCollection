@@ -139,5 +139,14 @@ namespace SortCollectionUnitTest
 
         }
 
+
+        [TestMethod]
+        public void MergeSortCarSortByDefaultTest()
+        {
+            //var sortedList2 = SortCollection.MergeSort.SortWithMergeSort(cars);
+
+            var sortedList = cars.SortWithMergeSort();
+            Assert.IsTrue(SupportSortingTest.CheckCarsSortByMakeAscending(sortedList.ToList()));
+        }
     }
 }
