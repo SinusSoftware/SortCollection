@@ -52,10 +52,24 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
+        public void TimSortCarSortByMakeDescending2Test()
+        {
+            var sortedList = cars.SortWithTimSortDescending();
+            Assert.IsTrue(SupportSortingTest.CheckCarsSortByMakeDescending(sortedList.ToList()));
+        }
+
+        [TestMethod]
         public void TimSortIntegerTest()
         {
             var sortedList = integers.SortWithTimSort();
             Assert.IsTrue(SupportSortingTest.CheckIntegerList(sortedList.ToList()));
+        }
+        
+        [TestMethod]
+        public void TimSortSortIntegerDescendingTest()
+        {
+            var sortedList = integers.SortWithTimSortDescending();
+            Assert.IsTrue(SupportSortingTest.CheckIntegerDescendingList(sortedList.ToList()));
         }
 
         [TestMethod]
