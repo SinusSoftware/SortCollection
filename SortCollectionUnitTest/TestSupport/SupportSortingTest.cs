@@ -66,7 +66,40 @@ namespace SortCollectionUnitTest
             return true;
         }
 
+        public static bool CheckIntegerDescendingList(IList<int> values)
+        {
+            if (values[0] != 9 ||
+              values[1] != 8 ||
+              values[2] != 7 ||
+              values[3] != 6 ||
+              values[4] != 5 ||
+              values[5] != 4 ||
+              values[6] != 3 ||
+              values[7] != 2 ||
+              values[8] != 1)
+            {
+                return false;
+            }
+            return true;
+        }
+
         public static bool CheckIntegerRangeList(IList<int> values)
+        {
+            if (values[0] != 4 ||
+             values[1] != 7 ||
+             values[2] != 1 ||
+             values[3] != 2 ||
+             values[4] != 3 ||
+             values[5] != 6 ||
+             values[6] != 8 ||
+             values[7] != 9 ||
+             values[8] != 5)
+            {
+                return false;
+            }
+            return true;
+        }
+        public static bool CheckIntegerRangeList(IList<uint> values)
         {
             if (values[0] != 4 ||
              values[1] != 7 ||
@@ -219,6 +252,24 @@ namespace SortCollectionUnitTest
             }
             return true;
         }
+
+        public static bool CheckCarsSortByYearAscendingRangeUInt(IList<CarUInt> cars)
+        {
+            if (cars[0].Year != 1992 ||
+             cars[1].Year != 1988 ||
+             cars[2].Year != 1932 ||
+             cars[3].Year != 1999 ||
+             cars[4].Year != 2006 ||
+             cars[5].Year != 2015 ||
+             cars[6].Year != 2018 ||
+             cars[7].Year != 2020 ||
+             cars[8].Year != 1977)
+            {
+                return false;
+            }
+            return true;
+        }
+
 
         #endregion unsigend
 

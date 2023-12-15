@@ -29,7 +29,7 @@
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<int> SortWithCountingSort(this IEnumerable<int> source)
         {
-            return SortWithCountingSort(source, 0, source.Count(), source => source);
+            return SortWithCountingsort(source, 0, source.Count(), source => source);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithCountingSort<T>(this IEnumerable<T> source, Func<T, int> sortProperty)
         {
-            return SortWithCountingSort(source, 0, source.Count(), sortProperty);
+            return SortWithCountingsort(source, 0, source.Count(), sortProperty);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<int> SortWithCountingSort(this IEnumerable<int> source, int index, int count)
         {
-            return SortWithCountingSort(source, index, count, source => source);
+            return SortWithCountingsort(source, index, count, source => source);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@
         /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/>
         /// </exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static IEnumerable<T> SortWithCountingSort<T>(this IEnumerable<T> source, int index, int count, Func<T, int> sortProperty)
+        public static IEnumerable<T> SortWithCountingSortBy<T>(this IEnumerable<T> source, int index, int count, Func<T, int> sortProperty)
         {
             return SortWithCountingsort(source, index, count, sortProperty);
         }

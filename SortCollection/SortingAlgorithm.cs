@@ -934,7 +934,7 @@ namespace System
         #endregion
         */
 
-
+        /*
         #region RadixSort     
 
         /// <summary>
@@ -1086,6 +1086,9 @@ namespace System
 
         #endregion
 
+        */
+
+        /*
         #region IntroSort 
 
         /// <summary>
@@ -1213,6 +1216,8 @@ namespace System
         }
 
         #endregion
+
+        */
 
         #region TimSort
 

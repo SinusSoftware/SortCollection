@@ -1,7 +1,6 @@
 ﻿namespace System
 {
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
 
@@ -148,15 +147,8 @@
 
             comparer ??= Comparer<TKey>.Default;
             int order = descending ? -1 : 1;
-
-            Stopwatch stopWatch = new Stopwatch();
-            stopWatch.Start();
             var sortMe = source.ToArray();
-            stopWatch.Stop();
-            TimeSpan ts = stopWatch.Elapsed;
-
-
-
+  
             for (int i = index; i < count + index - 1; i++)
             {
                 for (int j = i + 1; j > index; j--)

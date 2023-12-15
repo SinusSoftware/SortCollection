@@ -69,13 +69,13 @@
         }
 
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static IEnumerable<TSource> SortWithHeapSort<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> sortProperty)
+        public static IEnumerable<TSource> SortWithHeapSortBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> sortProperty)
         {
             return SortWithHeapSort(source, 0, source.Count(), Comparer<TKey>.Default, sortProperty, false);
         }
 
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static IEnumerable<TSource> SortWithHeapSort<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, Func<TSource, TKey> sortProperty)
+        public static IEnumerable<TSource> SortWithHeapSortBy<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, Func<TSource, TKey> sortProperty)
         {
             return SortWithHeapSort(source, index, count, Comparer<TKey>.Default, sortProperty, false);
         }
@@ -109,56 +109,18 @@
         }
 
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static IEnumerable<TSource> SortWithHeapSortDescending<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> sortProperty)
+        public static IEnumerable<TSource> SortWithHeapSortByDescending<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> sortProperty)
         {
             return SortWithHeapSort(source, 0, source.Count(), Comparer<TKey>.Default, sortProperty, true);
         }
 
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static IEnumerable<TSource> SortWithHeapSortDescending<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, Func<TSource, TKey> sortProperty)
+        public static IEnumerable<TSource> SortWithHeapSortByDescending<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, Func<TSource, TKey> sortProperty)
         {
             return SortWithHeapSort(source, index, count, Comparer<TKey>.Default, sortProperty, true);
         }
 
         #endregion
-
-        //****
-        private static IEnumerable<TSource> SortWithBubbleSort2<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, bool descending)
-        {
-            if (index < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(index), index, "The index can't be less than 0.");
-            }
-
-            if (count < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(count), count, "The count can't be less than 0.");
-            }
-
-            if (source.Count() - index < count)
-            {
-                throw new ArgumentException("Count must be greater than number of elements in source minus index");
-            }
-
-            comparer ??= Comparer<TKey>.Default;
-            int order = descending ? -1 : 1;
-            TSource[] sortMe = source.ToArray();
-
-            for (int i = 1; i < count + index; i++)
-            {
-                for (int j = index; j < (count + index - i); j++)
-                {
-                    if (comparer.Compare(sortProperty(sortMe[j]), sortProperty(sortMe[j + 1])) == order)
-                    {
-                        TSource temp = sortMe[j];
-                        sortMe[j] = sortMe[j + 1];
-                        sortMe[j + 1] = temp;
-                    }
-                }
-            }
-
-            return sortMe;
-        }
 
         public static IEnumerable<TSource> SortWithHeapSort<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, bool descending)
         {
@@ -202,10 +164,8 @@
             int largest = i;
             int left = 2 * i + 1;
             int right = 2 * i + 2;
-            //if (left + index < n && comparer.Compare(list[left + index], list[largest + index]) == order)
             if (left + index < n && comparer.Compare(sortProperty(sortMe[left + index]), sortProperty(sortMe[largest + index])) == order)
                 largest = left;
-            //if (right + index < n && comparer.Compare(list[right + index], list[largest + index]) == order)
             if (right + index < n && comparer.Compare(sortProperty(sortMe[right + index]), sortProperty(sortMe[largest + index])) == order)
                 largest = right;
             if (largest != i)
@@ -215,8 +175,6 @@
                 sortMe[largest + index] = swap;
                 Heapify(sortMe, n, largest, index, comparer, sortProperty, order);
             }
-
-            //comparer.Compare(sortProperty(sortMe[j]), sortProperty(sortMe[j + 1])) == order
         }
     }
 }

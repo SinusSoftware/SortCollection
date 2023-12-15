@@ -40,5 +40,20 @@ namespace SortCollectionUnitTest
             var sortedList = randomIntegers.SortWithRadixSort();
             Assert.IsTrue(SupportSortingTest.CheckRandomIntegerListUInt(sortedList.ToList()));
         }
+
+        [TestMethod]
+        public void RadixSortIntegerRangeTest()
+        {
+            var sortedList = integers.SortWithRadixSort(2, 6);
+            Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void RadixSortCarSortByYearAscendingRangeTest()
+        {
+            var sortedList = cars.SortWithRadixSortBy(2, 6, car => car.Year);
+            Assert.IsTrue(SupportSortingTest.CheckCarsSortByYearAscendingRangeUInt(sortedList.ToList()));
+
+        }
     }
 }

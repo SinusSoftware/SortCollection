@@ -1,5 +1,4 @@
 ﻿namespace System
-//  namespace SortCollection
 {
     using System;
     using System.Collections.Generic;
@@ -90,13 +89,13 @@
         }
 
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static IEnumerable<TSource> SortWithMergeSort<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> sortProperty)
+        public static IEnumerable<TSource> SortWithMergeSortBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> sortProperty)
         {
             return SortWithMergeSort(source, 0, source.Count(), Comparer<TKey>.Default, sortProperty, false);
         }
 
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static IEnumerable<TSource> SortWithMergeSort<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, Func<TSource, TKey> sortProperty)
+        public static IEnumerable<TSource> SortWithMergeSortBy<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, Func<TSource, TKey> sortProperty)
         {
             return SortWithMergeSort(source, index, count, Comparer<TKey>.Default, sortProperty, false);
         }
@@ -130,13 +129,13 @@
         }
 
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static IEnumerable<TSource> SortWithMergeSortDescending<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> sortProperty)
+        public static IEnumerable<TSource> SortWithMergeSortByDescending<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> sortProperty)
         {
             return SortWithMergeSort(source, 0, source.Count(), Comparer<TKey>.Default, sortProperty, true);
         }
 
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static IEnumerable<TSource> SortWithMergeSortDescending<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, Func<TSource, TKey> sortProperty)
+        public static IEnumerable<TSource> SortWithMergeSortByDescending<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, Func<TSource, TKey> sortProperty)
         {
             return SortWithMergeSort(source, index, count, Comparer<TKey>.Default, sortProperty, true);
         }
