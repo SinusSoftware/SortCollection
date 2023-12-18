@@ -92,27 +92,27 @@
 
         private static IEnumerable<TSource> SortWithShakerSort<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, bool descending)
         {
-            if (index < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(index), index, "The index can't be less than 0.");
-            }
+            //if (index < 0)
+            //{
+            //    throw new ArgumentOutOfRangeException(nameof(index), index, "The index can't be less than 0.");
+            //}
 
-            if (count < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(count), count, "The count can't be less than 0.");
-            }
+            //if (count < 0)
+            //{
+            //    throw new ArgumentOutOfRangeException(nameof(count), count, "The count can't be less than 0.");
+            //}
 
-            if (source.Count() - index < count)
-            {
-                throw new ArgumentException("Count must be greater than number of elements in source minus index");
-            }
+            //if (source.Count() - index < count)
+            //{
+            //    throw new ArgumentException("Count must be greater than number of elements in source minus index");
+            //}
 
             comparer ??= Comparer<TKey>.Default;
             int order = descending ? -1 : 1;
 
             TSource[] sortMe = source.ToArray();
 
-            for (var i = index; i < count +index / 2; i++)
+            for (var i = index; i < count / 2; i++)
             {
                 var swapFlag = false;
 
@@ -133,8 +133,9 @@
                 }
 
                 //for (var j = count - 2 - i; j > i; j--)
-                for (var j = count - 2 - i + index; j > i; j--)
-                {
+                //for (var j = count - 2 - i + index+1; j > i; j--)
+                    for (var j = count - 2 - i + index; j > i; j--)
+                    {
                     //if (array[j - 1] > array[j])
                     if (comparer.Compare(sortProperty(sortMe[j - 1]), sortProperty(sortMe[j])) == order)
                     {

@@ -143,11 +143,16 @@ namespace SortCollectionUnitTest
         [TestMethod]
         public void MergeSortCarSortByDefaultTest()
         {
-            var sortedList = integers.SortWithShakerSort(2, 6, Comparer<int>.Default);
-            Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
+            var sortedList = integers.SortWithShakerSort(0, 9, Comparer<int>.Default);
 
-            //var sortedList = integers.SortWithBubbleSort();
-            //Assert.IsTrue(SupportSortingTest.CheckIntegerList(sortedList.ToList()));
+            //var sortedList = integers.SortWithShakerSort(2, 9, Comparer<int>.Default);
+            //var sortedList = integers.SortWithShakerSort(2, 8, Comparer<int>.Default);
+
+            var sortedList3 = integers.SortWithShakerSort(0, integers.Count, Comparer<int>.Default);
+            // Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
+
+            var sortedList2 = integers.SortWithBubbleSort(2,6);
+            Assert.IsTrue(SupportSortingTest.CheckIntegerList(sortedList2.ToList()));
         }
     }
 }
