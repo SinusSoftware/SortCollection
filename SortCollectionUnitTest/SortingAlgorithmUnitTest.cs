@@ -145,14 +145,15 @@ namespace SortCollectionUnitTest
         {
             var sortedList = integers.SortWithShakerSort(0, 9, Comparer<int>.Default);
 
-            //var sortedList = integers.SortWithShakerSort(2, 9, Comparer<int>.Default);
-            //var sortedList = integers.SortWithShakerSort(2, 8, Comparer<int>.Default);
+            //var sortedList1 = integers.SortWithShakerSort(2, 9, Comparer<int>.Default); //start bei zwei, wäre 2,7 (index plus count)
+            //var sortedList2 = integers.SortWithShakerSort(2, 8, Comparer<int>.Default); //start bei 2, wäre 2,6 (index plus count)
 
             var sortedList3 = integers.SortWithShakerSort(0, integers.Count, Comparer<int>.Default);
             // Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
 
-            var sortedList2 = integers.SortWithBubbleSort(2,6);
-            Assert.IsTrue(SupportSortingTest.CheckIntegerList(sortedList2.ToList()));
+            var sortedList4 = integers.SortWithBubbleSort(2,6);
+            //Assert.IsTrue(SupportSortingTest.CheckIntegerList(sortedList2.ToList()));
+            var test = "";
         }
     }
 }

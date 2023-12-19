@@ -29,7 +29,8 @@ var heapSortedList = list.SortWithHeapSort();
 
 = 1.3 =
 * Add Targetframework .Net8.0
-* Add signature for sorting algorithmns
+* Add more signature for sorting algorithmns
+* Add Shakersort
 
 = 1.2 =
 * Add Slowsort
