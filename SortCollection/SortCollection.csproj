@@ -9,7 +9,7 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Product>Dirk Tamke's SortCollection</Product>
     <PackageId>SinusSoftware.SortCollection</PackageId>
-    <Version>1.2.0</Version>
+    <Version>1.3.0</Version>
     <PackageReleaseNotes>This is release 1.2 with 11 different sorting algorithmn</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/SinusSoftware/SortCollection</PackageProjectUrl>
     <Authors>Dirk Tamke</Authors>
