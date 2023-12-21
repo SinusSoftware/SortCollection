@@ -21,6 +21,7 @@ SortCollection is a dll with different sorting algorithms. Currently supported:
 * Slowsort
 * Introsort
 * Timsort
+* Shakersort
 
 Example:
 var heapSortedList = list.SortWithHeapSort();
