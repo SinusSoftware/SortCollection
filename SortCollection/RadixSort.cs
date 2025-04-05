@@ -1,5 +1,4 @@
-﻿
-namespace System
+﻿namespace System
 {
     using System.Collections.Generic;
     using System.ComponentModel;

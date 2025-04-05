@@ -45,7 +45,7 @@ namespace SortCollectionUnitTest
             //var testBy3 = cars.SortWithInsertionSortByDescending(c => c.Year);
 
 
-            string test = "";
+            // string test = "";
 
 
         }
@@ -66,13 +66,13 @@ namespace SortCollectionUnitTest
             string end = "";
         }
 
-            [TestMethod]
+        [TestMethod]
         public void Test()
         {
-           // var test1 = integers.SortWithQuickSort();
+            // var test1 = integers.SortWithQuickSort();
 
             var sortedList = integers.SortWithQuickSort(2, 6, Comparer<int>.Default);
-            
+
             Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
 
             string test = "";
@@ -139,7 +139,6 @@ namespace SortCollectionUnitTest
 
         }
 
-
         [TestMethod]
         public void MergeSortCarSortByDefaultTest()
         {
@@ -151,7 +150,7 @@ namespace SortCollectionUnitTest
             var sortedList3 = integers.SortWithShakerSort(0, integers.Count, Comparer<int>.Default);
             // Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
 
-            var sortedList4 = integers.SortWithBubbleSort(2,6);
+            var sortedList4 = integers.SortWithBubbleSort(2, 6);
             //Assert.IsTrue(SupportSortingTest.CheckIntegerList(sortedList2.ToList()));
             var test = "";
         }
