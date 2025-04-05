@@ -29,7 +29,7 @@
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<int> SortWithCountingSort(this IEnumerable<int> source)
         {
-            return SortWithCountingsort(source, 0, source.Count(), source => source);
+            return SortWithCountingSort(source, 0, source.Count(), source => source);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithCountingSort<T>(this IEnumerable<T> source, Func<T, int> sortProperty)
         {
-            return SortWithCountingsort(source, 0, source.Count(), sortProperty);
+            return SortWithCountingSort(source, 0, source.Count(), sortProperty);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<int> SortWithCountingSort(this IEnumerable<int> source, int index, int count)
         {
-            return SortWithCountingsort(source, index, count, source => source);
+            return SortWithCountingSort(source, index, count, source => source);
         }
 
         /// <summary>
@@ -94,12 +94,17 @@
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithCountingSortBy<T>(this IEnumerable<T> source, int index, int count, Func<T, int> sortProperty)
         {
-            return SortWithCountingsort(source, index, count, sortProperty);
+            return SortWithCountingSort(source, index, count, sortProperty);
         }
 
         #endregion
 
-        private static IEnumerable<TSource> SortWithCountingsort<TSource>(this IEnumerable<TSource> source, int index, int count, Func<TSource, int> sortProperty)
+        //TODO:
+        #region Descending
+        
+        #endregion
+
+        private static IEnumerable<TSource> SortWithCountingSort<TSource>(this IEnumerable<TSource> source, int index, int count, Func<TSource, int> sortProperty)
         {
             if (index < 0)
             {

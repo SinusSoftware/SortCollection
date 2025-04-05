@@ -99,6 +99,11 @@
         }
         #endregion
 
+        //TODO:
+        #region Descending
+
+        #endregion
+
         private static IEnumerable<T> SortWithRadixsort<T>(this IEnumerable<T> source, int index, int count, Func<T, uint> sortProperty, GroupBitLength groupLength = GroupBitLength.FourBits)
         {
             if (index < 0)
