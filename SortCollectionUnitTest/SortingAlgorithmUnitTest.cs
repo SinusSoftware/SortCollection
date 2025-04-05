@@ -63,7 +63,7 @@ namespace SortCollectionUnitTest
             var test2 = randomUIntegers.SortWithRadixSort();
             stopWatch.Stop();
             TimeSpan ts2 = stopWatch.Elapsed;
-            string end = "";
+            //string end = "";
         }
 
         [TestMethod]
@@ -75,7 +75,7 @@ namespace SortCollectionUnitTest
 
             Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
 
-            string test = "";
+           // string test = "";
             //greekAlphabet.so
             //IsNullOrEmpty
             //greekAlphabet.OrderBy();
@@ -133,7 +133,7 @@ namespace SortCollectionUnitTest
             //Assert.IsTrue(SupportSortingTest.CheckRandomIntegerList(sortedList.ToList()));
             //var testTim = arr.SortWithTimSort();
 
-            string test = "";
+            //string test = "";
 
 
 
@@ -152,7 +152,7 @@ namespace SortCollectionUnitTest
 
             var sortedList4 = integers.SortWithBubbleSort(2, 6);
             //Assert.IsTrue(SupportSortingTest.CheckIntegerList(sortedList2.ToList()));
-            var test = "";
+            //var test = "";
         }
     }
 }

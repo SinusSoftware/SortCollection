@@ -165,6 +165,7 @@
 
         #endregion
 
+        private const int RUN = 32;
         private static IEnumerable<T> SortWithTimsort<T>(this IEnumerable<T> source, int index, int count, IComparer<T> comparer, bool descending)
         {
             if (index < 0)
@@ -218,8 +219,6 @@
             return arr2;
         }
 
-        public const int RUN = 32;
-
         private static void Merge<T>(T[] input, int left, int middle, int right, IComparer<T> comparer, int order)
         {
             T[] leftArray = new T[middle - left + 1];
@@ -255,6 +254,5 @@
                 }
             }
         }
-
     }
 }
