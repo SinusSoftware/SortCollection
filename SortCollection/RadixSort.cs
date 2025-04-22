@@ -29,7 +29,7 @@
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<uint> SortWithRadixSort(this IEnumerable<uint> source, GroupBitLength groupLength = GroupBitLength.FourBits)
         {
-            return SortWithRadixsort(source, 0, source.Count(), source => source, groupLength);
+            return SortWithRadixSort(source, 0, source.Count(), source => source, groupLength);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithRadixSort<T>(this IEnumerable<T> source, Func<T, uint> sortProperty, GroupBitLength groupLength = GroupBitLength.FourBits)
         {
-            return SortWithRadixsort(source, 0, source.Count(), sortProperty, groupLength);
+            return SortWithRadixSort(source, 0, source.Count(), sortProperty, groupLength);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<uint> SortWithRadixSort(this IEnumerable<uint> source, int index, int count, GroupBitLength groupLength = GroupBitLength.FourBits)
         {
-            return SortWithRadixsort(source, index, count, source => source, groupLength);
+            return SortWithRadixSort(source, index, count, source => source, groupLength);
         }
 
         /// <summary>
@@ -95,11 +95,16 @@
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithRadixSortBy<T>(this IEnumerable<T> source, int index, int count, Func<T, uint> sortProperty, GroupBitLength groupLength = GroupBitLength.FourBits)
         {
-            return SortWithRadixsort(source, index, count, sortProperty, groupLength);
+            return SortWithRadixSort(source, index, count, sortProperty, groupLength);
         }
         #endregion
 
-        private static IEnumerable<T> SortWithRadixsort<T>(this IEnumerable<T> source, int index, int count, Func<T, uint> sortProperty, GroupBitLength groupLength = GroupBitLength.FourBits)
+        //TODO:
+        #region Descending
+
+        #endregion
+
+        private static IEnumerable<T> SortWithRadixSort<T>(this IEnumerable<T> source, int index, int count, Func<T, uint> sortProperty, GroupBitLength groupLength = GroupBitLength.FourBits)
         {
             if (index < 0)
             {

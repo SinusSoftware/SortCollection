@@ -1,4 +1,3 @@
 Descending auch bei Contingsort + Radixsort
 Bei Introsort, TimSort auch diese Möglichkeit schaffen Func<TSource, TKey> sortProperty
-Jede Funktion eine Erklärung/Erklärung wird nicht immer angezeigt
 Nicht jeder Pfad ist unter Test
