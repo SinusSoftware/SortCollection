@@ -13,9 +13,9 @@
         #region Ascending 
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// using the default comparer.
-        /// This algorithm use insertionsort, heapsort and quicksort
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// This algorithm use insertionsort, heapsort and quicksort<br/>
         /// Stable: No
         /// </summary>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
@@ -25,9 +25,9 @@
         }
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// using the default comparer.
-        /// This algorithm use insertionsort, heapsort and quicksort
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// This algorithm use insertionsort, heapsort and quicksort<br/>
         /// Stable: No
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
@@ -39,8 +39,8 @@
         }
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// This algorithm use insertionsort, heapsort and quicksort
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// This algorithm use insertionsort, heapsort and quicksort<br/>
         /// Stable: No
         /// </summary>
         /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
@@ -53,8 +53,8 @@
         }
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// This algorithm use insertionsort, heapsort and quicksort
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// This algorithm use insertionsort, heapsort and quicksort<br/>
         /// Stable: No
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
@@ -77,9 +77,9 @@
         #region Descending
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// using the default comparer.
-        /// This algorithm use insertionsort, heapsort and quicksort
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// This algorithm use insertionsort, heapsort and quicksort<br/>
         /// Stable: No
         /// </summary>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
@@ -89,9 +89,9 @@
         }
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// using the default comparer.
-        /// This algorithm use insertionsort, heapsort and quicksort
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// This algorithm use insertionsort, heapsort and quicksort<br/>
         /// Stable: No
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
@@ -103,8 +103,8 @@
         }
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// This algorithm use insertionsort, heapsort and quicksort
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// This algorithm use insertionsort, heapsort and quicksort<br/>
         /// Stable: No
         /// </summary>
         /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
@@ -117,8 +117,8 @@
         }
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// This algorithm use insertionsort, heapsort and quicksort
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// This algorithm use insertionsort, heapsort and quicksort<br/>
         /// Stable: No
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>

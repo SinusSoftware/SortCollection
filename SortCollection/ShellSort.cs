@@ -13,9 +13,9 @@
         #region Ascending
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// using the default comparer.
-        /// Complexity: Dependent on GapSeqeuenz (Default: Sedgewick Year 1986)
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// Complexity: Dependent on GapSeqeuenz (Default: Sedgewick Year 1986)<br/>
         /// Stable: No
         /// </summary>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
@@ -31,9 +31,9 @@
         }
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// using the specified comparer.
-        /// Complexity: Dependent on GapSeqeuenz (Default: Sedgewick Year 1986)
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the specified comparer.<br/>
+        /// Complexity: Dependent on GapSeqeuenz (Default: Sedgewick Year 1986)<br/>
         /// Stable: No
         /// </summary>
         /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
@@ -46,9 +46,9 @@
         }
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// using the specified comparer.
-        /// Complexity: Dependent on GapSeqeuenz (Default: Sedgewick Year 1986)
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the specified comparer.<br/>
+        /// Complexity: Dependent on GapSeqeuenz (Default: Sedgewick Year 1986)<br/>
         /// Stable: No
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>

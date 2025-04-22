@@ -13,9 +13,9 @@
         #region Ascending
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// using the default comparer.
-        /// SlowSort is very, very slow. It's more a gag algorithmn. Don't use it!
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// SlowSort is very, very slow. It's more a gag algorithmn. Don't use it!<br/>
         /// Stable: No
         /// </summary>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
@@ -31,9 +31,9 @@
         }
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// using the default comparer.
-        /// SlowSort is very, very slow. It is more a gag algorithmn. Don't use it!
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// SlowSort is very, very slow. It is more a gag algorithmn. Don't use it!<br/>
         /// Stable: No
         /// </summary>
         /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
@@ -46,9 +46,9 @@
         }
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// using the default comparer.
-        /// SlowSort is very, very slow. It is more a gag algorithmn. Don't use it!
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// SlowSort is very, very slow. It is more a gag algorithmn. Don't use it!<br/>
         /// Stable: No
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>

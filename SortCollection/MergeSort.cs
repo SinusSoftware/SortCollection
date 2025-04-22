@@ -14,12 +14,12 @@
         #region Ascending
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// using the default comparer.
-        /// Worst Case Time Complexity[Big - O]: O(n* log n)
-        /// Best Case Time Complexity[Big - omega]: O(n* log n)
-        /// Average Time Complexity[Big - theta]: O(n* log n)
-        /// Space Complexity: O(n)
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
+        /// Space Complexity: O(n)<br/>
         /// Stable: Yes
         /// </summary>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
@@ -29,12 +29,12 @@
         }
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// using the default comparer.
-        /// Worst Case Time Complexity[Big - O]: O(n* log n)
-        /// Best Case Time Complexity[Big - omega]: O(n* log n)
-        /// Average Time Complexity[Big - theta]: O(n* log n)
-        /// Space Complexity: O(n)
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
+        /// Space Complexity: O(n)<br/>
         /// Stable: Yes
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
@@ -46,12 +46,12 @@
         }
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// using the default comparer.
-        /// Worst Case Time Complexity[Big - O]: O(n* log n)
-        /// Best Case Time Complexity[Big - omega]: O(n* log n)
-        /// Average Time Complexity[Big - theta]: O(n* log n)
-        /// Space Complexity: O(n)
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
+        /// Space Complexity: O(n)<br/>
         /// Stable: Yes
         /// </summary>
         /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
@@ -64,12 +64,12 @@
         }
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// using the default comparer.
-        /// Worst Case Time Complexity[Big - O]: O(n* log n)
-        /// Best Case Time Complexity[Big - omega]: O(n* log n)
-        /// Average Time Complexity[Big - theta]: O(n* log n)
-        /// Space Complexity: O(n)
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
+        /// Space Complexity: O(n)<br/>
         /// Stable: Yes
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>

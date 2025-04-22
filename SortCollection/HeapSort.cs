@@ -13,12 +13,12 @@
         #region Ascending
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// using the default comparer.
-        /// Worst case time O(nlg⁡n)O
-        /// Best case time O(n)
-        /// Average case time O(nlg⁡n)
-        /// Space O(1)
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// Worst case time O(nlg⁡n)O<br/>
+        /// Best case time O(n)<br/>
+        /// Average case time O(nlg⁡n)<br/>
+        /// Space O(1)<br/>
         /// Stable: No
         /// </summary>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
@@ -28,12 +28,12 @@
         }
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// using the default comparer.
-        /// Worst case time O(nlg⁡n)O
-        /// Best case time O(n)
-        /// Average case time O(nlg⁡n)
-        /// Space O(1)
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// Worst case time O(nlg⁡n)O<br/>
+        /// Best case time O(n)<br/>
+        /// Average case time O(nlg⁡n)<br/>
+        /// Space O(1)<br/>
         /// Stable: No
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
@@ -51,12 +51,12 @@
         }
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// using the default comparer.
-        /// Worst case time O(nlg⁡n)O
-        /// Best case time O(n)
-        /// Average case time O(nlg⁡n)
-        /// Space O(1)
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// Worst case time O(nlg⁡n)O<br/>
+        /// Best case time O(n)<br/>
+        /// Average case time O(nlg⁡n)<br/>
+        /// Space O(1)<br/>
         /// Stable: No
         /// </summary>
         /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing

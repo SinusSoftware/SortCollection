@@ -14,16 +14,16 @@
         #region Ascending
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// This algorithm is for positiv integers only
-        /// Time complexity: O(n+k)
-        /// Worst case: when data is skewed and range is large
-        /// Best Case: When all elements are same
-        /// Average Case: O(n+k) (n &amp; k equally dominant)
-        /// Space Complexity: O(k)
-        /// where:
-        /// n is the number of elements
-        /// k is the range of elements(k = largest element - smallest element)
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// This algorithm is for positiv integers only<br/>
+        /// Time complexity: O(n+k)<br/>
+        /// Worst case: when data is skewed and range is large<br/>
+        /// Best Case: When all elements are same<br/>
+        /// Average Case: O(n+k) (n &amp; k equally dominant)<br/>
+        /// Space Complexity: O(k)<br/>
+        /// where:<br/>
+        /// n is the number of elements<br/>
+        /// k is the range of elements(k = largest element - smallest element)<br/>
         /// Stable: Yes
         /// </summary>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
@@ -33,16 +33,16 @@
         }
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// This algorithm is for positiv integers only
-        /// Time complexity: O(n+k)
-        /// Worst case: when data is skewed and range is large
-        /// Best Case: When all elements are same
-        /// Average Case: O(n+k) (n &amp; k equally dominant)
-        /// Space Complexity: O(k)
-        /// where:
-        /// n is the number of elements
-        /// k is the range of elements(k = largest element - smallest element)
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// This algorithm is for positiv integers only<br/>
+        /// Time complexity: O(n+k)<br/>
+        /// Worst case: when data is skewed and range is large<br/>
+        /// Best Case: When all elements are same<br/>
+        /// Average Case: O(n+k) (n &amp; k equally dominant)<br/>
+        /// Space Complexity: O(k)<br/>
+        /// where:<br/>
+        /// n is the number of elements<br/>
+        /// k is the range of elements(k = largest element - smallest element)<br/>
         /// Stable: Yes
         /// </summary>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
@@ -52,16 +52,16 @@
         }
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// This algorithm is for positiv integers only
-        /// Time complexity: O(n+k)
-        /// Worst case: when data is skewed and range is large
-        /// Best Case: When all elements are same
-        /// Average Case: O(n+k) (n &amp; k equally dominant)
-        /// Space Complexity: O(k)
-        /// where:
-        /// n is the number of elements
-        /// k is the range of elements(k = largest element - smallest element)
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// This algorithm is for positiv integers only<br/>
+        /// Time complexity: O(n+k)<br/>
+        /// Worst case: when data is skewed and range is large<br/>
+        /// Best Case: When all elements are same<br/>
+        /// Average Case: O(n+k) (n &amp; k equally dominant)<br/>
+        /// Space Complexity: O(k)<br/>
+        /// where:<br/>
+        /// n is the number of elements<br/>
+        /// k is the range of elements(k = largest element - smallest element)<br/>
         /// Stable: Yes
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
@@ -73,16 +73,16 @@
         }
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// This algorithm is for positiv integers only
-        /// Time complexity: O(n+k)
-        /// Worst case: when data is skewed and range is large
-        /// Best Case: When all elements are same
-        /// Average Case: O(n+k) (n &amp; k equally dominant)
-        /// Space Complexity: O(k)
-        /// where:
-        /// n is the number of elements
-        /// k is the range of elements(k = largest element - smallest element)
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// This algorithm is for positiv integers only<br/>
+        /// Time complexity: O(n+k)<br/>
+        /// Worst case: when data is skewed and range is large<br/>
+        /// Best Case: When all elements are same<br/>
+        /// Average Case: O(n+k) (n &amp; k equally dominant)<br/>
+        /// Space Complexity: O(k)<br/>
+        /// where:<br/>
+        /// n is the number of elements<br/>
+        /// k is the range of elements(k = largest element - smallest element)<br/>
         /// Stable: Yes
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>

@@ -13,12 +13,12 @@
         #region Ascending
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// using the default comparer.
-        /// Worst Case Time Complexity[Big - O]: O(n^2)
-        /// Best Case Time Complexity[Big - omega]: O(n)
-        /// Average Time Complexity[Big - theta]: O(n^2)
-        /// Space Complexity: O(1)
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n^2)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n^2)<br/>
+        /// Space Complexity: O(1)<br/>
         /// Stable: Yes
         /// </summary>
         /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
@@ -30,12 +30,12 @@
         }
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// using the default comparer.
-        /// Worst Case Time Complexity[Big - O]: O(n^2)
-        /// Best Case Time Complexity[Big - omega]: O(n)
-        /// Average Time Complexity[Big - theta]: O(n^2)
-        /// Space Complexity: O(1)
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n^2)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n^2)<br/>
+        /// Space Complexity: O(1)<br/>
         /// Stable: Yes
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
@@ -49,12 +49,12 @@
         }
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// using the specified comparer.
-        /// Worst Case Time Complexity[Big - O]: O(n^2)
-        /// Best Case Time Complexity[Big - omega]: O(n)
-        /// Average Time Complexity[Big - theta]: O(n^2)
-        /// Space Complexity: O(1)
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the specified comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n^2)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n^2)<br/>
+        /// Space Complexity: O(1)<br/>
         /// Stable: Yes
         /// </summary>
         /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
@@ -69,12 +69,12 @@
         }
 
         /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/>
-        /// using the specified comparer.
-        /// Worst Case Time Complexity[Big - O]: O(n^2)
-        /// Best Case Time Complexity[Big - omega]: O(n)
-        /// Average Time Complexity[Big - theta]: O(n^2)
-        /// Space Complexity: O(1)
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the specified comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n^2)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n^2)<br/>
+        /// Space Complexity: O(1)<br/>
         /// Stable: Yes
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
