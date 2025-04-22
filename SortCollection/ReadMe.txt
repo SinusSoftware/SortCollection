@@ -27,6 +27,9 @@ var heapSortedList = list.SortWithHeapSort();
 
 == Changelog ==
 
+= 1.x =
+* Show comments
+
 = 1.4 =
 * Add Targetframework .Net9.0
 
