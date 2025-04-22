@@ -19,7 +19,7 @@
         /// Time complexity: O(n+k)
         /// Worst case: when data is skewed and range is large
         /// Best Case: When all elements are same
-        /// Average Case: O(n+k) (n & k equally dominant)
+        /// Average Case: O(n+k) (n &amp; k equally dominant)
         /// Space Complexity: O(k)
         /// where:
         /// n is the number of elements
@@ -38,7 +38,7 @@
         /// Time complexity: O(n+k)
         /// Worst case: when data is skewed and range is large
         /// Best Case: When all elements are same
-        /// Average Case: O(n+k) (n & k equally dominant)
+        /// Average Case: O(n+k) (n &amp; k equally dominant)
         /// Space Complexity: O(k)
         /// where:
         /// n is the number of elements
@@ -57,7 +57,7 @@
         /// Time complexity: O(n+k)
         /// Worst case: when data is skewed and range is large
         /// Best Case: When all elements are same
-        /// Average Case: O(n+k) (n & k equally dominant)
+        /// Average Case: O(n+k) (n &amp; k equally dominant)
         /// Space Complexity: O(k)
         /// where:
         /// n is the number of elements
@@ -78,7 +78,7 @@
         /// Time complexity: O(n+k)
         /// Worst case: when data is skewed and range is large
         /// Best Case: When all elements are same
-        /// Average Case: O(n+k) (n & k equally dominant)
+        /// Average Case: O(n+k) (n &amp; k equally dominant)
         /// Space Complexity: O(k)
         /// where:
         /// n is the number of elements
