@@ -27,7 +27,7 @@ var heapSortedList = list.SortWithHeapSort();
 
 == Changelog ==
 
-= 1.x =
+= 1.4.1 =
 * Show comments
 
 = 1.4 =

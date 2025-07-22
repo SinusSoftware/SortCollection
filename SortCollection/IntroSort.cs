@@ -32,6 +32,8 @@
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
         /// <param name="count">The length of the range to sort.</param>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithIntroSort<T>(this IEnumerable<T> source, int index, int count)
         {
@@ -64,8 +66,7 @@
         /// </param>
         /// <returns></returns>
         /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
-        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/>
-        /// </exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithIntroSort<T>(this IEnumerable<T> source, int index, int count, IComparer<T> comparer)
         {
@@ -96,6 +97,8 @@
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
         /// <param name="count">The length of the range to sort.</param>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithIntroSortDescending<T>(this IEnumerable<T> source, int index, int count)
         {
@@ -128,8 +131,7 @@
         /// </param>
         /// <returns></returns>
         /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
-        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/>
-        /// </exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithIntroSortDescending<T>(this IEnumerable<T> source, int index, int count, IComparer<T> comparer)
         {

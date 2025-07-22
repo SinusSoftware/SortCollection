@@ -39,6 +39,8 @@
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
         /// <param name="count">The length of the range to sort.</param>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithMergeSort<T>(this IEnumerable<T> source, int index, int count)
         {
@@ -47,7 +49,7 @@
 
         /// <summary>
         /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
-        /// using the default comparer.<br/>
+        /// using the specified comparer.<br/>
         /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
         /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
         /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
@@ -65,7 +67,7 @@
 
         /// <summary>
         /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
-        /// using the default comparer.<br/>
+        /// using the specified comparer.<br/>
         /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
         /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
         /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
@@ -87,12 +89,37 @@
             return SortWithMergeSort(source, index, count, comparer, source => source, false);
         }
 
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the specified comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
+        /// Space Complexity: O(n)<br/>
+        /// Stable: Yes
+        /// </summary>
+        /// <param name="sortProperty">Specified the compare element.</param>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<TSource> SortWithMergeSortBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> sortProperty)
         {
             return SortWithMergeSort(source, 0, source.Count(), Comparer<TKey>.Default, sortProperty, false);
         }
 
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the specified comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
+        /// Space Complexity: O(n)<br/>
+        /// Stable: Yes
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <param name="sortProperty">Specified the compare element.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<TSource> SortWithMergeSortBy<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, Func<TSource, TKey> sortProperty)
         {
@@ -103,36 +130,113 @@
 
         #region Descending
 
+        /// <summary>
+        /// Sorts the elements descending in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
+        /// Space Complexity: O(n)<br/>
+        /// Stable: Yes
+        /// </summary>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithMergeSortDescending<T>(this IEnumerable<T> source)
         {
             return SortWithMergeSort(source, 0, source.Count(), Comparer<T>.Default, source => source, true);
         }
 
+        /// <summary>
+        /// Sorts the elements descending in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
+        /// Space Complexity: O(n)<br/>
+        /// Stable: Yes
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithMergeSortDescending<T>(this IEnumerable<T> source, int index, int count)
         {
             return SortWithMergeSort(source, index, count, Comparer<T>.Default, source => source, true);
         }
 
+        /// <summary>
+        /// Sorts the elements descending in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the specified comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
+        /// Space Complexity: O(n)<br/>
+        /// Stable: Yes
+        /// </summary>
+        /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
+        /// elements, or null to use the default comparer System.Collections.Generic.Comparer.Default.
+        /// </param>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithMergeSortDescending<T>(this IEnumerable<T> source, IComparer<T> comparer)
         {
             return SortWithMergeSort(source, 0, source.Count(), comparer, source => source, true);
         }
 
+        /// <summary>
+        /// Sorts the elements descending in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the specified comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
+        /// Space Complexity: O(n)<br/>
+        /// Stable: Yes
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
+        /// elements or null to use the default comparer System.Collections.Generic.Comparer.Default.
+        /// </param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/>
+        /// </exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithMergeSortDescending<T>(this IEnumerable<T> source, int index, int count, IComparer<T> comparer)
         {
             return SortWithMergeSort(source, index, count, comparer, source => source, true);
         }
 
+        /// <summary>
+        /// Sorts the elements descending in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the specified comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
+        /// Space Complexity: O(n)<br/>
+        /// Stable: Yes
+        /// </summary>
+        /// <param name="sortProperty">Specified the compare element.</param>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<TSource> SortWithMergeSortByDescending<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> sortProperty)
         {
             return SortWithMergeSort(source, 0, source.Count(), Comparer<TKey>.Default, sortProperty, true);
         }
 
+        /// <summary>
+        /// Sorts the elements descending in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the specified comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
+        /// Space Complexity: O(n)<br/>
+        /// Stable: Yes
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <param name="sortProperty">Specified the compare element.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<TSource> SortWithMergeSortByDescending<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, Func<TSource, TKey> sortProperty)
         {

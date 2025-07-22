@@ -26,6 +26,7 @@
         /// There are 'p' passes, and each digit can have up to 'd' different values<br/>
         /// Stable: Yes
         /// </summary>
+        /// <param name="groupLength">Length of Bits.</param>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<uint> SortWithRadixSort(this IEnumerable<uint> source, GroupBitLength groupLength = GroupBitLength.FourBits)
         {
@@ -45,6 +46,8 @@
         /// There are 'p' passes, and each digit can have up to 'd' different values<br/>
         /// Stable: Yes
         /// </summary>
+        /// <param name="sortProperty">Specified the compare element.</param>
+        /// <param name="groupLength">Length of Bits.</param>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithRadixSort<T>(this IEnumerable<T> source, Func<T, uint> sortProperty, GroupBitLength groupLength = GroupBitLength.FourBits)
         {
@@ -66,6 +69,9 @@
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
         /// <param name="count">The length of the range to sort.</param>
+        /// <param name="groupLength">Length of Bits.</param>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<uint> SortWithRadixSort(this IEnumerable<uint> source, int index, int count, GroupBitLength groupLength = GroupBitLength.FourBits)
         {
@@ -85,13 +91,13 @@
         /// There are 'p' passes, and each digit can have up to 'd' different values<br/>
         /// Stable: Yes
         /// </summary>
-        /// <param name="sortProperty">The sorting property</param>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
         /// <param name="count">The length of the range to sort.</param>
+        /// <param name="sortProperty">Specified the compare element.</param>
+        /// <param name="groupLength">Length of Bits.</param>
         /// <returns></returns>
         /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
-        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/>
-        /// </exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithRadixSortBy<T>(this IEnumerable<T> source, int index, int count, Func<T, uint> sortProperty, GroupBitLength groupLength = GroupBitLength.FourBits)
         {
@@ -159,14 +165,21 @@
             return sortMe;
         }
 
+        /// <summary>
+        /// group for bitlength
+        /// </summary>
         public enum GroupBitLength
         {
+            ///<summary>Group will be 2 Bits long</summary>
             [Description("Group will be 2 Bits long")]
             TwoBits = 2,
+            ///<summary>Group will be 4 Bits long</summary>
             [Description("Group will be 4 Bits long")]
             FourBits = 4,
+            ///<summary>Group will be 8 Bits long</summary>
             [Description("Group will be 8 Bits long")]
             EightBits = 8,
+            ///<summary>Group will be 16 Bits long</summary>
             [Description("Group will be 16 Bits long")]
             SixteenBits = 16
         }

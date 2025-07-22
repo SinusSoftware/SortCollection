@@ -1,6 +1,7 @@
 ﻿namespace System
 {
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
 
@@ -18,16 +19,28 @@
         /// Complexity: Dependent on GapSeqeuenz (Default: Sedgewick Year 1986)<br/>
         /// Stable: No
         /// </summary>
+        /// <param name="gapSequence">Different gap sequences.</param>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithShellSort<T>(this IEnumerable<T> source, GapSequences gapSequence = GapSequences.Sedgewick1986)
         {
             return SortWithShellSort(source, 0, source.Count(), Comparer<T>.Default, source => source, false, gapSequence);
         }
 
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// Complexity: Dependent on GapSeqeuenz (Default: Sedgewick Year 1986)<br/>
+        /// Stable: No
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <param name="gapSequence">Different gap sequences.</param>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static IEnumerable<T> SortWithSlowSort<T>(this IEnumerable<T> source, int index, int count)
+        public static IEnumerable<T> SortWithSlowSort<T>(this IEnumerable<T> source, int index, int count, GapSequences gapSequence = GapSequences.Sedgewick1986)
         {
-            return SortWithShellSort(source, index, count, Comparer<T>.Default, source => source, false);
+            return SortWithShellSort(source, index, count, Comparer<T>.Default, source => source, false, gapSequence);
         }
 
         /// <summary>
@@ -39,6 +52,7 @@
         /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
         /// elements, or null to use the default comparer System.Collections.Generic.Comparer.Default.
         /// </param>
+        /// <param name="gapSequence">Different gap sequences.</param>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithShellSort<T>(this IEnumerable<T> source, IComparer<T> comparer, GapSequences gapSequence = GapSequences.Sedgewick1986)
         {
@@ -56,66 +70,148 @@
         /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
         /// elements or null to use the default comparer System.Collections.Generic.Comparer.Default.
         /// </param>
-        /// <returns></returns>
+        /// <param name="gapSequence">Different gap sequences.</param>
         /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
-        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/>
-        /// </exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithShellSort<T>(this IEnumerable<T> source, int index, int count, IComparer<T> comparer, GapSequences gapSequence = GapSequences.Sedgewick1986)
         {
             return SortWithShellSort(source, index, count, comparer, source => source, false, gapSequence);
         }
 
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the specified comparer.<br/>
+        /// Complexity: Dependent on GapSeqeuenz (Default: Sedgewick Year 1986)<br/>
+        /// Stable: No
+        /// </summary>
+        /// <param name="sortProperty">Specified the compare element.</param>
+        /// <param name="gapSequence">Different gap sequences.</param>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static IEnumerable<TSource> SortWithShellSortBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> sortProperty)
+        public static IEnumerable<TSource> SortWithShellSortBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> sortProperty, GapSequences gapSequence = GapSequences.Sedgewick1986)
         {
-            return SortWithShellSort(source, 0, source.Count(), Comparer<TKey>.Default, sortProperty, false);
+            return SortWithShellSort(source, 0, source.Count(), Comparer<TKey>.Default, sortProperty, false, gapSequence);
         }
 
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the specified comparer.<br/>
+        /// Complexity: Dependent on GapSeqeuenz (Default: Sedgewick Year 1986)<br/>
+        /// Stable: No
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <param name="sortProperty">Specified the compare element.</param>
+        /// <param name="gapSequence">Different gap sequences.</param>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static IEnumerable<TSource> SortWithShellSortBy<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, Func<TSource, TKey> sortProperty)
+        public static IEnumerable<TSource> SortWithShellSortBy<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, Func<TSource, TKey> sortProperty, GapSequences gapSequence = GapSequences.Sedgewick1986)
         {
-            return SortWithShellSort(source, index, count, Comparer<TKey>.Default, sortProperty, false);
+            return SortWithShellSort(source, index, count, Comparer<TKey>.Default, sortProperty, false, gapSequence);
         }
 
         #endregion
 
         #region Descending
 
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// Complexity: Dependent on GapSeqeuenz (Default: Sedgewick Year 1986)<br/>
+        /// Stable: No
+        /// </summary>
+        /// <param name="gapSequence">Different gap sequences.</param>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithShellSortDescending<T>(this IEnumerable<T> source, GapSequences gapSequence = GapSequences.Sedgewick1986)
         {
             return SortWithShellSort(source, 0, source.Count(), Comparer<T>.Default, source => source, false, gapSequence);
         }
 
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// Complexity: Dependent on GapSeqeuenz (Default: Sedgewick Year 1986)<br/>
+        /// Stable: No
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <param name="gapSequence">Different gap sequences.</param>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static IEnumerable<T> SortWithSlowSortDescending<T>(this IEnumerable<T> source, int index, int count)
+        public static IEnumerable<T> SortWithSlowSortDescending<T>(this IEnumerable<T> source, int index, int count, GapSequences gapSequence = GapSequences.Sedgewick1986)
         {
-            return SortWithShellSort(source, index, count, Comparer<T>.Default, source => source, false);
+            return SortWithShellSort(source, index, count, Comparer<T>.Default, source => source, false, gapSequence);
         }
 
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the specified comparer.<br/>
+        /// Complexity: Dependent on GapSeqeuenz (Default: Sedgewick Year 1986)<br/>
+        /// Stable: No
+        /// </summary>
+        /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
+        /// elements, or null to use the default comparer System.Collections.Generic.Comparer.Default.
+        /// </param>
+        /// <param name="gapSequence">Different gap sequences.</param>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithShellSortDescending<T>(this IEnumerable<T> source, IComparer<T> comparer, GapSequences gapSequence = GapSequences.Sedgewick1986)
         {
             return SortWithShellSort(source, 0, source.Count(), comparer, source => source, false, gapSequence);
         }
 
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the specified comparer.<br/>
+        /// Complexity: Dependent on GapSeqeuenz (Default: Sedgewick Year 1986)<br/>
+        /// Stable: No
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
+        /// elements or null to use the default comparer System.Collections.Generic.Comparer.Default.
+        /// </param>
+        /// <param name="gapSequence">Different gap sequences.</param>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithShellSortDescending<T>(this IEnumerable<T> source, int index, int count, IComparer<T> comparer, GapSequences gapSequence = GapSequences.Sedgewick1986)
         {
             return SortWithShellSort(source, index, count, comparer, source => source, false, gapSequence);
         }
 
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the specified comparer.<br/>
+        /// Complexity: Dependent on GapSeqeuenz (Default: Sedgewick Year 1986)<br/>
+        /// Stable: No
+        /// </summary>
+        /// <param name="sortProperty">Specified the compare element.</param>
+        /// <param name="gapSequence">Different gap sequences.</param>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static IEnumerable<TSource> SortWithShellSortByDescending<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> sortProperty)
+        public static IEnumerable<TSource> SortWithShellSortByDescending<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> sortProperty, GapSequences gapSequence = GapSequences.Sedgewick1986)
         {
-            return SortWithShellSort(source, 0, source.Count(), Comparer<TKey>.Default, sortProperty, false);
+            return SortWithShellSort(source, 0, source.Count(), Comparer<TKey>.Default, sortProperty, false, gapSequence);
         }
 
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the specified comparer.<br/>
+        /// Complexity: Dependent on GapSeqeuenz (Default: Sedgewick Year 1986)<br/>
+        /// Stable: No
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <param name="sortProperty">Specified the compare element.</param>
+        /// <param name="gapSequence">Different gap sequences.</param>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static IEnumerable<TSource> SortWithShellSortByDescending<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, Func<TSource, TKey> sortProperty)
+        public static IEnumerable<TSource> SortWithShellSortByDescending<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, Func<TSource, TKey> sortProperty, GapSequences gapSequence = GapSequences.Sedgewick1986)
         {
-            return SortWithShellSort(source, index, count, Comparer<TKey>.Default, sortProperty, false);
+            return SortWithShellSort(source, index, count, Comparer<TKey>.Default, sortProperty, false, gapSequence);
         }
 
         #endregion
@@ -179,17 +275,40 @@
             return sortMe;
         }
 
+        /// <summary>
+        /// GapSequences
+        /// </summary>
         public enum GapSequences
         {
+            ///<summary>gap sequence by Shell</summary>
+            [Description("gap sequence by Shell")]
             Shell,
+            ///<summary>gap sequence by shell</summary>
+            [Description("gap sequence by Hibbard")]
             Hibbard,
+            ///<summary>gap sequence by Papernov and Stasevich</summary>
+            [Description("gap sequence by Papernov and Stasevich")]
             PapernovStasevich,
+            ///<summary>gap sequence by Pratt</summary>
+            [Description("gap sequence by Pratt")]
             Pratt,
+            ///<summary>gap sequence by Knuth</summary>
+            [Description("gap sequence by Knuth")]
             Knuth,
+            ///<summary>gap sequence by Incerpi and Sedgewick</summary>
+            [Description("gap sequence by Incerpi and Sedgewick")]
             IncerpiSedgewick,
+            ///<summary>gap sequence by Sedgewick from the year 1982l</summary>
+            [Description("gap sequence by Sedgewick from the year 1982")]
             Sedgewick1982,
+            ///<summary>gap sequence by Sedgewick from the year 1986</summary>
+            [Description("gap sequence by Sedgewick from the year 1986")]
             Sedgewick1986,
+            ///<summary>gap sequence by Tokuda</summary>
+            [Description("gap sequence by Tokuda")]
             Tokuda,
+            ///<summary>gap sequence by Ciura</summary>
+            [Description("gap sequence by Ciura")]
             Ciura
         }
 

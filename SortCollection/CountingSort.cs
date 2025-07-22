@@ -45,6 +45,7 @@
         /// k is the range of elements(k = largest element - smallest element)<br/>
         /// Stable: Yes
         /// </summary>
+        /// <param name="sortProperty">Specified the compare element.</param>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithCountingSort<T>(this IEnumerable<T> source, Func<T, int> sortProperty)
         {
@@ -66,6 +67,8 @@
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
         /// <param name="count">The length of the range to sort.</param>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<int> SortWithCountingSort(this IEnumerable<int> source, int index, int count)
         {
@@ -87,10 +90,10 @@
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
         /// <param name="count">The length of the range to sort.</param>
+        /// <param name="sortProperty">Specified the compare element.</param>
         /// <returns></returns>
         /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
-        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/>
-        /// </exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithCountingSortBy<T>(this IEnumerable<T> source, int index, int count, Func<T, int> sortProperty)
         {
