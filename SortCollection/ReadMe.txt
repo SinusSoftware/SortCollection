@@ -29,6 +29,7 @@ var heapSortedList = list.SortWithHeapSort();
 
 = 1.4.1 =
 * Show comments
+* Add signatur with gap sequences for shellsort
 
 = 1.4 =
 * Add Targetframework .Net9.0
