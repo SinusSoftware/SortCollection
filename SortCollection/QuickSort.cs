@@ -1,8 +1,13 @@
 ﻿namespace System
 {
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
 
+    /// <summary>
+    /// Wraps static sort apis into a uniform extension method api.
+    /// </summary>
+    [ExcludeFromCodeCoverage]
     public static partial class QuickSort
     {
         #region Ascending

@@ -27,6 +27,26 @@ namespace SortCollectionUnitTest
 
         }
 
+        [TestMethod]
+        public void TestParallel()
+        {
+
+            int[] numbers = { 9, 3, 7, 1, 8, 2, 5, 4, 6 };
+            string[] names = { "Daniel", "Anja", "Chris", "Ben" };
+            //ParallelQuicksort test = new ParallelQuicksort();
+            var sorted = ParallelQuicksort.SortWithParallelQuicksort(names);
+
+            var test2 = randomIntegers.SortWithParallelQuicksort();
+
+            // ParallelQuicksort.SortParallel(names);
+            //test.
+            // numbers.Sortp
+            //  ParallelQuickSorter.Sort(numbers);
+            // ParallelQuickSorter.Sort(names);
+
+            var test = "";
+
+        }
 
         [TestMethod]
         public void Test2()
@@ -55,12 +75,13 @@ namespace SortCollectionUnitTest
         {
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
-            var test = randomUIntegers.SortWithQuickSort();
+            //var test = randomUIntegers.SortWithQuickSort();
+            var test = randomIntegers.SortWithParallelQuicksort();
             stopWatch.Stop();
             TimeSpan ts = stopWatch.Elapsed;
             stopWatch.Restart();
-            // randomIntegers.Sort();
-            var test2 = randomUIntegers.SortWithRadixSort();
+             randomIntegers.Sort();
+            //var test2 = randomUIntegers.SortWithRadixSort();
             stopWatch.Stop();
             TimeSpan ts2 = stopWatch.Elapsed;
             string end = "";
