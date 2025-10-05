@@ -12,6 +12,8 @@ SortCollection is a dll with different sorting algorithms. Currently supported:
 * Introsort
 * Timsort
 * Shakersort
+* Quicksort
+* parallel Quicksort (Multi-Threading)
 
 ## Installation
 Use the package manager [Nuget](https://www.nuget.org/packages/SinusSoftware.SortCollection) to install SortCollection.
@@ -105,6 +107,8 @@ var countingSortedList = cars.SortWithCountingSort(car => car.Year);
 # Example Radixsort with range and Object "Car"
 var radixSortedList = cars.SortWithRadixSort(2, 6, car => car.Year);
 
+# Example ParallelQuickSort descending
+var parallelQuickSortedListDescending = integers.SortWithParallelQuickSortDescending();
 
 ```
 

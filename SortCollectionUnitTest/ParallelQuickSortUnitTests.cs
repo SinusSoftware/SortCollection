@@ -6,7 +6,7 @@ using System.Linq;
 namespace SortCollectionUnitTest
 {
     [TestClass]
-    public class QuickSortUnitTests
+    public class ParallelQuickSortUnitTests
     {
         private List<int> integers = new();
         private List<int> randomIntegers = new();
@@ -23,58 +23,58 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
-        public void QuickSortCarSortByYearAscendingTest()
+        public void ParallelQuickSortCarSortByYearAscendingTest()
         {
-            var sortedList = cars.SortWithQuickSort(new SortByYearAscending());
+            var sortedList = cars.SortWithParallelQuickSort(new SortByYearAscending());
             Assert.IsTrue(SupportSortingTest.CheckCarsSortByYearAscending(sortedList.ToList()));
         }
 
         [TestMethod]
-        public void QuickSortCarSortByYearDescendingTest()
+        public void ParallelQuickSortCarSortByYearDescendingTest()
         {
-            var sortedList = cars.SortWithQuickSort(new SortByYearDescending());
+            var sortedList = cars.SortWithParallelQuickSort(new SortByYearDescending());
             Assert.IsTrue(SupportSortingTest.CheckCarsSortByYearDescending(sortedList.ToList()));
         }
 
         [TestMethod]
-        public void QuickSortCarSortByDefaultTest()
+        public void ParallelQuickSortCarSortByDefaultTest()
         {
-            var sortedList = cars.SortWithQuickSort();
+            var sortedList = cars.SortWithParallelQuickSort();
             Assert.IsTrue(SupportSortingTest.CheckCarsSortByMakeAscending(sortedList.ToList()));
         }
 
         [TestMethod]
-        public void QuickSortCarSortByMakeDescendingTest()
+        public void ParallelQuickSortCarSortByMakeDescendingTest()
         {
-            var sortedList = cars.SortWithQuickSort(new SortByMakeDescending());
+            var sortedList = cars.SortWithParallelQuickSort(new SortByMakeDescending());
             Assert.IsTrue(SupportSortingTest.CheckCarsSortByMakeDescending(sortedList.ToList()));
         }
 
         [TestMethod]
-        public void QuickSortIntegerTest()
+        public void ParallelQuickSortIntegerTest()
         {
-            var sortedList = integers.SortWithQuickSort();
+            var sortedList = integers.SortWithParallelQuickSort();
             Assert.IsTrue(SupportSortingTest.CheckIntegerList(sortedList.ToList()));
         }
 
         [TestMethod]
-        public void QuickSortIntegerRangeTest()
+        public void ParallelQuickSortIntegerRangeTest()
         {
-            var sortedList = integers.SortWithQuickSort(2, 6, Comparer<int>.Default);
+            var sortedList = integers.SortWithParallelQuickSort(2, 6, Comparer<int>.Default);
             Assert.IsTrue(SupportSortingTest.CheckIntegerRangeList(sortedList.ToList()));
         }
 
         [TestMethod]
-        public void QuickSortStringTest()
+        public void ParallelQuickSortStringTest()
         {
-            var sortedList = greekAlphabet.SortWithQuickSort();
+            var sortedList = greekAlphabet.SortWithParallelQuickSort();
             Assert.IsTrue(SupportSortingTest.CheckAlphabet(sortedList.ToList()));
         }
 
         [TestMethod]
-        public void QuickSortRandomIntegerTest()
+        public void ParallelQuickSortRandomIntegerTest()
         {
-            var sortedList = randomIntegers.SortWithQuickSort();
+            var sortedList = randomIntegers.SortWithParallelQuickSort();
             Assert.IsTrue(SupportSortingTest.CheckRandomIntegerList(sortedList.ToList()));
         }
     }

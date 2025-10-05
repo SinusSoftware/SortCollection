@@ -50,6 +50,47 @@
 
         #endregion
 
+        #region Descending
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithQuickSortDescending<T>(this IEnumerable<T> source)
+        {
+            return SortWithQuickSort(source, 0, source.Count(), Comparer<T>.Default, source => source, true);
+        }
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithQuickSortDescending<T>(this IEnumerable<T> source, int index, int count)
+        {
+            return SortWithQuickSort(source, index, count, Comparer<T>.Default, source => source, true);
+        }
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithQuickSortDescending<T>(this IEnumerable<T> source, IComparer<T> comparer)
+        {
+            return SortWithQuickSort(source, 0, source.Count(), comparer, source => source, true);
+        }
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithQuickSortDescending<T>(this IEnumerable<T> source, int index, int count, IComparer<T> comparer)
+        {
+            return SortWithQuickSort(source, index, count, comparer, source => source, true);
+        }
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<TSource> SortWithQuickSortByDescending<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> sortProperty)
+        {
+            return SortWithQuickSort(source, 0, source.Count(), Comparer<TKey>.Default, sortProperty, true);
+        }
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<TSource> SortWithQuickSortByDescending<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, Func<TSource, TKey> sortProperty)
+        {
+            return SortWithQuickSort(source, index, count, Comparer<TKey>.Default, sortProperty, true);
+        }
+
+        #endregion
+
+
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         private static IEnumerable<TSource> SortWithQuickSort<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, bool descending)
         {

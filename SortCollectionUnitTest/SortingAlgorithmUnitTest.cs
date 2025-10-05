@@ -34,9 +34,9 @@ namespace SortCollectionUnitTest
             int[] numbers = { 9, 3, 7, 1, 8, 2, 5, 4, 6 };
             string[] names = { "Daniel", "Anja", "Chris", "Ben" };
             //ParallelQuicksort test = new ParallelQuicksort();
-            var sorted = ParallelQuicksort.SortWithParallelQuicksort(names);
+            //var sorted = ParallelQuicksort.SortWithParallelQuicksort(names);
 
-            var test2 = randomIntegers.SortWithParallelQuicksort();
+            //var test2 = randomIntegers.SortWithParallelQuicksort();
 
             // ParallelQuicksort.SortParallel(names);
             //test.
@@ -76,7 +76,7 @@ namespace SortCollectionUnitTest
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             //var test = randomUIntegers.SortWithQuickSort();
-            var test = randomIntegers.SortWithParallelQuicksort();
+            var test = randomIntegers.SortWithParallelQuickSort();
             stopWatch.Stop();
             TimeSpan ts = stopWatch.Elapsed;
             stopWatch.Restart();

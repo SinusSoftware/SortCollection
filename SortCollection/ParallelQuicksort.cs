@@ -9,60 +9,132 @@
     /// Wraps static sort apis into a uniform extension method api.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public static partial class ParallelQuicksort
+    public static partial class ParallelQuickSort
     {
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static void SortParallel<T>(T[] array) where T : IComparable<T>
-        {
-            if (array == null || array.Length <= 1)
-                return;
 
-            
-            //ParallelQuickSort(array, 0, array.Length - 1, 0);
+        #region Ascending
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithParallelQuickSort<T>(this IEnumerable<T> source)
+        {
+            return SortWithParallelQuickSort(source, 0, source.Count(), Comparer<T>.Default, source => source, false);
         }
 
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static IEnumerable<T> SortWithParallelQuicksort<T>(this IEnumerable<T> source)
+        public static IEnumerable<T> SortWithParallelQuickSort<T>(this IEnumerable<T> source, int index, int count)
         {
-
-            return SortWithQuickSortTest(source, 0, source.Count(), Comparer<T>.Default, source => source, false);
-           
+            return SortWithParallelQuickSort(source, index, count, Comparer<T>.Default, source => source, false);
         }
 
-        private static IEnumerable<TSource> SortWithQuickSortTest<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, bool descending)
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithParallelQuickSort<T>(this IEnumerable<T> source, IComparer<T> comparer)
         {
+            return SortWithParallelQuickSort(source, 0, source.Count(), comparer, source => source, false);
+        }
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithParallelQuickSort<T>(this IEnumerable<T> source, int index, int count, IComparer<T> comparer)
+        {
+            return SortWithParallelQuickSort(source, index, count, comparer, source => source, false);
+        }
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<TSource> SortWithParallelQuickSortBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> sortProperty)
+        {
+            return SortWithParallelQuickSort(source, 0, source.Count(), Comparer<TKey>.Default, sortProperty, false);
+        }
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<TSource> SortWithParallelQuickSortBy<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, Func<TSource, TKey> sortProperty)
+        {
+            return SortWithParallelQuickSort(source, index, count, Comparer<TKey>.Default, sortProperty, false);
+        }
+
+        #endregion
+
+        #region Descending
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithParallelQuickSortDescending<T>(this IEnumerable<T> source)
+        {
+            return SortWithParallelQuickSort(source, 0, source.Count(), Comparer<T>.Default, source => source, true);
+        }
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithParallelQuickSortDescending<T>(this IEnumerable<T> source, int index, int count)
+        {
+            return SortWithParallelQuickSort(source, index, count, Comparer<T>.Default, source => source, true);
+        }
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithParallelQuickSortDescending<T>(this IEnumerable<T> source, IComparer<T> comparer)
+        {
+            return SortWithParallelQuickSort(source, 0, source.Count(), comparer, source => source, true);
+        }
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithParallelQuickSortDescending<T>(this IEnumerable<T> source, int index, int count, IComparer<T> comparer)
+        {
+            return SortWithParallelQuickSort(source, index, count, comparer, source => source, true);
+        }
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<TSource> SortWithParallelQuickSortByDescending<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> sortProperty)
+        {
+            return SortWithParallelQuickSort(source, 0, source.Count(), Comparer<TKey>.Default, sortProperty, true);
+        }
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<TSource> SortWithParallelQuickSortByDescending<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, Func<TSource, TKey> sortProperty)
+        {
+            return SortWithParallelQuickSort(source, index, count, Comparer<TKey>.Default, sortProperty, true);
+        }
+
+        #endregion
+
+        private static IEnumerable<TSource> SortWithParallelQuickSort<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, bool descending)
+        {
+            if (index < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index), index, "The index can't be less than 0.");
+            }
+
+            if (count < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(count), count, "The count can't be less than 0.");
+            }
+
+            if (source.Count() - index < count)
+            {
+                throw new ArgumentException("Count must be greater than number of elements in source minus index");
+            }
+
+
             comparer ??= Comparer<TKey>.Default;
             int order = descending ? 1 : -1;
             TSource[] sortMe = source.ToArray();
 
-
             int startIndex = index;
             int endIndex = index + count - 1;
 
-            ParallelQuickSort(sortMe, startIndex, endIndex, 0, comparer, sortProperty, order);
+            QuickSortParallel(sortMe, startIndex, endIndex, 0, comparer, sortProperty, order);
 
             return sortMe;
-            //return source;
         }
 
-        private static void ParallelQuickSort<TSource, TKey>(TSource[] array, int startIndex, int endIndex, int depth, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, int order)
+        private static void QuickSortParallel<TSource, TKey>(TSource[] array, int startIndex, int endIndex, int depth, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, int order)
         {
-            //int depth = 1000;
-
             if (startIndex >= endIndex)
                 return;
 
-        
-
-            //int pivotIndex = Partition(array, left, right);
             int pivotIndex = Partition(ref array, startIndex, endIndex, comparer, sortProperty, order);
 
             // Begrenze die Rekursionstiefe, um Thread-Overhead zu vermeiden
             if (depth < Environment.ProcessorCount)
             {
                 Parallel.Invoke(
-                    () => ParallelQuickSort(array, startIndex, pivotIndex - 1, depth + 1, comparer, sortProperty, order),
-                    () => ParallelQuickSort(array, pivotIndex + 1, endIndex, depth + 1, comparer, sortProperty, order)
+                    () => QuickSortParallel(array, startIndex, pivotIndex - 1, depth + 1, comparer, sortProperty, order),
+                    () => QuickSortParallel(array, pivotIndex + 1, endIndex, depth + 1, comparer, sortProperty, order)
                 );
             }
             else
