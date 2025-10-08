@@ -180,62 +180,6 @@
             b = temp;
         }
 
-        /*
-        private static void ParallelQuickSort<T>(T[] array, int left, int right, int depth) where T : IComparable<T>
-        {
-            if (left >= right)
-                return;
-
-            int pivotIndex = Partition(array, left, right);
-
-            // Begrenze die Rekursionstiefe, um Thread-Overhead zu vermeiden
-            if (depth < Environment.ProcessorCount)
-            {
-                Parallel.Invoke(
-                    () => ParallelQuickSort(array, left, pivotIndex - 1, depth + 1),
-                    () => ParallelQuickSort(array, pivotIndex + 1, right, depth + 1)
-                );
-            }
-            else
-            {
-                QuickSortSequential(array, left, pivotIndex - 1);
-                QuickSortSequential(array, pivotIndex + 1, right);
-            }
-        }
-
-        private static int Partition<T>(T[] array, int left, int right) where T : IComparable<T>
-        {
-            T pivot = array[right];
-            int i = left - 1;
-
-            for (int j = left; j < right; j++)
-            {
-                if (array[j].CompareTo(pivot) <= 0)
-                {
-                    i++;
-                    Swap(array, i, j);
-                }
-            }
-
-            Swap(array, i + 1, right);
-            return i + 1;
-        }
-
-        private static void QuickSortSequential<T>(T[] array, int left, int right) where T : IComparable<T>
-        {
-            if (left >= right)
-                return;
-
-            int pivotIndex = Partition(array, left, right);
-            QuickSortSequential(array, left, pivotIndex - 1);
-            QuickSortSequential(array, pivotIndex + 1, right);
-        }
-
-        private static void Swap<T>(T[] array, int a, int b)
-        {
-            (array[a], array[b]) = (array[b], array[a]);
-        }
-        */
     }
 }
 

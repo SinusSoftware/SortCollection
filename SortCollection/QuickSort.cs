@@ -90,8 +90,6 @@
 
         #endregion
 
-
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         private static IEnumerable<TSource> SortWithQuickSort<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, bool descending)
         {
             if (index < 0)
@@ -173,39 +171,5 @@
             b = temp;
         }
 
-        /*
-        private static void QuickSortTest<TSource, TKey>(ref TSource[] input, int left, int right, IComparer<TKey> comparer)
-        {
-            if (left < right)
-            {
-                int q = Partition(ref input, left, right, comparer);
-                QuickSortTest(ref input, left, q - 1, comparer);
-                QuickSortTest(ref input, q + 1, right, comparer);
-            }
-        }
-
-        private static int Partition<TSource, TKey>(ref TSource[] input, int left, int right, IComparer<TKey> comparer)
-        {
-            TSource pivot = input[right];
-            TSource temp;
-            int i = left;
-
-            for (int j = left; j < right; ++j)
-            {
-                if (comparer.Compare(input[j], pivot) <= 0)
-                {
-                    temp = input[j];
-                    input[j] = input[i];
-                    input[i] = temp;
-                    i++;
-                }
-            }
-
-            input[right] = input[i];
-            input[i] = pivot;
-
-            return i;
-        }
-        */
     }
 }
