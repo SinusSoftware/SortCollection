@@ -20,7 +20,7 @@ namespace SortCollectionUnitTest
         public void TestInitialize()
         {
             integers = SupportSortingTest.GenerateSmallIntegers();
-            randomIntegers = SupportSortingTest.CreateRandomArray(1000000, 1, 1000000).ToList();
+            randomIntegers = SupportSortingTest.CreateRandomArray(1000000000, 1, 1000000000).ToList();
             randomUIntegers = SupportSortingTest.CreateRandomArrayUInt(1000000, 1, 1000000).ToList();
             greekAlphabet = SupportSortingTest.GenerateGreekAlphabet();
             cars = SupportSortingTest.GenerateCars();
@@ -33,18 +33,21 @@ namespace SortCollectionUnitTest
 
             int[] numbers = { 9, 3, 7, 1, 8, 2, 5, 4, 6 };
             string[] names = { "Daniel", "Anja", "Chris", "Ben" };
-            //ParallelQuicksort test = new ParallelQuicksort();
-            //var sorted = ParallelQuicksort.SortWithParallelQuicksort(names);
+            //ParallelMergeSort.SortTest(names);
+            var test2 = names.SortWithParallelMergeSort();
 
-            //var test2 = randomIntegers.SortWithParallelQuicksort();
+              //ParallelQuicksort test = new ParallelQuicksort();
+              //var sorted = ParallelQuicksort.SortWithParallelQuicksort(names);
 
-            // ParallelQuicksort.SortParallel(names);
-            //test.
-            // numbers.Sortp
-            //  ParallelQuickSorter.Sort(numbers);
-            // ParallelQuickSorter.Sort(names);
+              //var test2 = randomIntegers.SortWithParallelQuicksort();
 
-            var test = "";
+              // ParallelQuicksort.SortParallel(names);
+              //test.
+              // numbers.Sortp
+              //  ParallelQuickSorter.Sort(numbers);
+              // ParallelQuickSorter.Sort(names);
+
+              var test = "";
 
         }
 
@@ -73,17 +76,25 @@ namespace SortCollectionUnitTest
         [TestMethod]
         public void RunTime_Test()
         {
+            /*
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             //var test = randomUIntegers.SortWithQuickSort();
             var test = randomIntegers.SortWithParallelQuickSort();
             stopWatch.Stop();
             TimeSpan ts = stopWatch.Elapsed;
-            stopWatch.Restart();
-             randomIntegers.Sort();
-            //var test2 = randomUIntegers.SortWithRadixSort();
+
+            stopWatch.Start();
+            var test2 = randomIntegers.SortWithParallelMergeSort();
             stopWatch.Stop();
             TimeSpan ts2 = stopWatch.Elapsed;
+
+            stopWatch.Restart();
+             randomIntegers.Sort();
+            //var test3 = randomUIntegers.SortWithRadixSort();
+            stopWatch.Stop();
+            TimeSpan ts3 = stopWatch.Elapsed;
+            */
             string end = "";
         }
 

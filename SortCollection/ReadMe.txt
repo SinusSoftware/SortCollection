@@ -24,6 +24,7 @@ SortCollection is a dll with different sorting algorithms. Currently supported:
 * Shakersort
 * Quicksort
 * parallel Quicksort (Multi-Threading)
+* parallel Mergesort (Multi-Threading)
 
 Example:
 var heapSortedList = list.SortWithHeapSort();
@@ -31,8 +32,10 @@ var heapSortedList = list.SortWithHeapSort();
 == Changelog ==
 
 = 1.5 =
+* Add Targetframework .Net10.0
 * Add Quicksort
 * Add parallel Quicksort (Multi-Threading)
+* Add parallel Mergesort (Multi-Threading)
 
 = 1.4.1 =
 * Show comments

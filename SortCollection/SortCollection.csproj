@@ -10,12 +10,12 @@
     <Product>Dirk Tamke's SortCollection</Product>
     <PackageId>SinusSoftware.SortCollection</PackageId>
     <Version>1.5</Version>
-    <PackageReleaseNotes>This is release 1.5 with 14 different sorting algorithmn</PackageReleaseNotes>
+    <PackageReleaseNotes>This is release 1.5 with 15 different sorting algorithmn</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/SinusSoftware/SortCollection</PackageProjectUrl>
     <Authors>Dirk Tamke</Authors>
     <Company>Dirk Tamke</Company>
-    <PackageTags>Sortcollection; Bubblesort; Selectionsort; Insertionsort; Heapsort; Mergesort; Countingsort; Shellsort; Radixsort; SlowSort; IntroSort; Timsort; Shakersort, QuickSort, parallel Quicksort, Thread</PackageTags>
-    <Description>This package contains the following sorting algorithms: Bubblesort, Selectionsort, Insertionsort, Heapsort, Mergesort, Countingsort, Shellsort, Radixsort, SlowSort, IntroSort, Timsort, Shakersort, QuickSort and parallel Quicksort. You can use it like standard sort. Example: List.Sort() =&gt; List.SortWithHeapSort()</Description>
+    <PackageTags>Sortcollection; Bubblesort; Selectionsort; Insertionsort; Heapsort; Mergesort; Countingsort; Shellsort; Radixsort; SlowSort; IntroSort; Timsort; Shakersort; QuickSort; parallel Quicksort; parallel Mergesort; Thread</PackageTags>
+    <Description>This package contains the following sorting algorithms: Bubblesort, Selectionsort, Insertionsort, Heapsort, Mergesort, Countingsort, Shellsort, Radixsort, SlowSort, IntroSort, Timsort, Shakersort, QuickSort, parallel Quicksort and parallel Mergesort. You can use it like standard sort. Example: List.Sort() =&gt; List.SortWithHeapSort()</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/SinusSoftware/SortCollection</RepositoryUrl>
     <Title>SortCollection from SinusSoftware</Title>
