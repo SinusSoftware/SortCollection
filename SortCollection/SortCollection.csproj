@@ -10,7 +10,12 @@
     <Product>Dirk Tamke's SortCollection</Product>
     <PackageId>SinusSoftware.SortCollection</PackageId>
     <Version>1.5</Version>
-    <PackageReleaseNotes>This is release 1.5 with 15 different sorting algorithmn</PackageReleaseNotes>
+    <PackageReleaseNotes>This is release 1.5 with following changes:
+
+* Add Targetframework .Net10.0
+* Add Quicksort
+* Add parallel Quicksort (Multi-Threading)
+* Add parallel Mergesort (Multi-Threading)</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/SinusSoftware/SortCollection</PackageProjectUrl>
     <Authors>Dirk Tamke</Authors>
     <Company>Dirk Tamke</Company>
