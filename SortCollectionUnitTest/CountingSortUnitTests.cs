@@ -23,8 +23,15 @@ namespace SortCollectionUnitTest
         [TestMethod]
         public void CountingSortCarSortByYearAscendingTest()
         {
-            var sortedList = cars.SortWithCountingSort(car => car.Year);
+            var sortedList = cars.SortWithCountingSortBy(car => car.Year);
             Assert.IsTrue(SupportSortingTest.CheckCarsSortByYearAscending(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void CountingSortCarSortByYearDescendingTest()
+        {
+            var sortedList = cars.SortWithCountingSortByDescending(car => car.Year);
+            Assert.IsTrue(SupportSortingTest.CheckCarsSortByYearDescending(sortedList.ToList()));
         }
 
         [TestMethod]

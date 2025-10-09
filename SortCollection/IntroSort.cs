@@ -210,9 +210,6 @@
 
             for (int j = left; j < right; ++j)
             {
-                //else if (comparer.Compare(sortProperty(leftArray[i]), sortProperty(rightArray[j])) == order || comparer.Compare(sortProperty(leftArray[i]), sortProperty(rightArray[j])) == 0)
-                //else if (comparer.Compare(sortProperty(leftArray[i]), sortProperty(rightArray[j])) == order || comparer.Compare(sortProperty(leftArray[i]), sortProperty(rightArray[j])) == 0)
-                //if (comparer.Compare(input[j], pivot) <= 0)
                 if (comparer.Compare(input[j], pivot) == order || comparer.Compare(input[j], pivot) == 0)
                 {
                     temp = input[j];

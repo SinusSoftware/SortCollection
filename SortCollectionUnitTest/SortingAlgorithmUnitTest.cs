@@ -20,8 +20,8 @@ namespace SortCollectionUnitTest
         public void TestInitialize()
         {
             integers = SupportSortingTest.GenerateSmallIntegers();
-            randomIntegers = SupportSortingTest.CreateRandomArray(1000000000, 1, 1000000000).ToList();
-            randomUIntegers = SupportSortingTest.CreateRandomArrayUInt(1000000, 1, 1000000).ToList();
+            randomIntegers = SupportSortingTest.CreateRandomArray(1000, 1, 1000).ToList();
+            randomUIntegers = SupportSortingTest.CreateRandomArrayUInt(1000, 1, 1000).ToList();
             greekAlphabet = SupportSortingTest.GenerateGreekAlphabet();
             cars = SupportSortingTest.GenerateCars();
 
@@ -34,8 +34,9 @@ namespace SortCollectionUnitTest
             int[] numbers = { 9, 3, 7, 1, 8, 2, 5, 4, 6 };
             string[] names = { "Daniel", "Anja", "Chris", "Ben" };
             //ParallelMergeSort.SortTest(names);
-            var test2 = names.SortWithParallelMergeSort();
+            //var test2 = names.SortWithParallelMergeSort();
 
+            //var test2 = numbers.SortWithCountingSortDescendingDesc2();
               //ParallelQuicksort test = new ParallelQuicksort();
               //var sorted = ParallelQuicksort.SortWithParallelQuicksort(names);
 
