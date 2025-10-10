@@ -129,7 +129,6 @@
 
             int pivotIndex = Partition(ref array, startIndex, endIndex, comparer, sortProperty, order);
 
-            // Begrenze die Rekursionstiefe, um Thread-Overhead zu vermeiden
             if (depth < Environment.ProcessorCount)
             {
                 Parallel.Invoke(
