@@ -283,7 +283,7 @@
             }
         }
 
-        private static void Merge<TSource, TKey>(TSource[] input, int left, int middle, int right, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, int order)
+        internal static void Merge<TSource, TKey>(TSource[] input, int left, int middle, int right, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, int order)
         {
             TSource[] leftArray = new TSource[middle - left + 1];
             TSource[] rightArray = new TSource[right - middle];

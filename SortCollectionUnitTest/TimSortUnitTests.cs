@@ -92,5 +92,19 @@ namespace SortCollectionUnitTest
             var sortedList = randomIntegers.SortWithTimSort();
             Assert.IsTrue(SupportSortingTest.CheckRandomIntegerList(sortedList.ToList()));
         }
+
+        [TestMethod]
+        public void TimSortCarSortByYearAscendingTest2()
+        {
+            var sortedList = cars.SortWithTimSortBy(car => car.Year);
+            Assert.IsTrue(SupportSortingTest.CheckCarsSortByYearAscending(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void TimSorttCarSortByYearDescendingTest()
+        {
+            var sortedList = cars.SortWithTimSortByDescending(car => car.Year);
+            Assert.IsTrue(SupportSortingTest.CheckCarsSortByYearDescending(sortedList.ToList()));
+        }
     }
 }

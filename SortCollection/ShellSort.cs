@@ -115,7 +115,6 @@
 
         #region Descending
 
-
         /// <summary>
         /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
         /// using the default comparer.<br/>
