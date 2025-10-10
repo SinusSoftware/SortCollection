@@ -35,6 +35,7 @@ var heapSortedList = list.SortWithHeapSort();
 * Add Targetframework .Net10.0
 * Add descending function for Countingsort
 * Add descending function for Radixsort
+* Add property signature (Func<TSource, TKey>) for Introsort
 * Add Quicksort
 * Add parallel Quicksort (Multi-Threading)
 * Add parallel Mergesort (Multi-Threading)

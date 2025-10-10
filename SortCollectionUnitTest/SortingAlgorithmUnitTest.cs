@@ -59,7 +59,8 @@ namespace SortCollectionUnitTest
         [TestMethod]
         public void Test2()
         {
-
+            int[] numbers = { 9, 3, 7, 1, 8, 2, 5, 4, 6 };
+            //numbers.SortWithInsertionSortDescending()
             //var test1 = integers.SortWithBubbleSortDescending();
             //var sortedList1 = integers.SortWithBubbleSortDescending(Comparer<int>.Default);
             //var testBy1 = cars.SortWithBubbleSortByDescending(c => c.Year);

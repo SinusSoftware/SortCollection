@@ -90,7 +90,7 @@
 
         #endregion
 
-        private static IEnumerable<TSource> SortWithQuickSort<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, bool descending)
+        internal static IEnumerable<TSource> SortWithQuickSort<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, bool descending)
         {
             if (index < 0)
             {
@@ -111,8 +111,6 @@
             int order = descending ? 1 : -1;
             TSource[] sortMe = source.ToArray();
 
-            //QuickSortTest(ref sortMe, index, count - 1, comparer);
-            
             int startIndex = index;
             int endIndex = index + count - 1;
 
@@ -145,7 +143,7 @@
             return sortMe;
         }
 
-        private static int Partition<TSource, TKey>(ref TSource[] data, int left, int right, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, int order)
+        internal static int Partition<TSource, TKey>(ref TSource[] data, int left, int right, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, int order)
         {
             TSource x = data[right];
             int i = left - 1;

@@ -238,7 +238,7 @@
 
         #endregion
 
-        private static IEnumerable<TSource> SortWithHeapSort<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, bool descending)
+        internal static IEnumerable<TSource> SortWithHeapSort<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, bool descending)
         {
             if (index < 0)
             {
