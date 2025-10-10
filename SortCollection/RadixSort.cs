@@ -30,28 +30,7 @@
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<uint> SortWithRadixSort(this IEnumerable<uint> source, GroupBitLength groupLength = GroupBitLength.FourBits)
         {
-            return SortWithRadixSort(source, 0, source.Count(), source => source, groupLength);
-        }
-
-        /// <summary>
-        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
-        /// This algorithm is for positiv integers only<br/>
-        /// Worst case: O(n2)<br/>
-        /// Best Case: O(A(n+b)) If b equals O(n), the time complexity is O(a*n)<br/>
-        /// Average Case: O(p*(n+d))<br/>
-        /// Space Complexity: O(n+k)<br/>
-        /// where:<br/>
-        /// n is the number of elements<br/>
-        /// k is the range of elements(k = largest element - smallest element)<br/>
-        /// There are 'p' passes, and each digit can have up to 'd' different values<br/>
-        /// Stable: Yes
-        /// </summary>
-        /// <param name="sortProperty">Specified the compare element.</param>
-        /// <param name="groupLength">Length of Bits.</param>
-        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static IEnumerable<T> SortWithRadixSort<T>(this IEnumerable<T> source, Func<T, uint> sortProperty, GroupBitLength groupLength = GroupBitLength.FourBits)
-        {
-            return SortWithRadixSort(source, 0, source.Count(), sortProperty, groupLength);
+            return SortWithRadixSort(source, 0, source.Count(), source => source, false, groupLength);
         }
 
         /// <summary>
@@ -75,7 +54,28 @@
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<uint> SortWithRadixSort(this IEnumerable<uint> source, int index, int count, GroupBitLength groupLength = GroupBitLength.FourBits)
         {
-            return SortWithRadixSort(source, index, count, source => source, groupLength);
+            return SortWithRadixSort(source, index, count, source => source, false, groupLength);
+        }
+
+        /// <summary>
+        /// Sorts the elements in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// This algorithm is for positiv integers only<br/>
+        /// Worst case: O(n2)<br/>
+        /// Best Case: O(A(n+b)) If b equals O(n), the time complexity is O(a*n)<br/>
+        /// Average Case: O(p*(n+d))<br/>
+        /// Space Complexity: O(n+k)<br/>
+        /// where:<br/>
+        /// n is the number of elements<br/>
+        /// k is the range of elements(k = largest element - smallest element)<br/>
+        /// There are 'p' passes, and each digit can have up to 'd' different values<br/>
+        /// Stable: Yes
+        /// </summary>
+        /// <param name="sortProperty">Specified the compare element.</param>
+        /// <param name="groupLength">Length of Bits.</param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithRadixSortBy<T>(this IEnumerable<T> source, Func<T, uint> sortProperty, GroupBitLength groupLength = GroupBitLength.FourBits)
+        {
+            return SortWithRadixSort(source, 0, source.Count(), sortProperty, false, groupLength);
         }
 
         /// <summary>
@@ -101,16 +101,106 @@
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
         public static IEnumerable<T> SortWithRadixSortBy<T>(this IEnumerable<T> source, int index, int count, Func<T, uint> sortProperty, GroupBitLength groupLength = GroupBitLength.FourBits)
         {
-            return SortWithRadixSort(source, index, count, sortProperty, groupLength);
+            return SortWithRadixSort(source, index, count, sortProperty, false, groupLength);
         }
         #endregion
 
-        //TODO:
         #region Descending
+
+        /// <summary>
+        /// Sorts the elements descending in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// This algorithm is for positiv integers only<br/>
+        /// Worst case: O(n2)<br/>
+        /// Best Case: O(A(n+b)) If b equals O(n), the time complexity is O(a*n)<br/>
+        /// Average Case: O(p*(n+d))<br/>
+        /// Space Complexity: O(n+k)<br/>
+        /// where:<br/>
+        /// n is the number of elements<br/>
+        /// k is the range of elements(k = largest element - smallest element)<br/>
+        /// There are 'p' passes, and each digit can have up to 'd' different values<br/>
+        /// Stable: Yes
+        /// </summary>
+        /// <param name="groupLength">Length of Bits.</param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<uint> SortWithRadixSortDescending(this IEnumerable<uint> source, GroupBitLength groupLength = GroupBitLength.FourBits)
+        {
+            return SortWithRadixSort(source, 0, source.Count(), source => source, true, groupLength);
+        }
+
+        /// <summary>
+        /// Sorts the elements descending in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// This algorithm is for positiv integers only<br/>
+        /// Worst case: O(n2)<br/>
+        /// Best Case: O(A(n+b)) If b equals O(n), the time complexity is O(a*n)<br/>
+        /// Average Case: O(p*(n+d))<br/>
+        /// Space Complexity: O(n+k)<br/>
+        /// where:<br/>
+        /// n is the number of elements<br/>
+        /// k is the range of elements(k = largest element - smallest element)<br/>
+        /// There are 'p' passes, and each digit can have up to 'd' different values<br/>
+        /// Stable: Yes
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <param name="groupLength">Length of Bits.</param>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<uint> SortWithRadixSortDescending(this IEnumerable<uint> source, int index, int count, GroupBitLength groupLength = GroupBitLength.FourBits)
+        {
+            return SortWithRadixSort(source, index, count, source => source, true, groupLength);
+        }
+
+        /// <summary>
+        /// Sorts the elements descending in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// This algorithm is for positiv integers only<br/>
+        /// Worst case: O(n2)<br/>
+        /// Best Case: O(A(n+b)) If b equals O(n), the time complexity is O(a*n)<br/>
+        /// Average Case: O(p*(n+d))<br/>
+        /// Space Complexity: O(n+k)<br/>
+        /// where:<br/>
+        /// n is the number of elements<br/>
+        /// k is the range of elements(k = largest element - smallest element)<br/>
+        /// There are 'p' passes, and each digit can have up to 'd' different values<br/>
+        /// Stable: Yes
+        /// </summary>
+        /// <param name="sortProperty">Specified the compare element.</param>
+        /// <param name="groupLength">Length of Bits.</param>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithRadixSortByDescending<T>(this IEnumerable<T> source, Func<T, uint> sortProperty, GroupBitLength groupLength = GroupBitLength.FourBits)
+        {
+            return SortWithRadixSort(source, 0, source.Count(), sortProperty, true, groupLength);
+        }
+
+        /// <summary>
+        /// Sorts the elements descending in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// This algorithm is for positiv integers only<br/>
+        /// Worst case: O(n2)<br/>
+        /// Best Case: O(A(n+b)) If b equals O(n), the time complexity is O(a*n)<br/>
+        /// Average Case: O(p*(n+d))<br/>
+        /// Space Complexity: O(n+k)<br/>
+        /// where:<br/>
+        /// n is the number of elements<br/>
+        /// k is the range of elements(k = largest element - smallest element)<br/>
+        /// There are 'p' passes, and each digit can have up to 'd' different values<br/>
+        /// Stable: Yes
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <param name="sortProperty">Specified the compare element.</param>
+        /// <param name="groupLength">Length of Bits.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> SortWithRadixSortByDescending<T>(this IEnumerable<T> source, int index, int count, Func<T, uint> sortProperty, GroupBitLength groupLength = GroupBitLength.FourBits)
+        {
+            return SortWithRadixSort(source, index, count, sortProperty, true, groupLength);
+        }
 
         #endregion
 
-        private static IEnumerable<T> SortWithRadixSort<T>(this IEnumerable<T> source, int index, int count, Func<T, uint> sortProperty, GroupBitLength groupLength = GroupBitLength.FourBits)
+        private static IEnumerable<T> SortWithRadixSort<T>(this IEnumerable<T> source, int index, int count, Func<T, uint> sortProperty, bool descending, GroupBitLength groupLength = GroupBitLength.FourBits)
         {
             if (index < 0)
             {
@@ -150,9 +240,18 @@
                     countBitWise[(value >> shift) & mask]++;
                 }
 
-                prefix[0] = 0;
-                for (int i = 1; i < countBitWise.Length; i++)
-                    prefix[i] = prefix[i - 1] + countBitWise[i - 1];
+                if (!descending)
+                {
+                    prefix[0] = 0;
+                    for (int i = 1; i < countBitWise.Length; i++)
+                        prefix[i] = prefix[i - 1] + countBitWise[i - 1];
+                }
+                else
+                {
+                    prefix[^1] = 0;
+                    for (int i = countBitWise.Length - 2; i >= 0; i--)
+                        prefix[i] = prefix[i + 1] + countBitWise[i + 1];
+                }
 
                 for (int i = index; i < count + index; i++)
                 {

@@ -23,7 +23,7 @@ namespace SortCollectionUnitTest
         [TestMethod]
         public void RadixSortCarSortByYearAscendingTest()
         {
-            var sortedList = cars.SortWithRadixSort(car => car.Year);
+            var sortedList = cars.SortWithRadixSortBy(car => car.Year);
             Assert.IsTrue(SupportSortingTest.CheckCarsSortByYearAscendingUInt(sortedList.ToList()));
         }
 
@@ -51,8 +51,15 @@ namespace SortCollectionUnitTest
         [TestMethod]
         public void RadixSortCarSortByYearAscendingRangeTest()
         {
-            var sortedList = cars.SortWithRadixSortBy(2, 6, car => car.Year);
-            Assert.IsTrue(SupportSortingTest.CheckCarsSortByYearAscendingRangeUInt(sortedList.ToList()));
+            var sortedList = cars.SortWithRadixSortBy(car => car.Year);
+            Assert.IsTrue(SupportSortingTest.CheckCarsSortByYearAscendingUInt(sortedList.ToList()));
+        }
+
+        [TestMethod]
+        public void RadixSortCarSortByYearDescendingRangeTest()
+        {
+            var sortedList = cars.SortWithRadixSortByDescending(car => car.Year);
+            Assert.IsTrue(SupportSortingTest.CheckCarsSortByYearDescendingRangeUInt(sortedList.ToList()));
 
         }
     }

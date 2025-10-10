@@ -1,3 +1,2 @@
-Descending auch bei Radixsort
 Bei Introsort, Timsort auch diese Möglichkeit schaffen Func<TSource, TKey> sortProperty
 Nicht jeder Pfad ist unter Test

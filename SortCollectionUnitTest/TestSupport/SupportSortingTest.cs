@@ -253,17 +253,17 @@ namespace SortCollectionUnitTest
             return true;
         }
 
-        public static bool CheckCarsSortByYearAscendingRangeUInt(IList<CarUInt> cars)
+        public static bool CheckCarsSortByYearDescendingRangeUInt(IList<CarUInt> cars)
         {
-            if (cars[0].Year != 1992 ||
-             cars[1].Year != 1988 ||
-             cars[2].Year != 1932 ||
-             cars[3].Year != 1999 ||
-             cars[4].Year != 2006 ||
-             cars[5].Year != 2015 ||
-             cars[6].Year != 2018 ||
-             cars[7].Year != 2020 ||
-             cars[8].Year != 1977)
+            if (cars[0].Year != 2020 ||
+             cars[1].Year != 2018 ||
+             cars[2].Year != 2015 ||
+             cars[3].Year != 2006 ||
+             cars[4].Year != 1999 ||
+             cars[5].Year != 1992 ||
+             cars[6].Year != 1988 ||
+             cars[7].Year != 1977 ||
+             cars[8].Year != 1932)
             {
                 return false;
             }
