@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SortCollectionUnitTest
 {
@@ -28,15 +29,18 @@ namespace SortCollectionUnitTest
         }
 
         [TestMethod]
-        public void TestParallel()
+        public async Task TestParallel()
         {
 
             int[] numbers = { 9, 3, 7, 1, 8, 2, 5, 4, 6 };
             string[] names = { "Daniel", "Anja", "Chris", "Ben" };
-            //ParallelMergeSort.SortTest(names);
-            //var test2 = names.SortWithParallelMergeSort();
 
-            //var test2 = numbers.SortWithCountingSortDescendingDesc2();
+           var test = await numbers.SortWithParallelMergeSortAsync();
+
+              //ParallelMergeSort.SortTest(names);
+              //var test2 = names.SortWithParallelMergeSort();
+
+              //var test2 = numbers.SortWithCountingSortDescendingDesc2();
               //ParallelQuicksort test = new ParallelQuicksort();
               //var sorted = ParallelQuicksort.SortWithParallelQuicksort(names);
 
@@ -48,7 +52,7 @@ namespace SortCollectionUnitTest
               //  ParallelQuickSorter.Sort(numbers);
               // ParallelQuickSorter.Sort(names);
 
-              var test = "";
+              var test2 = "";
 
         }
 

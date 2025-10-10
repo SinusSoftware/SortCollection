@@ -3,8 +3,6 @@
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
-    using System.Runtime.CompilerServices;
-    using System.Text;
     using System.Threading.Tasks;
 
 
@@ -94,7 +92,6 @@
         }
 
         #endregion
-
         private static IEnumerable<TSource> SortWithParallelMergeSort<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, bool descending)
         {
             if (index < 0)
@@ -128,7 +125,6 @@
 
             int middle = (left + right) / 2;
 
-            // Abhängig von der Tiefe entscheiden, ob parallel oder sequentiell
             if (depth < Environment.ProcessorCount)
             {
                 Parallel.Invoke(
@@ -164,9 +160,7 @@
 
             while (i <= middle && j <= right)
             {
-                //if (array[i].CompareTo(array[j]) <= 0)
                 if (comparer.Compare(sortProperty(array[i]), sortProperty(array[j])) <= order)
-       
                     temp[k++] = array[i++];
                 else
                     temp[k++] = array[j++];
@@ -182,142 +176,5 @@
                 array[t] = temp[t];
         }
 
-
-        /*
-        public static void SortTest<T>(T[] array) where T : IComparable<T>
-        {
-            if (array == null || array.Length <= 1)
-                return;
-
-            T[] temp = new T[array.Length];
-            MergeSortParallel(array, temp, 0, array.Length - 1, 0);
-        }
-        */
-
-        /*
-        private static void MergeSortParallel<TSource, TKey>(TSource[] input, TSource[] temp, int left, int right, int depth, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, int order)
-
-        //private static void MergeSortParallel<T>(T[] array, T[] temp, int left, int right, int depth) where T : IComparable<T>
-        {
-            if (left >= right)
-                return;
-
-            int middle = (left + right) / 2;
-
-            // Abhängig von der Tiefe entscheiden, ob parallel oder sequentiell
-            if (depth < Environment.ProcessorCount)
-            {
-                Parallel.Invoke(
-                    () => MergeSortParallel(input, temp, left, middle, depth + 1, comparer, sortProperty, order),
-                    () => MergeSortParallel(input, temp, middle + 1, right, depth + 1, comparer, sortProperty, order)
-                );
-            }
-            else
-            {
-                MergeSortSequential(input, temp, left, middle, depth, comparer, sortProperty, order);
-                MergeSortSequential(input, temp, middle + 1, right, depth, comparer, sortProperty, order);
-            }
-
-            Merge(input, temp, left, right, depth, comparer, sortProperty, order);
-        }
-
-        private static void MergeSortSequential<TSource, TKey>(TSource[] input, TSource[] temp, int left, int right, int depth, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, int order)
-        {
-            if (left >= right)
-                return;
-
-            int middle = (left + right) / 2;
-            MergeSortSequential(input, temp, left, middle, depth, comparer, sortProperty, order);
-            MergeSortSequential(input, temp, middle + 1, right, depth, comparer, sortProperty, order);
-            Merge(input, temp, left, middle, right, comparer, sortProperty, order);
-        }
-
-        private static void Merge<TSource, TKey>(TSource[] array, TSource[] temp, int left, int middle, int right, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, int order)
-        {
-            int i = left;
-            int j = middle + 1;
-            int k = left;
-
-            while (i <= middle && j <= right)
-            {
-                //if (array[i].CompareTo(array[j]) <= 0)
-                if (comparer.Compare(sortProperty(array[i]), sortProperty(array[j])) == order || comparer.Compare(sortProperty(array[i]), sortProperty(array[j])) == 0)
-                            temp[k++] = array[i++];
-                else
-                    temp[k++] = array[j++];
-            }
-
-            while (i <= middle)
-                temp[k++] = array[i++];
-
-            while (j <= right)
-                temp[k++] = array[j++];
-
-            for (int t = left; t <= right; t++)
-                array[t] = temp[t];
-        }
-        */
-
-        /*
-        private static void MergeSortParallel<T>(T[] array, T[] temp, int left, int right, int depth) where T : IComparable<T>
-        {
-            if (left >= right)
-                return;
-
-            int middle = (left + right) / 2;
-
-            // Abhängig von der Tiefe entscheiden, ob parallel oder sequentiell
-            if (depth < Environment.ProcessorCount)
-            {
-                Parallel.Invoke(
-                    () => MergeSortParallel(array, temp, left, middle, depth + 1),
-                    () => MergeSortParallel(array, temp, middle + 1, right, depth + 1)
-                );
-            }
-            else
-            {
-                MergeSortSequential(array, temp, left, middle);
-                MergeSortSequential(array, temp, middle + 1, right);
-            }
-
-            Merge(array, temp, left, middle, right);
-        }
-
-        private static void MergeSortSequential<T>(T[] array, T[] temp, int left, int right) where T : IComparable<T>
-        {
-            if (left >= right)
-                return;
-
-            int middle = (left + right) / 2;
-            MergeSortSequential(array, temp, left, middle);
-            MergeSortSequential(array, temp, middle + 1, right);
-            Merge(array, temp, left, middle, right);
-        }
-
-        private static void Merge<T>(T[] array, T[] temp, int left, int middle, int right) where T : IComparable<T>
-        {
-            int i = left;
-            int j = middle + 1;
-            int k = left;
-
-            while (i <= middle && j <= right)
-            {
-                if (array[i].CompareTo(array[j]) <= 0)
-                    temp[k++] = array[i++];
-                else
-                    temp[k++] = array[j++];
-            }
-
-            while (i <= middle)
-                temp[k++] = array[i++];
-
-            while (j <= right)
-                temp[k++] = array[j++];
-
-            for (int t = left; t <= right; t++)
-                array[t] = temp[t];
-        }
-
-         */
     }
 }
