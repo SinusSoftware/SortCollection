@@ -127,7 +127,7 @@
             if (startIndex >= endIndex)
                 return;
 
-            int pivotIndex = Partition(ref array, startIndex, endIndex, comparer, sortProperty, order);
+            int pivotIndex = QuickSort.Partition(ref array, startIndex, endIndex, comparer, sortProperty, order);
 
             if (depth < Environment.ProcessorCount)
             {
@@ -143,42 +143,15 @@
             }
         }
 
-        private static int Partition<TSource, TKey>(ref TSource[] data, int left, int right, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, int order)
-        {
-            TSource x = data[right];
-            int i = left - 1;
-
-            for (int j = left; j <= right - 1; ++j)
-            {
-                if (comparer.Compare(sortProperty(data[j]), sortProperty(x)) == order)
-                {
-                    ++i;
-                    Swap(ref data[i], ref data[j]);
-                }
-            }
-
-            Swap(ref data[i + 1], ref data[right]);
-
-            return i + 1;
-        }
-
         private static void QuickSortSequential<TSource, TKey>(TSource[] array, int startIndex, int endIndex, int depth, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, int order)
         {
             if (startIndex >= endIndex)
                 return;
 
-            int pivotIndex = Partition(ref array, startIndex, endIndex, comparer, sortProperty, order);
+            int pivotIndex = QuickSort.Partition(ref array, startIndex, endIndex, comparer, sortProperty, order);
             QuickSortSequential(array, startIndex, pivotIndex - 1, depth, comparer, sortProperty, order);
             QuickSortSequential(array, pivotIndex + 1, endIndex, depth, comparer, sortProperty, order);
         }
-
-        private static void Swap<T>(ref T a, ref T b)
-        {
-            T temp = a;
-            a = b;
-            b = temp;
-        }
-
     }
 }
 
