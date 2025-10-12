@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
-    using System.Text;
+    using System.Threading;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -12,41 +12,230 @@
     [ExcludeFromCodeCoverage]
     public static partial class ParallelMergeSortAsync
     {
+        #region Ascending
 
         /// <summary>
-        ///Async Test
+        /// 
         /// </summary>
+        /// <param name="cancellationToken">The cancellation token that cancels the sorting operation</param>
+        /// <exception cref="OperationCanceledException">Is thrown when the task is cancelled via <paramref name="cancellationToken"/></exception>
+        /// <exception cref="ObjectDisposedException">Is thrown when try to access the object is already been disposed</exception>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static async Task<IEnumerable<TSource>>SortWithParallelMergeSortAsync<TSource>(this IEnumerable<TSource> source)
+        public static async Task<IEnumerable<T>> SortWithParallelMergeSortAsync<T>(this IEnumerable<T> source, CancellationToken cancellationToken = default)
         {
-            return await SortWithParallelMergeSortAsync(source, 0, source.Count(), Comparer<TSource>.Default, source => source, false);
+            return await SortWithParallelMergeSortAsync(source, 0, source.Count(), Comparer<T>.Default, source => source, false, cancellationToken);
         }
 
-        private static async ValueTask<IEnumerable<TSource>> SortWithParallelMergeSortAsync<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, IComparer<TKey>? comparer, Func<TSource, TKey> sortProperty, bool descending)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <param name="cancellationToken">The cancellation token that cancels the sorting operation</param>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
+        /// <exception cref="OperationCanceledException">Is thrown when the task is cancelled via <paramref name="cancellationToken"/></exception>
+        /// <exception cref="ObjectDisposedException">Is thrown when try to access the object is already been disposed</exception>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static async Task<IEnumerable<T>> SortWithParallelMergeSortAsync<T>(this IEnumerable<T> source, int index, int count, CancellationToken cancellationToken = default)
+        {
+            return await SortWithParallelMergeSortAsync(source, index, count, Comparer<T>.Default, source => source, false, cancellationToken);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
+        /// elements, or null to use the default comparer System.Collections.Generic.Comparer.Default.
+        /// </param>
+        /// <param name="cancellationToken">The cancellation token that cancels the sorting operation</param>
+        /// <exception cref="OperationCanceledException">Is thrown when the task is cancelled via <paramref name="cancellationToken"/></exception>
+        /// <exception cref="ObjectDisposedException">Is thrown when try to access the object is already been disposed</exception>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static async Task<IEnumerable<T>> SortWithParallelMergeSortAsync<T>(this IEnumerable<T> source, IComparer<T> comparer, CancellationToken cancellationToken = default)
+        {
+            return await SortWithParallelMergeSortAsync(source, 0, source.Count(), comparer, source => source, false, cancellationToken);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
+        /// elements or null to use the default comparer System.Collections.Generic.Comparer.Default.
+        /// </param>
+        /// <param name="cancellationToken">The cancellation token that cancels the sorting operation</param>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
+        /// <exception cref="OperationCanceledException">Is thrown when the task is cancelled via <paramref name="cancellationToken"/></exception>
+        /// <exception cref="ObjectDisposedException">Is thrown when try to access the object is already been disposed</exception>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static async Task<IEnumerable<T>> SortWithParallelMergeSortAsync<T>(this IEnumerable<T> source, int index, int count, IComparer<T> comparer, CancellationToken cancellationToken = default)
+        {
+            return await SortWithParallelMergeSortAsync(source, index, count, comparer, source => source, false, cancellationToken);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sortProperty">Specified the compare element.</param>
+        /// <param name="cancellationToken">The cancellation token that cancels the sorting operation</param>
+        /// <exception cref="OperationCanceledException">Is thrown when the task is cancelled via <paramref name="cancellationToken"/></exception>
+        /// <exception cref="ObjectDisposedException">Is thrown when try to access the object is already been disposed</exception>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static async Task<IEnumerable<TSource>> SortWithParallelMergeSortByAsync<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> sortProperty, CancellationToken cancellationToken = default)
+        {
+            return await SortWithParallelMergeSortAsync(source, 0, source.Count(), Comparer<TKey>.Default, sortProperty, false, cancellationToken);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <param name="sortProperty">Specified the compare element.</param>
+        /// <param name="cancellationToken">The cancellation token that cancels the sorting operation</param>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
+        /// <exception cref="OperationCanceledException">Is thrown when the task is cancelled via <paramref name="cancellationToken"/></exception>
+        /// <exception cref="ObjectDisposedException">Is thrown when try to access the object is already been disposed</exception>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static async Task<IEnumerable<TSource>> SortWithParallelMergeSortByAsync<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, Func<TSource, TKey> sortProperty, CancellationToken cancellationToken = default)
+        {
+            return await SortWithParallelMergeSortAsync(source, index, count, Comparer<TKey>.Default, sortProperty, false, cancellationToken);
+        }
+
+        #endregion
+
+        #region Descending
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cancellationToken">The cancellation token that cancels the sorting operation</param>
+        /// <exception cref="OperationCanceledException">Is thrown when the task is cancelled via <paramref name="cancellationToken"/></exception>
+        /// <exception cref="ObjectDisposedException">Is thrown when try to access the object is already been disposed</exception>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static async Task<IEnumerable<T>> SortWithParallelMergeSortAsyncDescending<T>(this IEnumerable<T> source, CancellationToken cancellationToken = default)
+        {
+            return await SortWithParallelMergeSortAsync(source, 0, source.Count(), Comparer<T>.Default, source => source, true, cancellationToken); ;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <param name="cancellationToken">The cancellation token that cancels the sorting operation</param>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
+        /// <exception cref="OperationCanceledException">Is thrown when the task is cancelled via <paramref name="cancellationToken"/></exception>
+        /// <exception cref="ObjectDisposedException">Is thrown when try to access the object is already been disposed</exception>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static async Task<IEnumerable<T>> SortWithParallelMergeSortAsyncDescending<T>(this IEnumerable<T> source, int index, int count, CancellationToken cancellationToken = default)
+        {
+            return await SortWithParallelMergeSortAsync(source, index, count, Comparer<T>.Default, source => source, true, cancellationToken);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
+        /// elements, or null to use the default comparer System.Collections.Generic.Comparer.Default.
+        /// </param>
+        /// <param name="cancellationToken">The cancellation token that cancels the sorting operation</param>
+        /// <exception cref="OperationCanceledException">Is thrown when the task is cancelled via <paramref name="cancellationToken"/></exception>
+        /// <exception cref="ObjectDisposedException">Is thrown when try to access the object is already been disposed</exception>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static async Task<IEnumerable<T>> SortWithParallelMergeSortAsyncDescending<T>(this IEnumerable<T> source, IComparer<T> comparer, CancellationToken cancellationToken = default)
+        {
+            return await SortWithParallelMergeSortAsync(source, 0, source.Count(), comparer, source => source, true, cancellationToken);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
+        /// elements or null to use the default comparer System.Collections.Generic.Comparer.Default.
+        /// </param>
+        /// <param name="cancellationToken">The cancellation token that cancels the sorting operation</param>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
+        /// <exception cref="OperationCanceledException">Is thrown when the task is cancelled via <paramref name="cancellationToken"/></exception>
+        /// <exception cref="ObjectDisposedException">Is thrown when try to access the object is already been disposed</exception>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static async Task<IEnumerable<T>> SortWithParallelMergeSortAsyncDescending<T>(this IEnumerable<T> source, int index, int count, IComparer<T> comparer, CancellationToken cancellationToken = default)
+        {
+            return await SortWithParallelMergeSortAsync(source, index, count, comparer, source => source, true, cancellationToken);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sortProperty">Specified the compare element.</param>
+        /// <param name="cancellationToken">The cancellation token that cancels the sorting operation</param>
+        /// <exception cref="OperationCanceledException">Is thrown when the task is cancelled via <paramref name="cancellationToken"/></exception>
+        /// <exception cref="ObjectDisposedException">Is thrown when try to access the object is already been disposed</exception>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static async Task<IEnumerable<TSource>> SortWithParallelMergeSortByDescendingAsync<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> sortProperty, CancellationToken cancellationToken = default)
+        {
+            return await SortWithParallelMergeSortAsync(source, 0, source.Count(), Comparer<TKey>.Default, sortProperty, true, cancellationToken);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index">The zero-based starting index of the range to sort.</param>
+        /// <param name="count">The length of the range to sort.</param>
+        /// <param name="sortProperty">Specified the compare element.</param>
+        /// <param name="cancellationToken">The cancellation token that cancels the sorting operation</param>
+        /// <exception cref="ArgumentOutOfRangeException">index is less than 0 or count is less than 0.</exception>
+        /// <exception cref="ArgumentException">index and count do not specify a valid range in the <see cref="IEnumerable{T}"/></exception>
+        /// <exception cref="OperationCanceledException">Is thrown when the task is cancelled via <paramref name="cancellationToken"/></exception>
+        /// <exception cref="ObjectDisposedException">Is thrown when try to access the object is already been disposed</exception>
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
+        public static async Task<IEnumerable<TSource>> SortWithParallelMergeSortByDescendingAsync<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, Func<TSource, TKey> sortProperty, CancellationToken cancellationToken = default)
+        {
+            return await SortWithParallelMergeSortAsync(source, index, count, Comparer<TKey>.Default, sortProperty, true, cancellationToken);
+        }
+
+        #endregion
+
+
+        private static async Task<IEnumerable<TSource>> SortWithParallelMergeSortAsync<TSource, TKey>(this IEnumerable<TSource> source, int index, int count, IComparer<TKey>? comparer, Func<TSource, TKey> sortProperty, bool descending, CancellationToken cancellationToken = default)
         {
             if (index < 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(index), index, "The index can't be less than 0.");
-
+            }
             if (count < 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(count), count, "The count can't be less than 0.");
-
+            }
             if (source.Count() - index < count)
+            {
                 throw new ArgumentException("Count must be greater than number of elements in source minus index");
+            }
 
             comparer ??= Comparer<TKey>.Default;
             int order = descending ? 1 : -1;
 
             var array = source.ToArray();
-            var temp = new TSource[array.Length];
 
-            await MergeSortParallelAsync(array, temp, index, count - 1 + index, 0, Environment.ProcessorCount, comparer, sortProperty, order)
+            await MergeSortParallelAsync(array, index, count - 1 + index, 0, Environment.ProcessorCount, comparer, sortProperty, order, cancellationToken)
                                         .ConfigureAwait(false);
 
             return array;
+
         }
 
-        private static async ValueTask MergeSortParallelAsync<TSource, TKey>(TSource[] array, TSource[] temp, int left, int right, int depth, int maxDepth, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, int order)
+        private static async Task MergeSortParallelAsync<TSource, TKey>(TSource[] array, int left, int right, int depth, int maxDepth, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, int order, CancellationToken cancellationToken)
         {
+            cancellationToken.ThrowIfCancellationRequested();
+
             if (left >= right)
                 return;
 
@@ -55,52 +244,30 @@
             if (depth < maxDepth)
             {
                 await Task.WhenAll(
-                    MergeSortParallelAsync(array, temp, left, middle, depth + 1, maxDepth, comparer, sortProperty, order).AsTask(),
-                    MergeSortParallelAsync(array, temp, middle + 1, right, depth + 1, maxDepth, comparer, sortProperty, order).AsTask()
+                    MergeSortParallelAsync(array, left, middle, depth + 1, maxDepth, comparer, sortProperty, order, cancellationToken),
+                    MergeSortParallelAsync(array, middle + 1, right, depth + 1, maxDepth, comparer, sortProperty, order, cancellationToken)
                 ).ConfigureAwait(false);
             }
             else
             {
-                await MergeSortSequentialAsync(array, temp, left, middle, comparer, sortProperty, order);
-                await MergeSortSequentialAsync(array, temp, middle + 1, right, comparer, sortProperty, order);
+                await MergeSortSequentialAsync(array, left, middle, comparer, sortProperty, order, cancellationToken);
+                await MergeSortSequentialAsync(array, middle + 1, right, comparer, sortProperty, order, cancellationToken);
             }
 
-            Merge(array, temp, left, middle, right, comparer, sortProperty, order);
+            MergeSort.Merge(array, left, middle, right, comparer, sortProperty, order);
         }
 
-        private static async ValueTask MergeSortSequentialAsync<TSource, TKey>(TSource[] array, TSource[] temp, int left, int right, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, int order)
+        private static async Task MergeSortSequentialAsync<TSource, TKey>(TSource[] array, int left, int right, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, int order, CancellationToken cancellationToken)
         {
+            cancellationToken.ThrowIfCancellationRequested();
+
             if (left >= right)
                 return;
 
             int middle = (left + right) / 2;
-            await MergeSortSequentialAsync(array, temp, left, middle, comparer, sortProperty, order);
-            await MergeSortSequentialAsync(array, temp, middle + 1, right, comparer, sortProperty, order);
-            Merge(array, temp, left, middle, right, comparer, sortProperty, order);
-        }
-
-        private static void Merge<TSource, TKey>(TSource[] array, TSource[] temp, int left, int middle, int right, IComparer<TKey> comparer, Func<TSource, TKey> sortProperty, int order)
-        {
-            int i = left;
-            int j = middle + 1;
-            int k = left;
-
-            while (i <= middle && j <= right)
-            {
-                if (comparer.Compare(sortProperty(array[i]), sortProperty(array[j])) <= order)
-                    temp[k++] = array[i++];
-                else
-                    temp[k++] = array[j++];
-            }
-
-            while (i <= middle)
-                temp[k++] = array[i++];
-
-            while (j <= right)
-                temp[k++] = array[j++];
-
-            for (int t = left; t <= right; t++)
-                array[t] = temp[t];
+            await MergeSortSequentialAsync(array, left, middle, comparer, sortProperty, order, cancellationToken);
+            await MergeSortSequentialAsync(array, middle + 1, right, comparer, sortProperty, order, cancellationToken);
+            MergeSort.Merge(array, left, middle, right, comparer, sortProperty, order);
         }
     }
 }

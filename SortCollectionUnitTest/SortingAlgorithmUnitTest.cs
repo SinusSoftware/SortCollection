@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SortCollectionUnitTest
@@ -21,7 +22,7 @@ namespace SortCollectionUnitTest
         public void TestInitialize()
         {
             integers = SupportSortingTest.GenerateSmallIntegers();
-            randomIntegers = SupportSortingTest.CreateRandomArray(1000, 1, 1000).ToList();
+            randomIntegers = SupportSortingTest.CreateRandomArray(10000, 1, 10000).ToList();
             randomUIntegers = SupportSortingTest.CreateRandomArrayUInt(1000, 1, 1000).ToList();
             greekAlphabet = SupportSortingTest.GenerateGreekAlphabet();
             cars = SupportSortingTest.GenerateCars();
@@ -31,28 +32,24 @@ namespace SortCollectionUnitTest
         [TestMethod]
         public async Task TestParallel()
         {
+            try
+            {
+                Console.WriteLine("TestParallel");
 
-            int[] numbers = { 9, 3, 7, 1, 8, 2, 5, 4, 6 };
-            string[] names = { "Daniel", "Anja", "Chris", "Ben" };
+                int[] numbers = { 9, 3, 7, 1, 8, 2, 5, 4, 6 };
+                string[] names = { "Daniel", "Anja", "Chris", "Ben" };
 
-           var test = await numbers.SortWithParallelMergeSortAsync();
+                using var cts = new CancellationTokenSource();
 
-              //ParallelMergeSort.SortTest(names);
-              //var test2 = names.SortWithParallelMergeSort();
+                //cts.CancelAfter(5);
+                var test2 = await randomIntegers.SortWithParallelMergeSortAsync(cts.Token);
 
-              //var test2 = numbers.SortWithCountingSortDescendingDesc2();
-              //ParallelQuicksort test = new ParallelQuicksort();
-              //var sorted = ParallelQuicksort.SortWithParallelQuicksort(names);
 
-              //var test2 = randomIntegers.SortWithParallelQuicksort();
-
-              // ParallelQuicksort.SortParallel(names);
-              //test.
-              // numbers.Sortp
-              //  ParallelQuickSorter.Sort(numbers);
-              // ParallelQuickSorter.Sort(names);
-
-              var test2 = "";
+                var testEnde = "";
+            }
+            catch (OperationCanceledException ex) {
+                var test3 = ex.Message;
+            }
 
         }
 
