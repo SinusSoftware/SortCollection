@@ -1,3 +1,2 @@
 Nicht jeder Pfad ist unter Test
 QuickSort, parallel QuickSort, Parallel MergeSort XML comment
-Parallel Sorts: Mit CancelToken und Fortschritt?
