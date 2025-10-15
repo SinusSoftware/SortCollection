@@ -23,7 +23,7 @@ SortCollection is a dll with different sorting algorithms. Currently supported:
 * Timsort
 * Shakersort
 * Quicksort
-* parallel Quicksort (Multi-Threading)
+* parallel Quicksort (Multi-Threading, Asynchron)
 * parallel Mergesort (Multi-Threading, Asynchron)
 
 Example:

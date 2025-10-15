@@ -13,8 +13,8 @@ SortCollection is a dll with different sorting algorithms. Currently supported:
 * Timsort
 * Shakersort
 * Quicksort
-* parallel Quicksort (Multi-Threading)
-* parallel Mergesort (Multi-Threading)
+* parallel Quicksort (Multi-Threading, Asynchron)
+* parallel Mergesort (Multi-Threading, Asynchron)
 
 ## Installation
 Use the package manager [Nuget](https://www.nuget.org/packages/SinusSoftware.SortCollection) to install SortCollection.
