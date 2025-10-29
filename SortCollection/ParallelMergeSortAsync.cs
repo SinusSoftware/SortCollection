@@ -15,7 +15,13 @@
         #region Ascending
 
         /// <summary>
-        /// 
+        /// Sorts the elements multithreading and async in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
+        /// Space Complexity: O(n)<br/>
+        /// Stable: Yes
         /// </summary>
         /// <param name="cancellationToken">The cancellation token that cancels the sorting operation</param>
         /// <exception cref="OperationCanceledException">Is thrown when the task is cancelled via <paramref name="cancellationToken"/></exception>
@@ -27,7 +33,13 @@
         }
 
         /// <summary>
-        /// 
+        /// Sorts the elements multithreading and async in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
+        /// Space Complexity: O(n)<br/>
+        /// Stable: Yes
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
         /// <param name="count">The length of the range to sort.</param>
@@ -43,7 +55,13 @@
         }
 
         /// <summary>
-        /// 
+        /// Sorts the elements multithreading and async in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the specified comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
+        /// Space Complexity: O(n)<br/>
+        /// Stable: Yes
         /// </summary>
         /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
         /// elements, or null to use the default comparer System.Collections.Generic.Comparer.Default.
@@ -58,7 +76,13 @@
         }
 
         /// <summary>
-        /// 
+        /// Sorts the elements multithreading and async in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the specified comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
+        /// Space Complexity: O(n)<br/>
+        /// Stable: Yes
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
         /// <param name="count">The length of the range to sort.</param>
@@ -77,7 +101,13 @@
         }
 
         /// <summary>
-        /// 
+        /// Sorts the elements multithreading and async in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the specified comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
+        /// Space Complexity: O(n)<br/>
+        /// Stable: Yes
         /// </summary>
         /// <param name="sortProperty">Specified the compare element.</param>
         /// <param name="cancellationToken">The cancellation token that cancels the sorting operation</param>
@@ -90,7 +120,13 @@
         }
 
         /// <summary>
-        /// 
+        /// Sorts the elements multithreading and async in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the specified comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
+        /// Space Complexity: O(n)<br/>
+        /// Stable: Yes
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
         /// <param name="count">The length of the range to sort.</param>
@@ -111,7 +147,13 @@
         #region Descending
 
         /// <summary>
-        /// 
+        /// Sorts the elements descending multithreading and async in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
+        /// Space Complexity: O(n)<br/>
+        /// Stable: Yes
         /// </summary>
         /// <param name="cancellationToken">The cancellation token that cancels the sorting operation</param>
         /// <exception cref="OperationCanceledException">Is thrown when the task is cancelled via <paramref name="cancellationToken"/></exception>
@@ -123,7 +165,13 @@
         }
 
         /// <summary>
-        /// 
+        /// Sorts the elements descending multithreading and async in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the default comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
+        /// Space Complexity: O(n)<br/>
+        /// Stable: Yes
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
         /// <param name="count">The length of the range to sort.</param>
@@ -139,7 +187,13 @@
         }
 
         /// <summary>
-        /// 
+        /// Sorts the elements descending, multithreading and async in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the specified comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
+        /// Space Complexity: O(n)<br/>
+        /// Stable: Yes
         /// </summary>
         /// <param name="comparer">The System.Collections.Generic.IComparer implementation to use when comparing
         /// elements, or null to use the default comparer System.Collections.Generic.Comparer.Default.
@@ -154,7 +208,13 @@
         }
 
         /// <summary>
-        /// 
+        /// Sorts the elements descending, multithreading and async in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the specified comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
+        /// Space Complexity: O(n)<br/>
+        /// Stable: Yes
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
         /// <param name="count">The length of the range to sort.</param>
@@ -173,7 +233,13 @@
         }
 
         /// <summary>
-        /// 
+        /// Sorts the elements descending, multithreading and async in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the specified comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
+        /// Space Complexity: O(n)<br/>
+        /// Stable: Yes
         /// </summary>
         /// <param name="sortProperty">Specified the compare element.</param>
         /// <param name="cancellationToken">The cancellation token that cancels the sorting operation</param>
@@ -186,7 +252,13 @@
         }
 
         /// <summary>
-        /// 
+        /// Sorts the elements descending, multithreading and async in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// using the specified comparer.<br/>
+        /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
+        /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
+        /// Average Time Complexity[Big - theta]: O(n* log n)<br/>
+        /// Space Complexity: O(n)<br/>
+        /// Stable: Yes 
         /// </summary>
         /// <param name="index">The zero-based starting index of the range to sort.</param>
         /// <param name="count">The length of the range to sort.</param>
