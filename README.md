@@ -111,6 +111,10 @@ var radixSortedList = cars.SortWithRadixSort(2, 6, car => car.Year);
 # Example ParallelQuickSort descending
 var parallelQuickSortedListDescending = integers.SortWithParallelQuickSortDescending();
 
+# Eyample ParallelMergeSortAsync with CancellationToken
+var cts = new CancellationTokenSource();
+var sortedList = await cancelationTokenIntegers.SortWithParallelMergeSortAsync(cts.Token);
+
 ```
 
 ## Contributing

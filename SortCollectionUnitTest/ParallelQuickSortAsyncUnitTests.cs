@@ -87,13 +87,14 @@ namespace SortCollectionUnitTest
         {
             try
             {
-                using var cts = new CancellationTokenSource();
+                var cts = new CancellationTokenSource();
                 cts.CancelAfter(1);
                 var sortedList = await cancelationTokenIntegers.SortWithParallelQuickSortAsync(cts.Token);
                 Assert.Fail("No CancellationToken");
             }
             catch (OperationCanceledException ex)
             {
+                Assert.IsTrue(true);
             }
         }
     }

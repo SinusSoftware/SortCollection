@@ -147,7 +147,7 @@
         #region Descending
 
         /// <summary>
-        /// Sorts the elements descending multithreading and async in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// Sorts the elements descending, multithreading and async in a range of elements in <see cref="IEnumerable{T}"/><br/>
         /// using the default comparer.<br/>
         /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
         /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>
@@ -165,7 +165,7 @@
         }
 
         /// <summary>
-        /// Sorts the elements descending multithreading and async in a range of elements in <see cref="IEnumerable{T}"/><br/>
+        /// Sorts the elements descending, multithreading and async in a range of elements in <see cref="IEnumerable{T}"/><br/>
         /// using the default comparer.<br/>
         /// Worst Case Time Complexity[Big - O]: O(n* log n)<br/>
         /// Best Case Time Complexity[Big - omega]: O(n* log n)<br/>

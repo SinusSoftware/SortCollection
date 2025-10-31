@@ -38,7 +38,7 @@ var heapSortedList = list.SortWithHeapSort();
 * Add property signature (Func<TSource, TKey>) for Introsort
 * Add property signature (Func<TSource, TKey>) for Timsort
 * Add Quicksort
-* Add parallel Quicksort (Multi-Threading)
+* Add parallel Quicksort (Multi-Threading, Asynchron)
 * Add parallel Mergesort (Multi-Threading, Asynchron)
 
 = 1.4.1 =

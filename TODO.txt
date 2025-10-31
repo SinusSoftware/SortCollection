@@ -1,2 +1,1 @@
 Nicht jeder Pfad ist unter Test
-QuickSort, parallel QuickSort, Parallel MergeSort XML comment
